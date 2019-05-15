@@ -1,5 +1,7 @@
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="../../css/normalize.css">
   <link rel="stylesheet" href="../../css/skeleton.css">
 
@@ -19,10 +21,39 @@
   <script>
   var appRoot = "app"
   </script>
+
+  <style>
+    .main {
+      padding-top: 10rem;
+    }
+  </style>
 </head>
 <body>
   <div id="vue">
-    <button id="show-modal" @click="showHistoryClick()">Show Modal</button>
+    <div class="section main">
+      <div class="container">
+        <div class="row">
+          <div class="column">
+            <h4>Vue.js source code cherry pick</h4>
+            <p>
+              <h6>Datagrid is populated using Rx.js, axious.js loads REST api, moment.js updates dates, and vue.js renders content.</h6>
+              Source code:
+              <pre>
+                  Rx.Observable.fromPromise(axios.get(url))
+                  .map(res => res.data.map(row => {
+                    return { ...row, ...{ localizedDate: moment.utc(row.dateTime).local().format('LLLL') } }
+                  }))
+                  .subscribe(items => {
+                      this.gridData = items
+                      this.isBusy = false
+                    }
+              </pre>
+            </p>
+            <button class="button-primary" id="show-modal" @click="showHistoryClick()">Show Modal</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <modaldialog v-if="showModal" @close="showModal = false">
       <h3 slot="header">
@@ -31,7 +62,7 @@
 
       <div slot="body">
         <form id="search" style="display: flow-root;" @submit.prevent="refreshData()">
-          Search <input name="query" v-model="searchQuery" style="display: inline-block">
+          Search <input name="query" v-model="searchQuery" class="button" style="display: inline-block">
           <button v-if="searchQuery != ''" @click="searchQuery = ''" aria-label="Clear" style="float: inherit" type="button" class="close">
             <span>&times;</span>
           </button>
