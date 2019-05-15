@@ -1,13 +1,14 @@
 body { font-size: 62.5%; font-family: Verdana, sans-serif; }
 /*demo styles*/
-table {width: 500px; height: 200px; border-collapse: collapse; margin-left: 30px; font-size: 1em;}
+table {border-collapse: collapse; margin-left: 30px; font-size: 1em;}
 table.accessHide { position: absolute; left: -999999px; }
 td, th { 
    text-align: center; 
    border: 1px solid #ddd; 
-   padding:2px 5px; 
-    font-size: 1.2em; padding: 2px; width: 13%;
-   }
+   padding:1px;
+   font-size: 1.2em;
+   width: 13%;
+}
 th { background-color:#f4f4f4; }  
 td.hover { color: orange; }
 td.input { padding: 0; }

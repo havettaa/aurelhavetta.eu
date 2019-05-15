@@ -1,0 +1,8 @@
+body {
+	font-size: 8pt;
+	font-family: "Segoe UI" , Frutiger,Tahoma,Helvetica, "Helvetica Neue" , Arial, sans-serif;
+}
+
+.sapUiBody {
+	height: 600px !important;
+}

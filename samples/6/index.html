@@ -3,15 +3,37 @@
 <head>
 	<link type="text/css" rel="stylesheet" href="css/graph/visualize.jQuery.css" />
 	<link type="text/css" rel="stylesheet" href="css/graph/demopage.css" />
+	<link type="text/css" rel="stylesheet" href="css/main.css" />
 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script id="sap-ui-bootstrap"
+		src="https://sapui5.hana.ondemand.com/1.40.9/resources/sap-ui-core.js"
+		data-sap-ui-libs="sap.m"
+		data-sap-ui-theme="sap_bluecrystal"
+		data-sap-ui-xx-bindingSyntax="complex"
+		data-sap-ui-preload="async"
+		data-sap-ui-compatVersion="edge" 
+		data-sap-ui-resourceroots='{"sap.ui.table.sample.OData2": "./", "sap.ui.demo.mock": "mockdata"}'>
+	</script>
+	<script>
+		sap.ui.getCore().attachInit(function() {
+			new sap.m.App ({
+				pages: [
+					new sap.m.Page({
+						title: "OData Metadata", 
+						enableScrolling : false,
+						content: [ new sap.ui.core.ComponentContainer({
+							height : "100%", name : "sap.ui.table.sample.OData2"
+						})]
+					})
+				]
+			}).placeAt("content");
+		});
+	</script>
+
 
 	<script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>
-
 	<script type="text/javascript" src="js/jquery/jquery.tablesorter.min.js"></script>
-
 	<!--[if IE]><script type="text/javascript" src="js/graph/excanvas.compiled.js"></script><![endif]-->
-
 	<script type="text/javascript" src="js/graph/visualize.jQuery.js"></script>
 
 	<script type="text/javascript">
@@ -33,31 +55,13 @@
 		);
 	</script>
 
-	<style type="text/css">
-		body
-		{
-			font-size: 11pt;
-			font-family: "Segoe UI" , Frutiger,Tahoma,Helvetica, "Helvetica Neue" , Arial, sans-serif;
-		}
-		table
-		{
-			border-collapse: collapse;
-		}
-		td, th
-		{
-			text-align: center;
-			border: 1px solid #ddd;
-			padding: 2px 5px;
-		}
-		caption
-		{
-			margin: 0 0 .5em;
-			font-weight: bold;
-		}
-	</style>
 </head>
+
 <body>
-<input id="butrun" type="button" value="run" />
+	<div class="sapUiBody" id="content" role="application">
+	</div>
+
+	<input id="butrun" type="button" value="Refresh" />
 	<table id="myTable">
 		<caption>
 			2009 Employee Sales by Department</caption>

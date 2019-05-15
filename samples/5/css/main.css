@@ -1,0 +1,99 @@
+html
+{
+	font-family: sans-serif; /* 1 */
+	-ms-text-size-adjust: 100%; /* 2 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body
+{
+	cursor: pointer;
+	margin: 0;
+	background: #FFFCCC url(../images/BackGrounds/firewall-background.jpg) repeat-x center top;
+}
+
+input
+{
+	font-family: Arial;
+	font-size: 12px;
+	border: solid 1px #4a6d85;
+	background: #081829 url(../images/MenuIcons/BG_Button.png) repeat-x;
+	color: #FFFFFF;
+	padding: 3px;
+}
+
+.app
+{
+	cursor: pointer;
+	text-align: center;
+	margin: 70px 300px 20px 300px;
+}
+
+.butoncek
+{
+	background-color: #27313E;
+	margin: 5px;
+}
+.drop_zone
+{
+	width: 300px;
+	height: 100px;
+	margin: 30px 0px;
+	padding: 5px 5px 5px 5px;
+	
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+
+	box-shadow: 10px 10px 5px #888;
+	-o-box-shadow: 10px 10px 5px #888;
+	-icab-box-shadow: 10px 10px 5px #888;
+	-khtml-box-shadow: 10px 10px 5px #888;
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	
+	border-radius: 5px;
+	-o-border-radius: 5px;
+	-icab-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	
+	background-color: #1a82f7;
+	background-image: repeating-radial-gradient(
+		circle at 0 0, 
+		#eee,
+		#ccc 50px
+	  );
+}
+
+.nav
+{
+	background: url(../images/MenuIcons/BG_HeaderDialog.png) repeat-x;
+	width: 401px;
+	height: 48px;
+}
+.nav li a:link, .nav li a:visited
+{
+	height: 48px;
+	text-indent: -9000px;
+	overflow: hidden;
+}
+.nav .home a:link, .nav .home a:visited
+{
+	left: 23px;
+	width: 76px;
+}
+.nav .home a:hover, .nav .home a:focus
+{
+	background: url(../images/MenuIcons/BG_panel.png) repeat-x 2px 0px;
+}
+.edit
+{
+	cursor: default;
+}
+.select
+{
+	border: 2px solid yellow;
+}

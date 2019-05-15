@@ -92,9 +92,6 @@ function Ria_HoverToolbar_Create()
 		.css({
 			position: 'absolute',
 			width: '0px',
-			height: '1px',
-			border: 'solid 1px #5A96BD',
-			backgroundColor: '#10496B',
 			zIndex: '999999999'
 		})
 		.css({ 'filter': 'alpha(opacity=80)', '-moz-opacity': '0.8', '-khtml-opacity': '0.8', 'opacity': '0.8' })
