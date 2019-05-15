@@ -1,0 +1,54 @@
+﻿/* REFACTOR !!! */
+
+section#matchDetailsSection {
+    padding-top: 50px;
+}
+
+.badge.ok {
+    background-color: rgb(87,174,0);
+}
+
+.badge.error {
+    background-color: rgb(162,5,39);
+}
+
+i.fa.fa-flag.flagged {
+    color: rgb(0,173,217);
+}
+
+td.spacer {
+    background-color: transparent !important;
+}
+div.spacerline {
+    width: 50%;
+    height: 50%;
+    border-bottom: 1px solid rgb(87,174,0);
+    border-left: 1px solid rgb(87,174,0);
+    float: right;
+}
+
+div#availableAgencySpotsFilters > span {
+    float: right;
+    margin-right: 30px;
+}
+
+div#availableAgencySpotsFilters > span > a {
+    margin-left: 10px;
+}
+div#availableAgencySpotsFilters > span > a > i {
+    font-size:  20px;
+}
+.bottom-toolbar {
+    background-color: rgb(236,236,239);
+}
+div.bottom-toolbar > table > thead > tr {
+   background-color: rgb(207,211,217);
+    color: white;
+}
+
+div.bottom-toolbar-header {
+    line-height: 60px;
+    border-top: 2px solid rgb(207,211,217);
+    padding: 0;
+    margin: 0;
+}

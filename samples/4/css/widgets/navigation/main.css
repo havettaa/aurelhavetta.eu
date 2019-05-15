@@ -1,0 +1,128 @@
+﻿#mainNavigation {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: rgb(68,75,84);
+    border-right: 1px solid #eee;
+}
+
+    #mainNavigation .appTitle {
+        margin-top: -10px;
+        text-transform: uppercase;
+        line-height: 40px;
+        color: white;
+        background-color: rgb(68,75,84);
+    }
+
+        #mainNavigation .appTitle > a {
+            color: rgb(244,248,249);
+        }
+
+            #mainNavigation .appTitle > a:hover {
+                text-decoration: none;
+            }
+
+        #mainNavigation .appTitle > i {
+            color: rgb(26,155,213);
+            float: right;
+            padding-top: 10px;
+        }
+
+    #mainNavigation ul.sections {
+        margin-right: -21px;
+        margin-bottom: 20px;
+        margin-left: -20px;
+        line-height: 40px;
+        background-color: rgb(80,87,96);
+        color: rgb(244,248,249);
+    }
+
+        #mainNavigation ul.sections > li > a {
+            padding-right: 20px;
+            padding-left: 20px;
+            color: rgb(128,135,144);
+            text-transform: uppercase;
+        }
+
+        #mainNavigation ul.sections > li.active > a,
+        #mainNavigation ul.sections > li.active > a:hover,
+        #mainNavigation ul.sections > li.active > a:focus {
+            color: rgb(244,248,249);
+            background-color: rgb(68,75,84);
+            border-bottom-color: rgb(26, 155, 213);
+            border-left: 5px solid rgb(26, 155, 213);
+        }
+
+        #mainNavigation ul.sections ul {
+            padding-left: 0;
+        }
+
+            #mainNavigation ul.sections ul > li {
+                list-style-type: none;
+                list-style: none;
+                padding-left: 20px;
+            }
+
+                #mainNavigation ul.sections ul > li > a {
+                    color: lightgray;
+                    text-decoration: none;
+                }
+
+                    #mainNavigation ul.sections ul > li > a:hover {
+                        color: white;
+                    }
+
+                #mainNavigation ul.sections ul > li.active,
+                #mainNavigation ul.sections ul > li.active > a {
+                    color: white;
+                    background-color: rgb(26,155,213);
+                }
+
+
+/* COMPACT VIEW */
+
+#applicationHost.compact #mainNavigation {
+    width: 60px;
+}
+
+    #applicationHost.compact #mainNavigation .appTitle {
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+        #applicationHost.compact #mainNavigation .appTitle > a > span {
+            display: none;
+        }
+
+        #applicationHost.compact #mainNavigation .appTitle > i.fa {
+            margin-top: -30px;
+        }
+
+    #applicationHost.compact #mainNavigation ul.sections > li > a > span,
+    #applicationHost.compact #mainNavigation ul.sections > li > a > i:nth-last-child(1),
+    #applicationHost.compact #mainNavigation ul.sections > li > ul {
+        display: none !important;
+    }
+
+    #applicationHost.compact #mainNavigation ul.sections > li.active > a,
+    #applicationHost.compact #mainNavigation ul.sections > li.active > a:hover,
+    #applicationHost.compact #mainNavigation ul.sections > li.active > a:focus {
+        background-color: rgb(26, 155, 213);
+        border-bottom-color: rgb(26, 155, 213);
+        border-left: 0;
+    }
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+    #mainNavigation {
+        display: none;
+    }
+}

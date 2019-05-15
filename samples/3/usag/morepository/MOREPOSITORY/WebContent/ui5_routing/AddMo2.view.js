@@ -1,0 +1,1 @@
+jQuery.sap.require("com.tutorial.views.AddMO" + m_urlVersion);

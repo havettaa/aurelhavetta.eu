@@ -1,0 +1,59 @@
+﻿#navigationRibbon {
+    margin-left: 16.6%;
+    background-color: rgb(47,51,57);
+}
+
+#applicationHost.compact #navigationRibbon {
+    margin-left: 59px !important;
+}
+
+
+
+.listPanel .itemIcon {
+    width: 15%;
+    float: left;
+}
+
+.listPanel .itemContent {
+    width: 85%;
+    float: right;
+}
+
+    .listPanel .itemContent .panel-heading {
+        padding-top: 4px;
+    }
+
+    .listPanel .itemContent .panel-body {
+        border-top: none !important;
+        padding-top: 0 !important;
+    }
+
+        .listPanel .itemContent .panel-body .inputField {
+            float: right;
+        }
+
+            .listPanel .itemContent .panel-body .inputField input {
+                color: white;
+                background-color: #CFD4D5;
+                border-width: 0px;
+                margin-left: 5px;
+                margin-top: 15px;
+                margin-bottom: 20px;
+                padding: 2px 12px 2px 2px;
+                width: 85px;
+                text-align: right;
+            }
+
+        .listPanel .itemContent .panel-body .buttons {
+            float: right;
+        }
+
+            .listPanel .itemContent .panel-body .buttons a {
+                padding: 1px 18px;
+            }
+
+            .listPanel .itemContent .panel-body .buttons .btn-danger {
+                color: #d43f3a;
+                background-color: transparent;
+                border: none;
+            }

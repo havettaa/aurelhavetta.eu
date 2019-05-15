@@ -1,0 +1,24 @@
+﻿<div id="currentPanelNavigation" class="widget container-fluid" data-bind="visible: currentpanel.visible()">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="navbar-collapse collapse pull-left">
+        <span data-bind="widget: { kind: 'navigation/breadcrumb', breadcrumb: breadcrumb }"></span>
+    </div>
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Export</a></li>
+            <li><a href="#">Show Fields</a></li>
+            <li><a href="#"><i class="fa fa-align-justify"></i></a></li>
+            <li><a href="#"><i class="fa fa-signal"></i></a></li>
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+        </ul>
+    </div>
+</div>

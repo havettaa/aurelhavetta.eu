@@ -1,0 +1,68 @@
+﻿/* REFACTOR !!! */
+
+section#summaryMatch {
+    margin-top: 40px;
+}
+
+.actionsDescriptor {
+    clear: none;
+    float: left;
+    text-transform: uppercase;
+    padding-right: 20px;
+}
+
+#summaryMatchTable > tbody > tr > td:nth-child(5), #summaryMatchTable > thead > tr > th:nth-child(5),#summaryMatchTable > thead > tr:nth-child(1) > th:nth-child(3) {
+    border-left: 3px solid lightgray;
+}
+
+#summaryMatchTable > tbody > tr.info {
+    font-weight: bold;
+}
+
+#summaryMatchTable > tbody > tr.total {
+    font-size: 17px;
+   font-weight: bold;
+       text-transform: uppercase;
+}
+
+#summaryMatchTable > tbody > tr.I > td:nth-child(1) {
+    background-image: url('../../img/I.png');
+    background-repeat: no-repeat;
+
+}
+
+#summaryMatchTable > tbody > tr.I-half > td:nth-child(1) {
+    background-image: url('../../img/I-half.png');
+    background-repeat: no-repeat;
+        background-position-x: left;
+    background-position-y: center;
+}
+
+#summaryMatchTable > tbody > tr.T > td:nth-child(1) {
+    background-image: url('../../img/T.png');
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+
+}
+
+#summaryMatchTable > tbody > tr.L > td:nth-child(1) {
+    background-image: url('../../img/L.png');
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+  
+}
+#summaryMatchTable > tbody > tr.tree-level-1 > td:nth-child(1)  {
+    padding-left: 0;
+}
+#summaryMatchTable > tbody > tr.tree-level-2 > td:nth-child(1)  {
+    padding-left: 20px;
+}
+#summaryMatchTable > tbody > tr.tree-level-3 > td:nth-child(1)  {
+    padding-left: 50px;
+}
+
+ul.dropdown-menu {
+    text-align: left;
+}

@@ -1,0 +1,68 @@
+﻿.dataApproval {
+    margin-top: 40px;
+    border: solid 1px #eee;
+    font-size: 11px;
+    font-weight: normal;
+    font-family: Tahoma;
+}
+
+.dataApproval th {
+    color: #888;
+    font-weight: bold;
+}
+
+.thTop {
+    background-color: #eee;
+}
+
+.dataApproval td, .dataApproval th {
+    border: solid 1px #eee;
+}
+
+/* inner table */
+
+.dataApproval td.innerTableIndent {
+    border-right: none;
+    padding-top: 0;
+}
+
+    .dataApproval td.innerTableIndent span {
+        display: block;
+        position: relative;
+        z-index: 1;
+        height: 35px;
+        margin-top: -8px;
+        border-bottom: 1px solid #00A1D3;
+        border-left: 1px solid #00A1D3;
+    }
+
+.dataApproval td.innerTable {
+    padding: 0;
+    border-left: none;
+}
+
+.dataApproval.inner {
+    border-left: none;
+    border-right: none;
+    margin: 10px 0;
+}
+
+    .dataApproval.inner td:last-child, .dataApproval.inner th:last-child {
+        border-right: none;
+    }
+
+/* badge - number */
+.dataApproval .badge-holder {
+    position: relative;
+    background-color: #F2ACA8 !important;
+}
+
+    .dataApproval .badge-holder .badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: -12px;
+        margin-right: -12px;
+        background-color: rgb(255,88,88);
+        border: 2px solid white;
+    }

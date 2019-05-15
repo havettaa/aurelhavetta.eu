@@ -1,0 +1,83 @@
+<template>
+  <div class="dataGrid">
+    <table>
+      <thead>
+        <tr>
+          <th v-for="key in columns" @click="sortBy(key)" :class="{ active: sortKey == key }">
+            {{ getTranslation(key) }}
+            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="entry in filteredData">
+          <td v-for="key in columns">
+            {{entry[key]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+
+<script>
+module.exports = {
+  props: {
+    items: Array,
+    columns: Array,
+    headers: Array,
+    filter_key: String
+  },
+  data: function () {
+    var sortOrders = {};
+    this.columns.forEach(function (key) {
+      sortOrders[key] = 1;
+    })
+    return {
+      sortKey: '',
+      sortOrders: sortOrders,
+    }
+  },
+  computed: {
+    filteredData: function () {
+      var sortKey = this.sortKey
+      var filter_key = this.filter_key && this.filter_key.toLowerCase()
+      var order = this.sortOrders[sortKey] || 1
+      var items = this.items
+      if (filter_key) {
+        items = items.filter(function (row) {
+          return Object.keys(row).some(function (key) {
+            return String(row[key]).toLowerCase().indexOf(filter_key) > -1
+          })
+        })
+      }
+      if (sortKey) {
+        items = items.slice().sort(function (a, b) {
+          a = a[sortKey]
+          b = b[sortKey]
+          return (a === b ? 0 : a > b ? 1 : -1) * order
+        })
+      }
+      return items
+    }
+  },
+  methods: {
+    getTranslation: function (columnName) {
+      return this.headers[this.columns.indexOf(columnName)]
+    },
+
+    sortBy: function (key) {
+      this.sortKey = key
+      this.sortOrders[key] = this.sortOrders[key] * -1
+    },
+  }
+}
+</script>
+
+
+<style scoped>
+  @import url("dataGrid.css");
+  @import url("loadingIndicator.css");
+</style>

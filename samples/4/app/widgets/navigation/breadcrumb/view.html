@@ -1,0 +1,15 @@
+﻿<ul id="breadcrumb" class="widget nav navbar-nav navbar-right">
+    <!-- ko foreach: breadcrumb -->
+    <li>
+        <!-- ko if: $index() < breadcrumb().length - 1 -->
+        <a class="parentPage" data-bind="attr: { href: '#' + route }, html: title"></a>
+        <!-- /ko -->
+        <!-- ko if: $index() == breadcrumb().length - 1 -->
+        <div class="currentPage" data-bind="html: title"></div>
+        <!-- /ko -->
+        <!-- ko if: $index() < breadcrumb().length - 1 -->
+        <span>></span>
+        <!-- /ko -->
+    </li>
+    <!-- /ko -->
+</ul>

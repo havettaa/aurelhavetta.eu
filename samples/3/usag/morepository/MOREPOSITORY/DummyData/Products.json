@@ -1,0 +1,74 @@
+{ "products": [ {
+     "KEY": 1,
+     "NAME": "Chai",
+     "SupplierID": 1,
+     "CategoryID": 1,
+     "QuantityPerUnit": "10 boxes x 20 bags",
+     "UnitPrice": "18.0000",
+     "UnitsInStock": 39,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 10,
+     "TYPE": "globalization",
+     "Discontinued": false
+    }, {
+     "KEY": 2,
+     "NAME": "Chang",
+     "SupplierID": 1,
+     "CategoryID": 1,
+     "QuantityPerUnit": "24 - 12 oz bottles",
+     "UnitPrice": "19.0000",
+     "UnitsInStock": 17,
+     "UnitsOnOrder": 40,
+     "ReorderLevel": 25,
+     "TYPE": "custom",
+     "Discontinued": false
+    }, {
+     "KEY": 3,
+     "NAME": "Aniseed Syrup",
+     "SupplierID": 1,
+     "CategoryID": 2,
+     "QuantityPerUnit": "12 - 550 ml bottles",
+     "UnitPrice": "10.0000",
+     "UnitsInStock": 13,
+     "UnitsOnOrder": 70,
+     "ReorderLevel": 25,
+     "TYPE": "feature",
+     "Discontinued": false
+    }, {
+     "KEY": 4,
+     "NAME": "Chef Anton's Cajun Seasoning",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "TYPE": "PPMS Product",
+     "Discontinued": false
+    }, {
+     "KEY": 5,
+     "NAME": "Chef Anton's Gumbo Mix",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "36 boxes",
+     "UnitPrice": "21.3500",
+     "UnitsInStock": 0,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "TYPE": "product",
+     "Discontinued": true
+    }, {
+      "KEY": 5,
+      "NAME": "Chef Anton's",
+      "SupplierID": 2,
+      "CategoryID": 2,
+      "QuantityPerUnit": "33 boxes",
+      "UnitPrice": "21.3500",
+      "UnitsInStock": 0,
+      "UnitsOnOrder": 0,
+      "ReorderLevel": 0,
+      "TYPE": "solution",
+      "Discontinued": true
+     }]
+  }

@@ -1,0 +1,175 @@
+﻿
+ <style type="text/css">
+     #input_url {
+         width: 100%;
+     }
+            
+     #section_error {
+         border-style:outset;
+         border-width: 2px;
+         margin-top: 1em;
+         margin-bottom: 1em;
+         background-color: red;
+         color: white;
+     }
+            
+     #textarea_statement {
+         width:100%;
+         height:10em;
+     }
+                        
+     table {
+         border-color: ThreeDFace;
+         border-style: outset;
+         border-width:2px;
+     }
+     td.th {
+         font-weight: bold;
+         text-align: center;
+         background-color: ThreeDFace;
+     }
+     td {
+     }
+     span.main {
+         margin: 30px;
+         display: block;
+         max-width: 992px;
+
+         float: none;
+         margin: 0 auto;
+         background-color: white !important;
+         padding: 15px !important;
+     }
+
+     #button_execute {
+         float: right;
+     }
+
+     .section-break{margin-top: 30px;}
+     .begin-break{margin-top: 80px;}
+     logo{ color: silver; }
+
+     label{margin-top: 10px;}
+
+     body{ 
+         /* background-color: silver !important; */
+
+     }
+     div.row{ margin-left: 0px !important;
+
+     }
+
+
+ </style>
+
+<section class="breadcrumb-present">
+
+       <span class="main">
+            <h2>Test Report</h2>     
+            <div class="section-break"></div>
+            <fieldset>
+                <legend>XML/A Connection</legend>
+                          
+                <div class="input-group">
+                    <input type="text" id="input_url" name="input_url" 
+                           value="http://olapxmla/msmdpump.dll"
+                           class="form-control" />
+                    <span class="input-group-btn">
+                        <button id="button_discover" name="button_discover" class="btn btn-primary"><i class="icon-search"></i><span class="glyphicon glyphicon-search"></span> Discover Datasources...</button> 
+                    </span>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label>DataSource:</label>
+                        <select id="select_datasources" name="select_datasources" class="form-control"></select> 
+                    </div>
+            </div>
+                    
+                <div class="row">
+                    <div class="col-xs-6">
+                                   
+                        <label>Catalog:</label>
+                        <select id="select_catalogs" name="select_catalgogs" class="form-control"></select> 
+                    </div>
+                </div>
+      
+            </fieldset>
+           <div class="section-break"></div>
+            <fieldset>
+                <legend>MDX Statement:</legend>
+                
+                <select id="select_mdx_query" name="select_mdx_query" class="form-control" onchange="document.getElementById('textarea_statement').value = this.value;">
+                    <option value="select {[Measures].[Net Price],[Measures].[Actual Price]} on 0,
+NONEMPTY([Agencies].[Agency Id].[Agency Id] * [Date].[Date].[Year]) on 1
+from CubeSpotMeasures
+">Agency Advertisement Expenditures</option>
+
+                    <option value="with
+member Measures.Difference as [Measures].[Actual Price] - [Measures].[Net Price]
+select {[Measures].[Net Price],[Measures].[Actual Price], Measures.Difference} on 0,
+NONEMPTY([Agencies].[Agency Id].[Agency Id] * [Date].[Date].[Year]) on 1
+from CubeSpotMeasures
+">Agency Advertisement Expenditures With Price Difference</option>
+                    <option value="select {NONEMPTY([Campaigns].[Client].[Product Name] * [Measures].[GRP])} on 0,
+{[MediaChannels].[Network].[Channel Id]} on 1
+from [CubeSpotMeasures]
+">GRP Distribution Of Campaigns Across Media Channels</option>
+                    <option value="select [Campaigns].[Agency].[Campaign Name] on 1,
+{[Measures].[Impressions],[Measures].[GRP],[Measures].[CPP],[Measures].[CPT]} on 0 from CubeSpotMeasures
+">Measure Grouped By Campaigns</option>
+                </select> 
+                
+                <textarea id="textarea_statement"  class="form-control">
+select {[Measures].[Net Price],[Measures].[Actual Price]} on 0,
+NONEMPTY([Agencies].[Agency Id].[Agency Id] * [Date].[Date].[Year]) on 1
+from CubeSpotMeasures
+</textarea>
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label>Format:</label>
+                        <select id="select_format" name="select_fomat" class="form-control" placeholder=".col-xs-4"></select>
+                    </div>
+                    <div class="col-xs-4">
+                        <label>Axis Format:</label>
+                        <select id="select_axisformat" name="select_axisfomat" class="form-control"></select>
+                    </div>
+                    <div class="col-xs-4">
+                        <label>&nbsp;</label><br/>
+                        <button id="button_execute" name="button_execute" class="btn btn-success "><i class="icon-bolt"></i><span class="glyphicon glyphicon-flash"></span> Execute Statement...</button>     
+                    </div>
+                </div>
+                 
+            </fieldset>
+             <div class="section-break"></div>
+            <fieldset>
+                <legend>Resultset:</legend>
+                <div id="section_result"></div>
+            </fieldset>
+
+            <div id="section_error"></div>
+
+            <fieldset style="display: none">
+                <legend>Request:</legend>
+                <pre id="section_request"></pre>
+            </fieldset>
+
+            <fieldset  style="display: none">
+                <legend>Response:</legend>
+                <pre id="section_response"></pre>
+            </fieldset>
+        </span>
+
+     
+    <script src="../../lib/xmla/Xmla.js"></script>        
+    <script type="text/javascript">
+     
+
+    </script>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../../js/bootstrap.min.js"></script>
+</section>

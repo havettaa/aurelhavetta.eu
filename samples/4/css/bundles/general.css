@@ -1,0 +1,483 @@
+#breadcrumb .parentPage,
+#breadcrumb .currentPage {
+    display: inline-block;
+}
+
+#breadcrumb .currentPage {
+    padding: 15px 15px 10px;
+}
+#currentActivityNavigation {
+    background-color: rgb(62,70,75);
+}
+
+#currentClinetNavigation .current {
+    background-image: url('../../img/triangle.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    font-weight: bold;
+}
+
+    #currentClinetNavigation .current > a {
+        color: white !important;
+    }
+
+#currentClinetNavigation .passed > a {
+    color: rgb(26,155,213) !important;
+}
+
+#currentClinetNavigation .tbd {
+}
+
+#currentClinetNavigation .new-messages {
+    background-color: rgb(26, 155, 213);
+}
+#currentPanelNavigation {
+    background-color: rgb(236,236,239);
+}
+#mainNavigation {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: rgb(68,75,84);
+    border-right: 1px solid #eee;
+}
+
+    #mainNavigation .appTitle {
+        margin-top: -10px;
+        text-transform: uppercase;
+        line-height: 40px;
+        color: white;
+        background-color: rgb(68,75,84);
+    }
+
+        #mainNavigation .appTitle > a {
+            color: rgb(244,248,249);
+        }
+
+            #mainNavigation .appTitle > a:hover {
+                text-decoration: none;
+            }
+
+        #mainNavigation .appTitle > i {
+            color: rgb(26,155,213);
+            float: right;
+            padding-top: 10px;
+        }
+
+    #mainNavigation ul.sections {
+        margin-right: -21px;
+        margin-bottom: 20px;
+        margin-left: -20px;
+        line-height: 40px;
+        background-color: rgb(80,87,96);
+        color: rgb(244,248,249);
+    }
+
+        #mainNavigation ul.sections > li > a {
+            padding-right: 20px;
+            padding-left: 20px;
+            color: rgb(128,135,144);
+            text-transform: uppercase;
+        }
+
+        #mainNavigation ul.sections > li.active > a,
+        #mainNavigation ul.sections > li.active > a:hover,
+        #mainNavigation ul.sections > li.active > a:focus {
+            color: rgb(244,248,249);
+            background-color: rgb(68,75,84);
+            border-bottom-color: rgb(26, 155, 213);
+            border-left: 5px solid rgb(26, 155, 213);
+        }
+
+        #mainNavigation ul.sections ul {
+            padding-left: 0;
+        }
+
+            #mainNavigation ul.sections ul > li {
+                list-style-type: none;
+                list-style: none;
+                padding-left: 20px;
+            }
+
+                #mainNavigation ul.sections ul > li > a {
+                    color: lightgray;
+                    text-decoration: none;
+                }
+
+                    #mainNavigation ul.sections ul > li > a:hover {
+                        color: white;
+                    }
+
+                #mainNavigation ul.sections ul > li.active,
+                #mainNavigation ul.sections ul > li.active > a {
+                    color: white;
+                    background-color: rgb(26,155,213);
+                }
+
+
+/* COMPACT VIEW */
+
+#applicationHost.compact #mainNavigation {
+    width: 60px;
+}
+
+    #applicationHost.compact #mainNavigation .appTitle {
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+        #applicationHost.compact #mainNavigation .appTitle > a > span {
+            display: none;
+        }
+
+        #applicationHost.compact #mainNavigation .appTitle > i.fa {
+            margin-top: -30px;
+        }
+
+    #applicationHost.compact #mainNavigation ul.sections > li > a > span,
+    #applicationHost.compact #mainNavigation ul.sections > li > a > i:nth-last-child(1),
+    #applicationHost.compact #mainNavigation ul.sections > li > ul {
+        display: none !important;
+    }
+
+    #applicationHost.compact #mainNavigation ul.sections > li.active > a,
+    #applicationHost.compact #mainNavigation ul.sections > li.active > a:hover,
+    #applicationHost.compact #mainNavigation ul.sections > li.active > a:focus {
+        background-color: rgb(26, 155, 213);
+        border-bottom-color: rgb(26, 155, 213);
+        border-left: 0;
+    }
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+    #mainNavigation {
+        display: none;
+    }
+}
+/* REFACTOR !!! */
+
+section#matchDetailsSection {
+    padding-top: 50px;
+}
+
+.badge.ok {
+    background-color: rgb(87,174,0);
+}
+
+.badge.error {
+    background-color: rgb(162,5,39);
+}
+
+i.fa.fa-flag.flagged {
+    color: rgb(0,173,217);
+}
+
+td.spacer {
+    background-color: transparent !important;
+}
+div.spacerline {
+    width: 50%;
+    height: 50%;
+    border-bottom: 1px solid rgb(87,174,0);
+    border-left: 1px solid rgb(87,174,0);
+    float: right;
+}
+
+div#availableAgencySpotsFilters > span {
+    float: right;
+    margin-right: 30px;
+}
+
+div#availableAgencySpotsFilters > span > a {
+    margin-left: 10px;
+}
+div#availableAgencySpotsFilters > span > a > i {
+    font-size:  20px;
+}
+.bottom-toolbar {
+    background-color: rgb(236,236,239);
+}
+div.bottom-toolbar > table > thead > tr {
+   background-color: rgb(207,211,217);
+    color: white;
+}
+
+div.bottom-toolbar-header {
+    line-height: 60px;
+    border-top: 2px solid rgb(207,211,217);
+    padding: 0;
+    margin: 0;
+}
+/* REFACTOR !!! */
+
+#statusBoardStatusTab {
+    background: rgb(248,249,251);
+}
+ul.nav#statusBoardStatusTab > li.success > a > span {
+    color: rgb(83,200,126); line-height: 20px; font-size: 30px;
+}
+
+ul.nav#statusBoardStatusTab > li.active > a > span {
+    color: rgb(238,125,4); line-height: 20px; font-size: 30px;
+}
+ul.nav#statusBoardStatusTab > li.active {
+  border-top: 5px solid rgb(26,155,213);  
+}
+ul.nav#statusBoardStatusTab > li.tbd > a > span {
+    color: rgb(212,218,228); line-height: 20px; font-size: 30px;
+}
+
+ul.nav#statusBoardStatusTab > li > a > p {
+    text-transform: uppercase;
+}
+
+#statusBarBottomBar {
+    border-top: 1px solid lightgray;
+    background: rgb(248,249,251);
+}
+
+#statusBoardAvailableReports > ul {
+    list-style: none;
+    list-style-image: none;
+    list-style-type: none;
+}
+#statusBoardAvailableReports > li {
+  padding-left: 1.2em;
+}
+
+#statusBoardAvailableReports > ul > li.check-circle:before {     
+    font-family: 'FontAwesome';
+    content: '\f058';
+    margin:0 5px 0 -15px;
+    color: rgb(83,205,124);
+}
+#statusBoardAvailableReports > ul > li.circle-o:before {     
+    font-family: 'FontAwesome';
+    content: '\f10c';
+    margin:0 5px 0 -15px;
+    color: lightgray;
+}
+
+#statusBoardRecentActivity {
+    background-color: rgb(240,241,243);
+}
+
+table#statusBoardCalendarMonthTable > tbody > tr > td{
+    border-left: 1px solid rgb(240,241,243);
+    border-top: 0;
+}
+
+table#statusBoardCalendarMonthTable > tbody > tr > td:nth-child(20) {
+    background-color: rgb(240, 241, 243);
+    width: 1%;
+}
+
+table#statusBoardCalendarMonthTable > tbody > tr> td:nth-child(1)   {
+    font-weight: bold;
+    border-left: 0;
+}
+table#statusBoardCalendarMonthTable > tbody > tr:nth-child(4) > td, table#statusBoardCalendarMonthTable > tbody > tr:nth-child(5) > td   {
+    color: lightgray;
+}
+
+div.panel-default, div.panel-collapse, div#statusBoardRecentActivity > div >  div.panel-default, div#statusBoardRecentActivity > div >  div > div.panel-collapse{
+    background-color: transparent;
+    border: 0;
+}
+div#statusBoardRecentActivity > div > div > div > div div.panel.panel-default {
+         background-image: url('../../img/I.png');
+    background-repeat: repeat-y;
+}
+ div#statusBoardRecentActivity > div >  div > div > div >  div >  div.panel-collapse {
+     margin-left: 30px;
+
+ }
+  div.recent-activity-day-action > h4 {
+      text-transform: uppercase;
+
+      /*background-color: rgb(240,241,243);
+      background-image: none !important;*/    
+  }
+ div.recent-activity-day-action > h4 > a:before {
+    content: "\f10c";
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+.recent-activity-day > div.panel-heading {
+    background-color: rgb(234,235,237)
+}
+.recent-activity-day-action {
+    /*background-color: transparent !important;*/ 
+         background-color: rgb(240,241,243) !important;
+      background-image: none !important;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.recent-activity-day-action > h4 > a{
+     font-weight: bold !important;
+    border: 0;
+}
+
+.panel-body, .panel-heading {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+div.panel-collapse.collapse > div.panel-body {
+    font-weight: bold;
+}
+div.panel-collapse.collapse > div.panel-body > div{
+    font-weight: lighter;
+}
+
+#statusBoardRecentActivity > h5 {
+    text-transform: uppercase;
+    margin-bottom: 20px;    
+    margin-top: 20px;
+}
+
+div#statusBarBottomBar > div > ul >  li > span > a {
+    float: right;  
+}
+
+div#statusBarBottomBar > div > ul {
+    list-style: none;
+    list-style-image: none;
+    list-style-type: none;
+    padding-left: 15px;
+    line-height: 35px;
+}
+
+.calendar-controller {
+    float: right;
+    padding-top: 20px;
+}
+
+.calendar-controller > button, .calendar-controller > span{
+    border: 0;
+    background-color: transparent;
+    font-size: 21px;
+}
+
+a.todo-done{ color: lightgray; }
+a.todo-active{ color: rgb(238,125,4);; }
+a.todo-pending{ color: rgb(233,70,71); }
+
+h4.panel-title.approved {
+   color: rgb(83,200,126);
+}
+h4.panel-title.sent-for-approval {
+   color: rgb(163,162,161);
+}
+h4.panel-title.received {
+   color: rgb(99,152,166);
+}
+h4.panel-title.agency-review {
+   color: rgb(98,86,110);
+}
+
+.calendar-detail-title {
+    font-size: 16px; padding-bottom: 20px;
+}
+.calendar-detail-subtitle {
+    font-size: 10px;
+}
+
+.calendar-detail-content {
+    padding-bottom: 20px;
+}
+
+
+
+
+#dataApproval {
+    background-color: rgb(240,241,243);
+}
+
+    #dataApproval div.panel-collapse.collapse > div.panel-body {
+        font-weight: normal;
+    }
+/* REFACTOR !!! */
+
+section#summaryMatch {
+    margin-top: 40px;
+}
+
+.actionsDescriptor {
+    clear: none;
+    float: left;
+    text-transform: uppercase;
+    padding-right: 20px;
+}
+
+#summaryMatchTable > tbody > tr > td:nth-child(5), #summaryMatchTable > thead > tr > th:nth-child(5),#summaryMatchTable > thead > tr:nth-child(1) > th:nth-child(3) {
+    border-left: 3px solid lightgray;
+}
+
+#summaryMatchTable > tbody > tr.info {
+    font-weight: bold;
+}
+
+#summaryMatchTable > tbody > tr.total {
+    font-size: 17px;
+   font-weight: bold;
+       text-transform: uppercase;
+}
+
+#summaryMatchTable > tbody > tr.I > td:nth-child(1) {
+    background-image: url('../../img/I.png');
+    background-repeat: no-repeat;
+
+}
+
+#summaryMatchTable > tbody > tr.I-half > td:nth-child(1) {
+    background-image: url('../../img/I-half.png');
+    background-repeat: no-repeat;
+        background-position-x: left;
+    background-position-y: center;
+}
+
+#summaryMatchTable > tbody > tr.T > td:nth-child(1) {
+    background-image: url('../../img/T.png');
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+
+}
+
+#summaryMatchTable > tbody > tr.L > td:nth-child(1) {
+    background-image: url('../../img/L.png');
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+  
+}
+#summaryMatchTable > tbody > tr.tree-level-1 > td:nth-child(1)  {
+    padding-left: 0;
+}
+#summaryMatchTable > tbody > tr.tree-level-2 > td:nth-child(1)  {
+    padding-left: 20px;
+}
+#summaryMatchTable > tbody > tr.tree-level-3 > td:nth-child(1)  {
+    padding-left: 50px;
+}
+
+ul.dropdown-menu {
+    text-align: left;
+}

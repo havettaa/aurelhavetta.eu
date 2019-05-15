@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Hello World</title>
+    <script id='sap-ui-bootstrap'
+        src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
+        data-sap-ui-theme='sap_belize'
+        data-sap-ui-libs='sap.m'>
+	</script>
+	<style type="text/css">
+	.tile
+	{
+		margin: 10px;
+	}
+	</style>
+    <script>
+    sap.ui.getCore().attachInit(function () {
+		new sap.m.App ({
+			pages: [
+				new sap.m.Page({
+					title: "Demo zdrojakov", 
+					enableScrolling : true,
+					content: [
+						new sap.m.GenericTile({
+							header: "Vue",
+							subheader: "Datagrid + Modal",
+							press: function() {
+								sap.m.MessageToast.show("Redirecting...");
+								window.location.href += "/vue/";
+							}
+						}).addStyleClass("tile"),
+
+						new sap.m.GenericTile({
+							header: "OpenUI5",
+							subheader: "OpenUI5 demo",
+							press: function() {
+								sap.m.MessageToast.show("Redirecting...");
+								window.location.href += "/1/";
+							}
+						}).addStyleClass("tile"),
+
+						new sap.m.GenericTile({
+							header: "MOR",
+							subheader: "Mockup",
+							press: function() {
+								sap.m.MessageToast.show("Redirecting...");
+								window.location.href += "/2/";
+							}
+						}).addStyleClass("tile"),
+
+						new sap.m.GenericTile({
+							header: "MOR",
+							subheader: "Open UI5",
+							press: function() {
+								sap.m.MessageToast.show("Redirecting...");
+								window.location.href += "/3/usag/morepository/MOREPOSITORY/WebContent/";
+							}
+						}).addStyleClass("tile"),
+
+						new sap.m.GenericTile({
+							header: "Generics",
+							subheader: "Knockout.js",
+							press: function() {
+								sap.m.MessageToast.show("Redirecting...");
+								window.location.href += "/4/";
+							}
+						}).addStyleClass("tile"),
+
+						new sap.m.GenericTile({
+							header: "CMS",
+							subheader: "jQuery UI",
+							press: function() {
+								sap.m.MessageToast.show("Redirecting...");
+								window.location.href += "/5/";
+							}
+						}).addStyleClass("tile"),
+
+						new sap.m.GenericTile({
+							header: "filamentgroup",
+							subheader: "Visualize Plugin",
+							press: function() {
+								sap.m.MessageToast.show("Redirecting...");
+								window.location.href += "/6/";
+							}
+						}).addStyleClass("tile"),
+
+					]
+				})
+			]
+		}).placeAt("content");
+    });
+   </script>
+  </head>
+  <body class='sapUiBody' id='content'>
+  </body>
+</html>

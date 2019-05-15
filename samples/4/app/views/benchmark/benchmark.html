@@ -1,0 +1,35 @@
+﻿<section class="breadcrumb-present">
+    <h2 data-bind="html: displayName"></h2>
+     GET spot records 
+   <button  data-bind="event: { click: getExtraData100 }">100</button>
+   <button  data-bind="event: { click: getExtraData1000 }">1000</button>
+   <button  data-bind="event: { click: getExtraData10000 }">10000</button>
+   <button  data-bind="event: { click: getExtraDataAll }">All</button>
+    <i class="fa fa-bug fa-2x fa-spin active" data-bind="visible:isSpinnerVisible"></i>  
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>SpotId</th>
+                <th>SpotGroupId</th>
+                <th>DateId</th>
+                <th>SpotTypeId</th>
+                <th>CommercialTypeId</th>
+                <th>SpotTime</th>
+                <th>PIB</th>
+                <th>SpotDuration</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: campaigns">
+            <tr>
+                <td data-bind="text: SpotId"></td>
+                <td data-bind="text: SpotGroupId"></td>
+                <td data-bind="text: DateId"></td>
+                <td data-bind="text: SpotTypeId"></td>
+                <td data-bind="text: CommercialTypeId"></td>
+                <td data-bind="text: SpotTime"></td>
+                <td data-bind="text: BookedPositionInBreak"></td>
+                <td data-bind="text: SpotDuration"></td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+
+<script src="https://sapui5.hana.ondemand.com/1.46.11/resources/sap-ui-core.js"
+	id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.m, sap.ui.unified, sap.ui.commons, sap.suite.ui.commons, sap.ui.table, sap.ui.comp, sap.makit, sap.viz, sap.ushell,sap.uxap, sap.ui.core"
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-xx-bindingSyntax="complex"
+	data-sap-ui-xx-supportedLanguages="en"
+	data-sap-ui-resourceroots='{
+					"morepository":"./",
+					"com.tutorial":"./",
+					"ui5_routing":"./ui5_routing"}'>
+				
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/CSSOverrides.css">
+
+<script>
+console.log("First script start.");
+
+var m_xsodata = "/usag/morepository/MOREPOSITORY/Usage.xsodata";
+var m_curVersion = "2.2";
+var m_urlVersion = "%2Ejs?version=" + m_curVersion.replace(".", "_") + '_' +  new Date().getMonth() + '_' +  new Date().getDay();	
+
+
+////////// RequireJS 
+jQuery.sap.require("com.tutorial.Component" + m_urlVersion);
+jQuery.sap.require("sap.m.MessageBox");
+///////////
+
+
+// Test for CORS
+if ( window.location.href.indexOf("localhost") !== -1 )
+//	m_xsodata = "https://ifdhdb.wdf.sap.corp:4301" + m_xsodata;
+//	m_xsodata = "https://ls6134.wdf.sap.corp:4301" + m_xsodata;
+//	m_xsodata = "http://mo-cd95a6731.mo.sap.corp:8000" + m_xsodata;
+//	m_xsodata = "http://www.free-race-motoservis.sk/usag";
+	m_xsodata = "usag/morepository/MOREPOSITORY/DummyData";
+
+var userID = 0;	
+/*var url = m_xsodata.replace("Usage.xsodata","") + "WebContent/getUser.xsjs";	
+var username;
+jQuery.ajax({   
+	url: url,   
+	method: 'GET',   
+	dataType: 'json',   
+	success: function(user) {
+		username = user.USER;
+		var username = username;
+		var userID = username;
+		var url = "https://ifp.wdf.sap.corp/sap/bc/zxa/FIND_EMPLOYEE_JSON?query=" + userID; 
+		var user;
+		
+		var userModel = new sap.ui.model.json.JSONModel(url).attachRequestCompleted(function()
+		{
+			sap.ui.getCore().byId('idUser').setModel(userModel,'userModel');
+			console.log('completed');
+		});
+		*/
+		var shell = new sap.ui.unified.Shell("shellid",
+		{
+		headerItems: [new sap.ui.commons.TextView({text:"User Name",tooltip:"U.Name"})], 
+			user : sap.ui.unified.ShellHeadUserItem('idUser',
+			{
+				username : "{userModel>/DATA/0/VORNA} {userModel>/DATA/0/NACHN}",
+				showPopupIndicator : true,
+				image : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png",
+				press : function(evt)
+				{
+						window.open("https://people.com/profiles/" + userID)
+				},
+			}), 
+
+
+			content : new sap.ui.core.ComponentContainer(
+			{
+				name : "com.tutorial"
+			})
+		});
+	
+		shell.addStyleClass("unifiedShell");
+		shell.placeAt("content");
+		
+		
+		var icon = new sap.ui.unified.ShellHeadItem("morIconID", {
+			showSeparator: false,
+			icon:"sap-icon://home",
+			press: function(e){
+				window.location.href = "/usag/morepository/MOREPOSITORY/WebContent";
+			}
+		});	
+		
+		shell.addHeadItem(icon);
+		
+		var label = new sap.ui.unified.ShellHeadItem("morTitleID", {
+			showSeparator: false,
+			tooltip: "Measurement Object Repository",
+			press: function(e)
+			{
+				window.location.href = "/usag/morepository/MOREPOSITORY/WebContent";
+			}
+		});			
+		shell.addHeadItem(label);
+				
+		
+		// for this text like label, overwrite _refreshIcon to do nothing
+		// due to issues when resizing...
+		label._refreshIcon = function () {};
+		
+		
+		// as header renders the shell header item, fetch the header from the shell:
+		var oHeader = shell.getHeader();
+	
+		//oHeader.addStyleClass("myShellHeader");
+		// attach to onAfterRendering of the header to manipulate dom via jquery.
+		oHeader.addEventDelegate(
+		{
+			onAfterRendering: function ()
+			{
+				console.log("Device browser AfterRender: " + sap.ui.Device.browser.name)
+				if (sap.ui.Device.browser.name != "cr")
+				{
+					if (sap.ui.Device.browser.name=="ie"){browser = "Internet Explorer " + sap.ui.Device.browser.version;}
+					else if(sap.ui.Device.browser.name=='ed'){browser = 'Edge ' + sap.ui.Device.browser.version;}
+					else if(sap.ui.Device.browser.name=='ff'){browser = 'Mozilla Firefox ' + sap.ui.Device.browser.version ;}
+					else if(sap.ui.Device.browser.name=='sf'){browser = 'Safari ' + sap.ui.Device.browser.version ;}
+					else if(sap.ui.Device.browser.name=='an'){browser = 'Android ' + sap.ui.Device.browser.version ;}
+					else {console.log("na")}
+					//alert("The application is not fully compatible with the browser you are using.Please use Google Chrome .")
+					sap.m.MessageBox.information( "MO Repository is optimized for Google Chrome on Windows or macOS with touch support.Some features are disabled in " + browser + " due to browser incompatibility.",
+					{
+						icon: sap.m.MessageBox.Icon.INFORMATION,
+						title: "Limited functionality",
+						actions: ["Continue with limited functionality"],
+						onClose: function(oAction) { console.log("a intrat in mess")},
+						id:'butonmesaj'
+					})
+					
+				}
+				else
+				{
+					console.log("You are using"+" "+sap.ui.Device.browser.name+" browser.");
+				}
+				
+				
+				console.log("shell header onAfterRendering");
+				
+				// get relevent dom element (here the label attribute)
+				var sLabel = label.getId();
+				var oRef = jQuery("#" + sLabel);
+				oRef.empty();
+				var sText = label.getTooltip();
+				
+				// use the tooltip attribute to display the wanted text
+				oRef.append("<span>" + sText + "</span>");
+				// note the needed css that adapts the settings for 
+				// the second shellHeadItem
+			}
+		});
+/*		
+	},
+	error: function(XHR, Status, Error) {
+		
+		var error = Error;
+		console.log(XHR.responseText);
+		username = "default";
+	}
+});
+*/		   
+</script>
+
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>

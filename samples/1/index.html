@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cms</title>
+  <base href="/samples/1/">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+
+  <title>Open ui5 vysek z codu</title>
+
+
+  <script id="sap-ui-bootstrap"
+    src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+    data-sap-ui-libs="sap.m"
+    data-sap-ui-theme="sap_belize"
+    data-sap-ui-resourceroots='{"root": "./"}'>
+  </script>
+
+  <!-- Application launch configuration -->
+  <script>
+    sap.ui.define(['sap/ui/core/UIComponent'],
+      function(UIComponent) {
+      "use strict";
+
+      var Component = sap.ui.core.UIComponent.extend("root.Component", {
+
+        metadata: {
+          rootView: {
+            "viewName": "root.assets.app",
+            "type": "XML",
+            "async": true
+          },
+          dependencies: {
+            libs: [
+              "sap.m",
+              "sap.suite.ui.microchart"
+            ]
+          }
+        }
+      });
+
+      return Component;
+    });
+
+    sap.ui.getCore().attachInit(function () {
+      new sap.ui.core.ComponentContainer({
+        name : "root"
+      }).placeAt("content");
+    });
+
+  </script>
+</head>
+
+<!-- UI Content -->
+<body>
+  <div id="content"></div> 
+</body>
+
+</html>

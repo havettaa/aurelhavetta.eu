@@ -1,0 +1,26 @@
+﻿<div id="mainNavigation" class="widget col-sm-3 col-md-2">
+    <div class="appTitle">
+        <a href="#"><span>Generics</span></a> <i class="fa fa-bars" onclick="switchCompactView();"></i>
+    </div>
+    <ul class="sections nav">
+        <li>
+            <a href="#"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+        </li>
+        <li class="active">
+            <a href="#" data-bind="click: toggleMainNavigationSubSection"><i class="fa fa-user"></i> <span>Clients</span> <i class="fa fa-angle-up"></i></a>
+            <ul data-bind="foreach: divisions">
+                <li>
+                    <a href="#" data-bind="attr: { 'data-clientname': DivisionName }, text: DivisionName" onclick="resetListStyles(this);selectedClient(this.getAttribute('data-clientname')); this.parentNode.className = 'active';"></a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" data-bind="click: toggleMainNavigationSubSection"><i class="fa fa-circle"></i> <span>Data setup</span> <i class="fa fa-angle-down"></i></a>
+            <ul style="display: none">
+                <li>
+                    <a href="#MarketDataImport">Import market data</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

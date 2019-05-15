@@ -1,0 +1,175 @@
+﻿<section class="breadcrumb-present">
+    <div class="row">
+
+        <div class="col-md-10">
+            <table class="dataApproval table table-striped">
+                <thead>
+                    <tr class="thTop">
+                        <th>Month</th>
+                        <th>Campaign</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th colspan="2">Reach</th>
+                        <th colspan="2">Spend</th>
+                        <th colspan="2">GRP</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Actual</th>
+                        <th>% var Plan</th>
+                        <th>Actual</th>
+                        <th>% var Plan</th>
+                        <th>Actual</th>
+                        <th>% var Plan</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: campaigns">
+                    <tr>
+                        <td><i class="fa fa-caret-right"></i> &nbsp;&nbsp;<a data-bind="html: Month"></a></td>
+                        <td data-bind="text: Campaign"></td>
+                        <td data-bind="text: StartDate"></td>
+                        <td data-bind="text: EndDate"></td>
+                        <td data-bind="text: ReachActual"></td>
+                        <td data-bind="text: ReachPlan"></td>
+                        <td data-bind="text: SpendActual"></td>
+                        <td data-bind="text: SpendPlan"></td>
+                        <td data-bind="text: GRPActual"></td>
+                        <td data-bind="text: GRPPlan"></td>
+                    </tr>
+                    <!-- ko if: $index() == 2 -->
+                    <tr>
+                        <td class="innerTableIndent">
+                            <span></span>
+                        </td>
+                        <td class="innerTable" colspan="9">
+                            <table class="dataApproval inner table table-striped">
+                                <thead>
+                                    <tr class="thTop">
+                                        <th>Station</th>
+                                        <th>Audience</th>
+                                        <th>Actual Spent</th>
+                                        <th>Someting</th>
+                                        <th>Spots</th>
+                                        <th>Agentcy Spots</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>BBC</td><td>24-35 Tree Huggers</td><td>$80,989</td><td>80,989</td><td>600</td><td>500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BBC</td><td>24-35 Tree Huggers</td><td>$80,989</td><td>80,989</td><td>600</td><td>500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BBC</td><td>24-35 Tree Huggers</td><td>$80,989</td><td>80,989</td><td>600</td><td>500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BBC</td><td>24-35 Tree Huggers</td><td>$80,989</td><td>80,989</td><td>600</td><td>500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BBC</td><td class="badge-holder">24-35 Tree Huggers
+                                            <div class="badge badge-info new-messages">
+                                                2
+                                                <div class="fade top in" style="display: block; width: 500px; z-index: 0; position: absolute; top: -50px; left: 100%;">
+                                                    <div class="tooltip right" style="filter: alpha(opacity=0.8); opacity: 0.8">
+                                                        <div class="tooltip-inner" style="background-color: #222; color: #ccc; text-align: left; padding: 15px; white-space: normal;">
+                                                            <strong style="font-weight: bolder">Reach value does not match reach value calculated from our engine! </strong>
+                                                            <div style="padding: 5px;">Johnny Agency</div>
+                                                            <br />
+                                                            <div><input type="text" placeholder="Enter comment..." style="background-color: #000; border-width: 0px; padding: 4px;" /></div>
+                                                            <br />
+                                                            <div>Change to:<input type="text" style="background-color: #000; border-width: 0px; padding: 4px;" value="230.455" /></div>
+                                                            <br />
+                                                            <div>
+                                                                <a class="btn btn-primary" role="button" style="background-color: #07a">Update</a>
+                                                                <a class="btn btn-danger" role="button" style="">Remove</a>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="tooltip-arrow" style="top: 60px;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td><td>$80,989</td><td>80,989</td><td>600</td><td>500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BBC</td><td>24-35 Tree Huggers</td><td>$80,989</td><td>80,989</td><td>600</td><td>500</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-2" id="dataApproval">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapseUpdates"><strong>2</strong> UPDATES</a>
+                        </h4>
+                    </div>
+                    <div id="collapseUpdates" class="panel-collapse collapse in">
+                        <div class="panel-body">
+
+                            <div class="panel panel-default listPanel">
+                                <div class="itemIcon">
+                                    <span class="badge badge-info new-messages" style="background-color: rgb(255,88,88);">1</span>
+                                </div>
+                                <div class="itemContent">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#collapseUpdate1">Johnny Agency</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseUpdate1" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra quis tortor eget accumsan.
+                                            <div class="inputField">
+                                                Change to: 
+                                                <input type="text" value="230.455">
+                                            </div>
+                                            <div class="buttons">
+                                                <a class="btn btn-primary" role="button" style="background-color: #07a">Update</a>
+                                                <a class="btn btn-danger" role="button" style="">Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default listPanel">
+                                <div class="itemIcon">
+                                    <span class="badge badge-info new-messages" style="background-color: rgb(255,88,88);">2</span>
+                                </div>
+                                <div class="itemContent">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#collapseUpdate2">Johnny Agency</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseUpdate2" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            Duis adipiscing felis vitae consectetur venenatis. Vestibulum est lorem, vehicula sit amet malesuada in, porta vel arcu.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>   
+
+    <input type="button" id="btnSubmit" data-bind="event: { click: clickExpand }" value="Expand" />
+
+</section>

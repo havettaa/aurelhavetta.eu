@@ -1,0 +1,1 @@
+jQuery.sap.require("com.tutorial.controllers.App" + m_urlVersion);

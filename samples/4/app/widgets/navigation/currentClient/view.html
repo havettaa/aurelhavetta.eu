@@ -1,0 +1,30 @@
+﻿<div id="currentClinetNavigation" class="widget container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="navbar-collapse collapse pull-left">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><b data-bind="html: selectedClient()"></b> | March 2014 <i class="fa fa-angle-down"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><i class="fa fa-envelope"></i> <span class="badge badge-info new-messages">2</span></a></li>
+            <li><a href="#"><i class="fa fa-gear"></i></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li data-bind="css: currentclient.import.status"><a href="#AgencyDataImport"><i class="fa fa-check-circle"></i> Import</a></li>
+            <li data-bind="css: currentclient.approve.status"><a href="#DataApproval">Approve</a></li>
+            <li data-bind="css: currentclient.match.status"><a href="#SummaryMatch">Match</a></li>
+            <li data-bind="css: currentclient.benchmark.status"><a href="#Benchmark">Benchmark</a></li>
+            <li data-bind="css: currentclient.deliver.status"><a href="#Deliver">Deliver</a></li>
+        </ul>
+    </div>
+</div>

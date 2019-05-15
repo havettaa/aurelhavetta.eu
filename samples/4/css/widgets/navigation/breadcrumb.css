@@ -1,0 +1,8 @@
+﻿#breadcrumb .parentPage,
+#breadcrumb .currentPage {
+    display: inline-block;
+}
+
+#breadcrumb .currentPage {
+    padding: 15px 15px 10px;
+}

@@ -1,0 +1,1 @@
+jQuery.sap.require("com.tutorial.fragments.DisplayPackage" + m_urlVersion);

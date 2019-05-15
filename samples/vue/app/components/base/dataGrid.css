@@ -1,0 +1,98 @@
+@media (max-width: 800px) {
+  .dataGrid td:nth-child(4),
+  .dataGrid th:nth-child(4) {
+    display: none;
+  }
+}
+
+.dataGrid {
+  height: -webkit-fill-available;
+  height: -moz-available;
+  min-height: 400px;
+  overflow: auto;
+}
+
+  .dataGrid table {
+    width: 100%;
+    text-align: left;
+    display: table;
+    margin: 0 auto;
+    padding: 0;
+    border: 0px;
+  }
+
+    .dataGrid thead {
+      display: table-header-group;
+    }
+
+      .dataGrid th {
+        position: sticky;
+        top: 0;
+        font-weight: bold;
+        color: #000;
+        background-color: #ddeeff;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .dataGrid th:hover {
+        background-color: #337ab7;
+        color: #fff;
+        box-shadow: #acc 0px 1px, #0cc 0px 2px;
+        transform: translate3d(0, -2px, 0);
+        transition-delay: 0s;
+        transition-duration: 0.4s;
+        transition-property: all;
+        transition-timing-function: line;
+      }
+
+    .dataGrid tbody {
+      overflow: auto;
+      height: auto;
+    }
+      
+      .dataGrid td {
+        font-weight: normal;
+        font-size: 1em;
+        -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+        -moz-box-shadow: 0 2px 2px -2px #0E1119;
+        box-shadow: 0 2px 2px -2px #0E1119;
+      }
+
+        .dataGrid td, .dataGrid th {
+          padding: 5px 4px;
+        }
+
+        /* Background-color of the odd rows */
+        .dataGrid tr:nth-child(odd) {
+          background-color: #fff;
+        }
+
+        /* Background-color of the even rows */
+        .dataGrid tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+
+  .dataGrid .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+  }
+
+    .dataGrid .arrow.asc {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid #000;
+    }
+
+    .dataGrid  .arrow.dsc {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #000;
+    }

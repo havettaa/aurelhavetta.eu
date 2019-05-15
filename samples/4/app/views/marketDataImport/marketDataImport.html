@@ -1,0 +1,36 @@
+﻿<form id="myform">
+    <section class="breadcrumb-present">
+        <div class="modal-header" style="margin-left:10px;">
+            <h3 data-bind="html: displayName"></h3>
+        </div>
+
+        <div class="modal-body" >
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <td style="padding:5px;">Import type:</td>
+                        <td style="padding:5px;"> 
+                            <select data-bind="value: importType">
+                                <option value="Demographic">Demographic data</option>
+                                <option value="Program">Program</option>
+                                <option value="Spot">Spot</option>                               
+                            </select>
+                        </td>
+                    </tr>
+                     <tr>
+                         <td style="padding:5px;">Input file:</td>
+                         <td style="padding:5px;">
+                             <input type="file" id="fileName" />
+                         </td>
+                        <td>
+                             <input type="button" id="btnSubmit" data-bind="event: { click: uploadFile }" value="Ok" />
+                         </td>
+                    </tr>
+                </thead>
+            </table>
+
+            <p data-bind="html: statusMessage"></p>
+        </div>
+        
+    </section>
+</form>

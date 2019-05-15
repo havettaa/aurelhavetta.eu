@@ -1,0 +1,32 @@
+﻿<div id="currentActivityNavigation" class="widget container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="navbar-collapse collapse pull-left">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-bind="html: settings.currentactivity.statustext()"></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse">
+        <div class="navbar-form navbar-right">
+            <span data-bind="visible: currentactivity.matchspots.visible()"><a href="#SummaryMatch" class="btn btn-primary" role="button">Match Spots</a></span>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li data-bind="visible: currentactivity.totalunmatchedcur.visible()">
+                <a href="#">
+                    <label>Total $ Unmatched</label>$12k</a>
+            </li>
+            <li data-bind="visible: currentactivity.totalunmatchedcount.visible()">
+                <a href="#">
+                    <label>Total $ Unmatched</label>600</a>
+            </li>
+        </ul>
+    </div>
+</div>

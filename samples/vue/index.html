@@ -1,0 +1,53 @@
+<html>
+<head>
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/skeleton.css">
+
+  <link rel="stylesheet" href="app/components/base/dataGrid.css">
+  <link rel="stylesheet" href="app/components/base/modalDialog.css">
+  <link rel="stylesheet" href="app/components/base/loadingIndicator.css">
+
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="lib/bootbox/dist/bootbox.min.js"></script>
+  <script src="lib/vue/dist/vue.min.js"></script>
+  <script src="lib/vue/dist/httpVueLoader.js"></script>
+  <script src="lib/axios/dist/axios.min.js"></script>
+  <script src="lib/moment/dist/moment.min.js"></script>
+  <script src="lib/rxjs/dist/rxjs.min.js"></script>
+
+  <script>
+  var appRoot = "app"
+  </script>
+</head>
+<body>
+  <div id="vue">
+    <button id="show-modal" @click="showHistoryClick()">Show Modal</button>
+
+    <modaldialog v-if="showModal" @close="showModal = false">
+      <h3 slot="header">
+        Modal Dialog
+      </h3>
+
+      <div slot="body">
+        <form id="search" style="display: flow-root;" @submit.prevent="refreshData()">
+          Search <input name="query" v-model="searchQuery" style="display: inline-block">
+          <button v-if="searchQuery != ''" @click="searchQuery = ''" aria-label="Clear" style="float: inherit" type="button" class="close">
+            <span>&times;</span>
+          </button>
+          <button @click="refreshData()" type="button" class="btn btn-default pull-right" title="Refresh">
+            <span class="glyphicon glyphicon-refresh">
+        Refresh
+            </span>
+          </button>
+        </form>
+
+        <div v-if="isBusy" class="loading"></div>
+        <datagrid :items="gridData" :columns="gridColumnBinding" :headers="gridColumnHeaders" :filter_key="searchQuery">
+        </datagrid>
+      </div>
+    </modaldialog>
+  </div>
+  <script src="app/components/vehicleProtocolEdit/main.js" type="module"></script>
+</body>
+<html>

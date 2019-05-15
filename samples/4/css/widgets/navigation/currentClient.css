@@ -1,0 +1,21 @@
+﻿#currentClinetNavigation .current {
+    background-image: url('../../img/triangle.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    font-weight: bold;
+}
+
+    #currentClinetNavigation .current > a {
+        color: white !important;
+    }
+
+#currentClinetNavigation .passed > a {
+    color: rgb(26,155,213) !important;
+}
+
+#currentClinetNavigation .tbd {
+}
+
+#currentClinetNavigation .new-messages {
+    background-color: rgb(26, 155, 213);
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="css/graph/visualize.jQuery.css" />
+	<link type="text/css" rel="stylesheet" href="css/graph/demopage.css" />
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>
+
+	<script type="text/javascript" src="js/jquery/jquery.tablesorter.min.js"></script>
+
+	<!--[if IE]><script type="text/javascript" src="js/graph/excanvas.compiled.js"></script><![endif]-->
+
+	<script type="text/javascript" src="js/graph/visualize.jQuery.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$("#myTable").tablesorter();
+			//make some charts
+			$('#myTable').visualize({ type: 'pie', pieMargin: 10, title: 'Graph test' });
+			$('#myTable').visualize({ type: 'line' });
+			$('#myTable').visualize({ type: 'area' });
+			$('#myTable').visualize();
+
+			$("#butrun").click(function()
+			{
+				$("#myTable").fadeOut("slow");
+			}
+		);
+		}
+		);
+	</script>
+
+	<style type="text/css">
+		body
+		{
+			font-size: 11pt;
+			font-family: "Segoe UI" , Frutiger,Tahoma,Helvetica, "Helvetica Neue" , Arial, sans-serif;
+		}
+		table
+		{
+			border-collapse: collapse;
+		}
+		td, th
+		{
+			text-align: center;
+			border: 1px solid #ddd;
+			padding: 2px 5px;
+		}
+		caption
+		{
+			margin: 0 0 .5em;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<input id="butrun" type="button" value="run" />
+	<table id="myTable">
+		<caption>
+			2009 Employee Sales by Department</caption>
+		<thead>
+			<tr>
+				<td>
+				</td>
+				<th>
+					food
+				</th>
+				<th>
+					auto
+				</th>
+				<th>
+					household
+				</th>
+				<th>
+					furniture
+				</th>
+				<th>
+					kitchen
+				</th>
+				<th>
+					bath
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>
+					Mary
+				</th>
+				<td>
+					190
+				</td>
+				<td>
+					0
+				</td>
+				<td>
+					40
+				</td>
+				<td>
+					120
+				</td>
+				<td>
+					30
+				</td>
+				<td>
+					-70
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Tom
+				</th>
+				<td>
+					-3
+				</td>
+				<td>
+					40
+				</td>
+				<td>
+					30
+				</td>
+				<td>
+					45
+				</td>
+				<td>
+					35
+				</td>
+				<td>
+					49
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Brad
+				</th>
+				<td>
+					10
+				</td>
+				<td>
+					180
+				</td>
+				<td>
+					10
+				</td>
+				<td>
+					85
+				</td>
+				<td>
+					25
+				</td>
+				<td>
+					79
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Kate
+				</th>
+				<td>
+					40
+				</td>
+				<td>
+					80
+				</td>
+				<td>
+					90
+				</td>
+				<td>
+					25
+				</td>
+				<td>
+					15
+				</td>
+				<td>
+					119
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

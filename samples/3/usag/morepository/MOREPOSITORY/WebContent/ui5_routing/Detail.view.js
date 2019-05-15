@@ -1,0 +1,1 @@
+jQuery.sap.require("com.tutorial.views.Detail" + m_urlVersion);

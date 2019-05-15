@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="general.css">
+  <!--The order of the <file> elements determines the order of them when bundled.-->
+  <!-- Widgets -->
+  <file>/css/widgets/navigation/breadcrumb.css</file>
+  <file>/css/widgets/navigation/currentActivity.css</file>
+  <file>/css/widgets/navigation/currentClient.css</file>
+  <file>/css/widgets/navigation/currentPanel.css</file>
+  <file>/css/widgets/navigation/main.css</file>
+  <!-- Views -->
+  <file>/css/views/matchDetails.css</file>
+  <file>/css/views/statusBoard.css</file>
+  <file>/css/views/summaryMatch.css</file>
+</bundle>

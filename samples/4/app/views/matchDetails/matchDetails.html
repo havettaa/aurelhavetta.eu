@@ -1,0 +1,201 @@
+﻿<section id="matchDetailsSection">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">Actions</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a>Agency View</a>  |  <a>Market View</a>   
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><input type="checkbox"/> <i class="fa fa-angle-down"></i></th>
+                    <th>Matches</th>
+                    <th>Spot Date</th>
+                    <th>Spot Time</th>
+                    <th>Duration</th>
+                    <th>Station</th>
+                    <th>Program</th>
+                    <th>Booking Material</th>
+                    <th>Comment</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td><span class="badge ok">1 <i class="fa fa-caret-right"></i></span></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>This is a comment and it goes here.</td>
+                    <td></td>
+                </tr>   
+                <tr class="info">
+                    <td><input type="checkbox"/></td>
+                    <td><span class="badge ok">1 <i class="fa fa-caret-right"></i></span></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>This is a comment and it goes here.</td>
+                    <td></td>
+                </tr>      
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td><span class="badge error">0</span></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>This is a comment and it goes here.</td>
+                    <td></td>
+                </tr>  
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td><span class="badge ok">1 <i class="fa fa-caret-down"></i></span></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>This is a comment and it goes here.</td>
+                    <td></td>
+                </tr>
+                <!--  -->
+                <tr class="warning">
+                  
+                    <td rowspan="2" colspan="2" class="spacer"> <div class="spacerline">&nbsp;</div></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>Unmatch</td>
+                    <td></td>
+                </tr>
+                <tr class="warning">
+                  
+                  
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>Unmatch</td>
+                    <td></td>
+                </tr>
+                <!--  -->   
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td><span class="badge ok">1 <i class="fa fa-caret-right"></i></span></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>This is a comment and it goes here.</td>
+                    <td><i class="fa fa-flag flagged"></i></td>
+                </tr>   
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td><span class="badge ok">1 <i class="fa fa-caret-right"></i></span></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>This is a comment and it goes here.</td>
+                    <td><i class="fa fa-flag flagged"></i></td>
+                </tr> 
+            </tbody>
+        </table> 
+    </div>
+    <div class="row bottom-toolbar">
+        <div class="row bottom-toolbar-header">
+            <div id="availableAgencySpots" class="col-md-6">12 Available Agency Spots <i class="fa fa-angle-up"></i></div>
+            <div id="availableAgencySpotsFilters" class="col-md-6"><span><a>Match Selected</a> <a>View All Spots</a> <a><i class="fa fa-toggle-down"></i></a></span></div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>Spot Date</th>
+                    <th>Spot Time</th>
+                    <th>Duration</th>
+                    <th>Station</th>
+                    <th>Program</th>
+                    <th>Booking Material</th>
+                    <th>&nbsp;</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="checkbox"/></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>   
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="checkbox"/></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>   
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="checkbox"/></td>
+                    <td>01 Jan 2014</td>
+                    <td>16:23</td>
+                    <td>30</td>
+                    <td>BBC</td>
+                    <td>TVB</td>
+                    <td>Book Mat. 123</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>   
+            </tbody>
+        </table> 
+    </div>
+</section>
