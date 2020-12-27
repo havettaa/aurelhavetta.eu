@@ -31,8 +31,6 @@ class componentik extends LitElement {
 
 
   <sl-tab-panel name="general">
-    <custom-dropdown></custom-dropdown>
-    <custom-input width="50%" inputId="my-input"></custom-input>
     <sl-form class="formly">
       <sl-input name="name" label="Name" required>${this.now}</sl-input>
       <sl-select label="Favorite Animal" clearable required>
@@ -96,7 +94,8 @@ class componentik extends LitElement {
 
 
   <sl-tab-panel name="card">
-
+    <custom-input width="50%" inputId="my-input"></custom-input>
+    <custom-dropdown></custom-dropdown>
   </sl-tab-panel>
   
 

@@ -12,8 +12,33 @@ export class CustomDropDown extends LitElement {
         };
     }
 
-    static get styles() {
-    return css`
+    
+    constructor() {
+        super();
+        this.title = 'Choose your language';
+        this.value = '---None---';   
+        this.options = ['German', 'English', 'France']; 
+        this.closed = true;    
+    }
+
+    toggleMenu() {
+        this.closed = !this.closed;
+    }
+
+    handleMenuOption(event, option) {
+        this.value = option;
+        const customEvent = new CustomEvent('selectionChanged', {
+            detail: {
+                option: this.value
+            }
+        });
+        this.dispatchEvent(customEvent);
+        this.toggleMenu(event);
+    }
+
+    render() {
+        return html`
+        <style>
         :host {
             --primary-color: #ff584f;
             --text-color: #4d5464;
@@ -108,34 +133,8 @@ export class CustomDropDown extends LitElement {
             color: #fff;
             padding-left: 16px;
         }
-    `;
-    }
-
-    constructor() {
-        super();
-        this.title = 'Choose your language';
-        this.value = '---None---';   
-        this.options = ['German', 'English', 'France']; 
-        this.closed = true;    
-    }
-
-    toggleMenu() {
-        this.closed = !this.closed;
-    }
-
-    handleMenuOption(event, option) {
-        this.value = option;
-        const customEvent = new CustomEvent('selectionChanged', {
-            detail: {
-                option: this.value
-            }
-        });
-        this.dispatchEvent(customEvent);
-        this.toggleMenu(event);
-    }
-
-    render() {
-        return html`
+        </style>
+        
             <div class='label'>${this.title}</div>
             <div class='head' @click='${this.toggleMenu}'>
                 <div class='choice'>${this.value}</div>
