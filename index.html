@@ -22,11 +22,16 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
 
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
+  <script type="module" src="componentik.js"></script>
+  <script type="module" src="custom-input.js"></script>
+  <script type="module" src="custom-dropdown.js"></script>
+  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.ico">
@@ -41,14 +46,158 @@
     <div class="container">
       <div class="row">
         <div class="one-half column">
-          <h4 class="hero-heading">Aurel Havetta skill-set showcase.</h4>
+          <h4 class="hero-heading">Aurel Havetta neviem dalej...</h4>
           <a class="button button-primary" href=".">aurelhavetta.eu</a>
+          
+ 
+
+          <sl-tooltip content="This is a tooltip for dialog button, just click to open new window.">
+            <sl-button class="open-drawer"><sl-spinner></sl-spinner> Open Drawer</sl-button>
+          </sl-tooltip>
+
+
+          <div class="alert-toast">
+            <sl-button type="primary">Primary</sl-button>
+            <sl-button type="success">Success</sl-button>
+            <sl-button type="info">Info</sl-button>
+            <sl-button type="warning">Warning</sl-button>
+            <sl-button type="danger">Danger</sl-button>
+          
+            <sl-alert type="primary" duration="3000" closable>
+              <sl-icon slot="icon" name="info-circle"></sl-icon>
+              <strong>This is super informative</strong><br>
+              You can tell by how pretty the alert is.
+            </sl-alert>
+          
+            <sl-alert type="success" duration="3000" closable>
+              <sl-icon slot="icon" name="check2-circle"></sl-icon>
+              <strong>Your changes have been saved</strong><br>
+              You can safely exit the app now.
+            </sl-alert>
+          
+            <sl-alert type="info" duration="3000" closable>
+              <sl-icon slot="icon" name="gear"></sl-icon>
+              <strong>Your settings have been updated</strong><br>
+              Settings will take affect on next login.
+            </sl-alert>
+          
+            <sl-alert type="warning" duration="3000" closable>
+              <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
+              <strong>Your session has ended</strong><br>
+              Please login again to continue.
+            </sl-alert>
+          
+            <sl-alert type="danger" duration="3000" closable>
+              <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
+              <strong>Your account has been deleted</strong><br>
+              We're very sorry to see you go!
+            </sl-alert>
+          </div>
+          
+          <script>
+            const container = document.querySelector('.alert-toast');
+          
+            ['primary', 'success', 'info', 'warning', 'danger'].map(type => {
+              const button = container.querySelector(`sl-button[type="${type}"]`);
+              const alert = container.querySelector(`sl-alert[type="${type}"]`);
+          
+              button.addEventListener('click', () => alert.toast());
+            });
+          </script>
+          
+
+          <sl-dialog label="Dialog" class="dialog-out">
+            <div class="details-group-example">
+              <sl-details summary="First" open>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </sl-details>
+        
+              <sl-details summary="Second">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </sl-details>
+        
+              <sl-details summary="Third">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </sl-details>
+            </div>
+            <sl-button slot="footer" type="primary">Close</sl-button>
+          </sl-dialog>
+
+
+
+
+          <sl-drawer label="Drawer" class="drawer-ov">
+            <sl-dialog label="Dialog" class="dialog-in">
+              <sl-card class="card-overview">
+                <img 
+                  slot="image" 
+                  src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" 
+                  alt="A kitten sits patiently between a terracotta pot and decorative grasses."
+                >
+          
+                <strong>Mittens</strong><br>
+                This kitten is as cute as he is playful. Bring him home today!<br>
+                <small>6 weeks old</small>
+          
+                <div slot="footer">
+                  <sl-button type="primary" pill>More Info</sl-button>
+                  <sl-rating></sl-rating>
+                </div>
+              </sl-card>
+              <sl-button slot="footer" type="primary">Close</sl-button>
+            </sl-dialog>
+            
+            <sl-button class="dialog-in-open">Open Dialog inside</sl-button>
+            <sl-button class="dialog-out-open">Open Dialog outside</sl-button>
+            
+            <sl-button slot="footer" type="success">Close</sl-button>
+          </sl-drawer>
+          
+
+          <script>
+            (() => {
+              const dialogOut = document.querySelector('.dialog-out');
+              document.querySelector('.dialog-out-open').addEventListener('click', () => {
+                dialogOut.show();
+                const container = document.querySelector('.details-group-example');
+                container.addEventListener('sl-show', event => {
+                  [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
+                });
+              });
+              const closeButtonOut = dialogOut.querySelector('sl-button[slot="footer"]');
+              closeButtonOut.addEventListener('click', () => dialogOut.hide());
+
+              const dialog = document.querySelector('.dialog-in');
+              document.querySelector('.dialog-in-open').addEventListener('click', () => dialog.show());
+              const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+              closeButton.addEventListener('click', () => dialog.hide());
+            
+              const drawer = document.querySelector('.drawer-ov');
+              const opendrawer = document.querySelector('.open-drawer');
+              opendrawer.addEventListener('click', () => {
+                drawer.show();
+                document.querySelector('.formly').addEventListener('sl-submit', event => alert(event.detail.formData));
+              });
+              const closedrawer = drawer.querySelector('sl-button[type="success"]');
+              closedrawer.addEventListener('click', () => drawer.hide());
+            })();
+          </script>
+          
+
+          <custom-componentik></custom-componentik>
+
         </div>
         <div class="one-half column phones">
         </div>
       </div>
     </div>
   </div>
+
+
+
 
   <div class="section values">
     <div class="container">
