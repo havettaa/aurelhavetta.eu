@@ -189,20 +189,24 @@
           </script>
 
 
+          <hr />
+          <custom-componentik></custom-componentik>
 
 
-          <my-component id="Prvy" name="prvy custom lit-element:"></my-component>
-          <my-component id="Druhy" name="druhy custom lit-element:"></my-component>
+          <hr />
+          <my-component id="prvy" name="prvy custom lit-element:"></my-component>
+          <hr />
+          <my-component id="druhy" name="druhy custom lit-element:"></my-component>
           <script>
             const prvy = document.querySelector('#prvy');
             this.interval = window.setInterval(() => {
-              prvy.vonkajsia = Date.now();
+              prvy.vonkajsia = new Date().toLocaleTimeString();
             }, 1000);
           </script>
 
 
 
-
+          <hr />
           <custom-componentik></custom-componentik>
 
 
@@ -228,25 +232,25 @@
             <a class="button button-primary" href="samples/vue/">Simple cut</a>
           </h5>
           <p class="value-description">
-            Custom components IE compatible
+            Vue components IE11 compatible
           </p>
         </div>
         <div class="one-third column value">
-          <h2 class="value-multiplier">Svelte</h2>
+          <h2 class="value-multiplier">Generics</h2>
           <h5 class="value-heading">
-              <a class="button button-primary" href="https://svelte.dev/">Demo</a>
+              <a class="button button-primary" href="samples/4/#DataApproval">Demo app</a>
           </h5>
           <p class="value-description">
-              Svelte demo project
+              SPA tree grid component
           </p>
         </div>
         <div class="one-third column value">
-          <h2 class="value-multiplier">Pipelines</h2>
+          <h2 class="value-multiplier">MO Repo</h2>
           <h5 class="value-heading">
-              <a class="button button-primary" href="http://aureldesktop.aurelhavetta.eu:88">Jenkins</a>
+              <a class="button button-primary" href="samples/3/usag/morepository/MOREPOSITORY/WebContent/#/?tab=tabAll">Open UI5</a>
           </h5>
           <p class="value-description">
-              Build CA/CI pipeline integration
+              No css only plain JAM Stack
           </p>
           </div>
       </div>

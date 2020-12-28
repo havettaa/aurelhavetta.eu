@@ -21,7 +21,9 @@ export class MyComponent extends LitElement {
   }
     
   render() {
-    return html`<b>${this.name}</b> <br> vonkajsia hodnota: ${this.vonkajsia} <br> z vnutra nastavene: ${this.now}<br>`;
+    return html`<b>${this.name}</b> <br>
+     <i>vonkajsia hodnota:</i> <code>${this.vonkajsia}</code> <br>
+     <i>z vnutra nastavene:</i> <code>${this.now}</code> <br>`;
   }
 }
 
