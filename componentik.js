@@ -83,7 +83,7 @@ class componentik extends LitElement {
           Suffix Icon
           <sl-icon slot="suffix" name="heart"></sl-icon>
         </sl-menu-item>
-      </sl-menu>
+      </sl-menu>   
     </sl-dropdown>
 
     <sl-alert open>

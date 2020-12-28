@@ -31,6 +31,8 @@
   <script type="module" src="componentik.js"></script>
   <script type="module" src="custom-input.js"></script>
   <script type="module" src="custom-dropdown.js"></script>
+  <script type="module" src="main.js"></script>
+
   
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -185,10 +187,28 @@
               closedrawer.addEventListener('click', () => drawer.hide());
             })();
           </script>
-          
+
+
+
+
+          <my-component id="Prvy" name="prvy custom lit-element:"></my-component>
+          <my-component id="Druhy" name="druhy custom lit-element:"></my-component>
+          <script>
+            const prvy = document.querySelector('#prvy');
+            this.interval = window.setInterval(() => {
+              prvy.vonkajsia = Date.now();
+            }, 1000);
+          </script>
+
+
+
 
           <custom-componentik></custom-componentik>
 
+
+
+
+          
         </div>
         <div class="one-half column phones">
         </div>
