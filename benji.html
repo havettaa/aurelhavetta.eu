@@ -1,0 +1,93 @@
+<html>
+
+<head>
+  <style type="text/css">
+    .redFont {
+      color: red;
+    }
+
+    .blueFont {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    Ahoj benji
+  </h1>
+
+  <article id="myArticle1" class="redFont">
+    Article 1
+  </article>
+
+  <hr />
+
+  <article id="myArticle2" class="redFont">
+    Article 2
+  </article>
+
+  <hr />
+
+  <article id="myArticle3" class="blueFont">
+    Article 3
+  </article>
+
+  <hr />
+
+  <article id="myArticle4" class="redFont">
+    Article 4
+  </article>
+
+  <hr />
+
+  <button onclick="myOnclick()">click me</button>
+  
+</body>
+
+
+<script>
+function myOnclick() {
+  // toto je moja poznamka k tomut teraz
+  console.warn("event dispatched now.")
+
+  // Get all elements that have cssClass .redFont
+  const myArray = document.querySelectorAll(".redFont");
+
+
+  // Create new instance of class DateManager
+  const instance = new DateManager();
+
+  // Set property dateArray on this new instance
+  instance.dateArray = myArray;
+  
+  // Call method setdates
+  instance.setDates(myArray);
+}
+
+
+// Define class DateManager
+class DateManager {
+  dateArray;
+
+  setDates() {
+    let index = 0;
+
+    // Iterate over all elements in dateArray 
+    this.dateArray.forEach(e => {
+      console.info(index)
+
+      const datum = new Date();
+
+      e.innerHTML = datum.toLocaleTimeString();
+      
+      index++;
+    });
+  }
+}
+
+
+</script>
+
+</html>
