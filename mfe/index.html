@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <base href="/mfe">
-
+    
     <link rel="icon" type="image/x-icon" href="./src/favicon.ico" />
     <link rel="stylesheet" href="/DBYDPortal/assets/styles.css" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="/DBYDPortal/assets/standard.css" type="text/css" />
@@ -50,10 +50,10 @@
 
     <script>
       async function loadModule() {
-        const remote = await import("../remote.js");
+        const remote = await import("remote.js");
         console.warn(remote.x);
 
-        await import("/componentik.js");
+        await import("componentik.js");
       }
 
       async function loadDBYDPortal() {
