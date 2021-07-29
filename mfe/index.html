@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <title>Intergraph G!NIUS Engineering Plotting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="icon" type="image/x-icon" href="./src/favicon.ico" />
+    <link rel="stylesheet" href="/DBYDPortal/assets/styles.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="/DBYDPortal/assets/standard.css" type="text/css" />
+    <link rel="stylesheet" href="/DBYDPortal/assets/component.css" type="text/css" />
+    <link rel="stylesheet" href="/DBYDPortal/assets/custom.css" type="text/css" />
+
+    <link rel="stylesheet" href="/DBYDPortal/assets/materialFonts.css" type="text/css"></link>
+    <link rel="stylesheet" href="/DBYDPortal/assets/materialIcons.css" type="text/css"></link>
+
+    <link rel="stylesheet" href="/DBYDPortal/assets/ol.css" type="text/css">
+    <link rel="stylesheet" href="/DBYDPortal/assets/gip-buttons.css" type="text/css" />
+    <link rel="stylesheet" href="/DBYDPortal/assets/gip-loader.css" type="text/css" />
+  
+    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/semantic.fonts.css">
+    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/semantic.min.css">
+
+    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/js/jstable/colors.css">
+    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/js/jstable/jstable.css">
+    
+    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/_imports.css">
+    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/styles.3ff695c00d717f2d2a11.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
+
+    <script src="/DBYDPortal/assets/configuration.json" type="text/javascript"></script>
+  </head>
+  <body>
+    
+    <p>
+      <button class="ui teal button" onclick="loadModule()">WebComponent</button>
+      <button class="ui teal button" onclick="loadDBYDPortal()">DBYDPortal</button>
+      <button class="ui teal button" onclick="loadlogviewer()">Logviewer</button>
+      <button class="ui teal button" onclick="loadNG()">Ang</button>
+    </p>
+
+    <custom-componentik></custom-componentik>
+
+    <app-root></app-root>
+
+
+    <script>
+      async function loadModule() {
+        const remote = await import("../remote.js");
+        console.warn(remote.x);
+
+        await import("/componentik.js");
+      }
+
+      async function loadDBYDPortal() {
+ 
+        await import("/DBYDPortal/polyfills-es2015.js");
+        await import("/DBYDPortal/runtime-es2015.js");
+        await import("/DBYDPortal/main-es2015.js");
+      }
+      async function loadlogviewer() {
+        await import("/mfe/runtime.js");
+        await import("/mfe/polyfills.js");
+        await import("/mfe/main.js");
+      }
+      async function loadNG() {
+        await import("/mfe/ang/polyfills.js");
+        await import("/mfe/ang/runtime.js");
+        await import("/mfe/ang/main.js");
+      }
+    </script>
+  </body>
+</html>

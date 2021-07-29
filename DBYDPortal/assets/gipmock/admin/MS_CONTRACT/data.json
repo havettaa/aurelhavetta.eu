@@ -1,0 +1,1 @@
+{"@odata.context":"http://localhost:52180/$metadata#MS_CONTRACT","value":[{"ID":1,"CONTRACT_SIGN_DT":null,"CONTRACT_EXPIRATION_DT":"2027-10-09T00:00:00+02:00","CONTRACT_NUMBER":"1","CONTRACT_NAME":"Standard-Privat","NOTE":"Standard Privat = Public Rolle = 1","MAX_SHAPE_SIZE":100000000,"MAX_NO_MAPSHEET_REQ":2,"REQ_EXPIRATION_TIME":100,"DELIVERY_TYPE":"E","AUTO_REPRINT":0}]}

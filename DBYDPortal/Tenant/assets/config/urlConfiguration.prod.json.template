@@ -1,0 +1,4 @@
+{
+  "authenticationUrl": "AuthenticationServiceUrl",
+  "apiUrl": "ServiceUrl"
+}

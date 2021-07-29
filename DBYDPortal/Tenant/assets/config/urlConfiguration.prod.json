@@ -1,0 +1,4 @@
+{
+  "authenticationUrl": "/gipmock/token/index.aspx",
+  "apiUrl": "/gipmock/"
+}

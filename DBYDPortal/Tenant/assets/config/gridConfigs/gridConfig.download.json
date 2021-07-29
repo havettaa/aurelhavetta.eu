@@ -1,0 +1,24 @@
+{
+    "collection":[
+        {    
+            "module": "download",
+            "gridId": "downloadList",
+
+            "columns": [
+                {"id": "mapsheet_num",  "widthClass": "width05",    "textSearchFilter": true, "filter": { "text": "" }},
+                {"id": "username",      "widthClass": "width10",    "textSearchFilter": true, "filter": { "text": "" } },
+                {"id": "download_dt",   "widthClass": "width10",    "dateFilter": true,       "filter": { "dateMin": [null, null, null], "dateMax": [null, null, null],  "dateValue": [null, null, null]}}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        }
+    ]
+}

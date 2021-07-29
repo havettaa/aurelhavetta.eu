@@ -1,0 +1,36 @@
+{
+    "authenticationString": "GIP_AUSKUNFT:",
+    "Login" : "name",
+    "Role" : "role",
+    "RefreshTokenExpiration": "1800",
+    "picklistsSettings": [
+        { "url": "V_MS_SALUTATION_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_TITLE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_ACTIVITY_TYPE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_DELIVERY_STATE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_PROCESSING_STATE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_REASON_TYPE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_REQUEST_STATE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_SEARCH_METHOD_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_SEARCH_METHOD_INT_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_GIP_BOOL_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "GIP_LANG", "value": ["LANG"], "key": "LANG", "isLanguageDependant": false },
+        { "url": "V_GIP_DOCTYPE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_SERVICE_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_USER_VL", "value": ["FIRST_NAME", "NAME"], "key": "VID", "isLanguageDependant": false },
+        { "url": "V_MS_EXPORT_SERVICE", "value": ["VALUE"], "key": "G3E_ELNO", "isLanguageDependant": true },
+        { "url": "V_GIP_TEXT_T", "value": ["TEXT"], "key": "TEXTID", "isLanguageDependant": true },
+        { "url": "V_MS_CONTRACT_VL", "value": ["VALUE"], "key": "VID", "isLanguageDependant": false },
+        { "url": "V_MS_COMPANY_VL", "value": ["VALUE"], "key": "VID", "isLanguageDependant": false },
+        { "url": "V_GIP_NUMBOOL_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "MS_DEF_SCALE", "value": ["SCALE"], "key": "ID", "isLanguageDependant": false },
+        { "url": "V_MS_FORMAT_VL", "value": ["VALUE"], "key": "VID", "isLanguageDependant": false },
+        { "url": "V_GIP_VALIDITY_VL_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": true },
+        { "url": "GIP_ROLE_T", "value": ["DESCRIPT"], "key": "ROLE", "isLanguageDependant": true },
+        { "url": "V_GIP_TEXT_PLACEHOLDER_T", "value": ["VALUE"], "key": "VID", "isLanguageDependant": false },
+        { "url": "V_MS_FEATURE_VL_T", "value": ["G3E_USERNAME"], "key": "G3E_FNO", "isLanguageDependant": true },
+        { "url": "MS_REQSERVICE_STATUS_VL_T", "value": ["STATUS"], "key": "VID", "isLanguageDependant": true },
+        { "url": "V_MS_TENANT", "value": ["VALUE"], "key": "VID", "isLanguageDependant": false }
+
+    ]
+}

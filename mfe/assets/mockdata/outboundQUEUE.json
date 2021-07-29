@@ -1,0 +1,41 @@
+{
+  "@odata.context": "http://localhost:56001/odata/$metadata#EXT_STAT_MD_QUEUE",
+  "value": [
+    {
+      "INT_STAID": 1,
+      "INT_OUTMSGID": 1,
+      "EXT_MSGID": null,
+      "EXT_CORELATIONID": null,
+      "INT_ENTRY_DATE": "2021-06-30T13:56:51+02:00",
+      "INT_PROC_DATE": null,
+      "INT_PROCESSED": 0
+    },
+    {
+      "INT_STAID": 3,
+      "INT_OUTMSGID": 1,
+      "EXT_MSGID": "message4",
+      "EXT_CORELATIONID": null,
+      "INT_ENTRY_DATE": "2021-06-30T13:59:22+02:00",
+      "INT_PROC_DATE": null,
+      "INT_PROCESSED": 4
+    },
+    {
+      "INT_STAID": 4,
+      "INT_OUTMSGID": 1,
+      "EXT_MSGID": "message4",
+      "EXT_CORELATIONID": null,
+      "INT_ENTRY_DATE": "2021-06-30T13:59:35+02:00",
+      "INT_PROC_DATE": null,
+      "INT_PROCESSED": 4
+    },
+    {
+      "INT_STAID": 5,
+      "INT_OUTMSGID": 1,
+      "EXT_MSGID": "message5",
+      "EXT_CORELATIONID": null,
+      "INT_ENTRY_DATE": "2021-06-30T13:59:35+02:00",
+      "INT_PROC_DATE": null,
+      "INT_PROCESSED": 5
+    }
+  ]
+}

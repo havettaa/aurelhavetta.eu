@@ -1,0 +1,238 @@
+﻿.ol-control button{
+    background-color: rgb(0, 151, 186);
+}
+
+.ol-control button:focus{
+    background-color: rgb(0, 151, 186);
+    outline: none;
+}
+
+.ol-control button:disabled{
+    background-color: rgba(0, 151, 186, 0.3);
+}
+
+.ol-control button:hover:disabled{
+    background-color: rgba(0, 151, 186, 0.5);
+}
+
+.ol-zoom.ol-unselectable.ol-control button:focus,
+.ol-selectable.ol-control button:focus{
+    background-color: rgb(0, 151, 186);
+    outline: none;
+	animation-name: animButtons;
+	animation-duration: 0.5s;
+}
+
+@keyframes animButtons {
+	to {
+		background-color: rgb(179, 179, 179);
+	}
+}
+
+.ol-attribution.ol-unselectable.ol-control.ol-collapsed button:focus{
+    background-color: rgb(0, 151, 186);
+    outline: none;
+}
+
+.gipmapp-command-disabled:hover{
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.ol-attribution.ol-unselectable.ol-control.ol-collapsed button:hover,
+.ol-zoom.ol-unselectable.ol-control button:hover{
+    color: black;
+}
+
+.ol-logo-only.ol-attribution {
+            visibility: hidden;
+        }
+
+.ol-mouse-position{
+	font-family: "Segoe UI","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	background-color: rgba(255,255,255,.6);
+}
+
+canvas.ol-unselectable:active {
+	cursor:move;
+}
+
+.ol-selectable.ol-control button:hover:enabled {
+	cursor:pointer;
+}
+
+.ol-selectable.ol-control button:hover:disabled {
+	cursor:not-allowed;
+}
+
+.ol-zoomslider button:hover {
+	cursor:grab;
+}
+
+.ol-zoomslider button:active {
+	cursor:grabbing;
+}
+
+.ol-zoomslider:active {
+	cursor:grabbing;
+}
+
+.gipmapp-status {
+	visible: false;
+	display: block;
+}
+
+.gipmapp-legend {
+	margin-top: -30px;
+	z-index: 1;
+	display: block;
+	position: relative;
+	top: 65px;
+	left: 35px;
+	background: rgba(255, 255, 255, 0.9);
+	padding: 0.25em;
+	border: 1px solid black;
+	width: 8em;
+}
+
+.gipmapp-legend span {
+	font-family: "Segoe UI","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+}
+
+.gipmapp-command-legend {
+	top: 0.5em;
+	left: 3em;
+	background-size: contain;
+}
+
+.gipmapp-command-legend.ol-control button{
+	background-image: url(ic_layers_white_24px.svg);
+}
+
+.gipmapp-command-legend.ol-control button:hover{
+	background-image: url(ic_layers_black_24px.svg);
+}
+
+
+.gipmapp-command-point {
+	top: 0.5em;
+	left: 7em;
+	background-size: contain;
+}
+
+.gipmapp-command-point.ol-control button{
+   background-image: url(ic_point_white_24px.svg);
+}
+
+.gipmapp-command-point.ol-control button:hover{
+	background-image: url(ic_point_black_24px.svg);
+}
+
+
+.gipmapp-command-line {
+	top: 0.5em;
+	left: 9.5em;
+	background-size: contain;
+}
+
+.gipmapp-command-line.ol-control button{
+	background-image: url(ic_line_white_24px.svg);
+}
+
+.gipmapp-command-line.ol-control button:hover{
+	background-image: url(ic_line_black_24px.svg);
+}
+
+.gipmapp-command-polyline {
+	top: 0.5em;
+	left: 12em;
+	background-size: contain;
+}
+
+.gipmapp-command-polyline.ol-control button {
+	background-image: url(ic_polyline_white_24px.svg);
+}
+
+.gipmapp-command-polyline.ol-control button:hover {
+	background-image: url(ic_polyline_black_24px.svg);
+}
+
+.gipmapp-command-polygon {
+	top: 0.5em;
+	left: 14.5em;
+	background-size: contain;
+}
+
+.gipmapp-command-polygon.ol-control button{
+	background-image: url(ic_polygon_white_24px.svg);
+}
+
+.gipmapp-command-polygon.ol-control button:hover {
+	background-image: url(ic_polygon_black_24px.svg);
+}
+
+.gipmapp-command-edit {
+	top: 0.5em;
+	left: 17em;
+	background-size: contain;
+}
+
+.gipmapp-command-edit.ol-control button{
+	background-image: url(ic_edit_white_24px.svg);
+
+}
+
+.gipmapp-command-edit.ol-control button:hover{
+	background-image: url(ic_edit_black_24px.svg);
+}
+
+.gipmapp-command-edit-switch {
+	top: 0.5em;
+	left: 19.5em;
+	background-size: contain;
+}
+
+.gipmapp-command-edit-switch.ol-control button{
+   background-image: url(ic_editvertices_white_24px.svg);
+}
+
+.gipmapp-command-edit-switch.ol-control button:hover:enabled{
+	background-image: url(ic_editvertices_black_24px.svg);
+}
+
+.ol-zoom-extent.ol-unselectable.ol-control{
+	visibility: hidden;
+}
+
+.gipmapp-command-selected{
+	background-color: rgba(128, 128, 128, 1);
+}
+
+.gipmapp-command-disabled{
+	background-color: rgba(128, 128, 128, 0.5);
+}
+
+.gipmapp-command-active{
+	background-color: rgba(255, 128, 128, 1);
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  margin: 225px 0px 222px 270px;
+  animation: spin 2s linear infinite;
+}
+
+@@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+

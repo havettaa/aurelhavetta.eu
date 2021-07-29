@@ -1,0 +1,277 @@
+{
+    "collection":[
+        {    
+            "module": "statistic",
+            "gridId": "allRequests",
+
+            "columns": [
+                {"id": "g3e_fid",            "widthClass": "width01",   "fromToFilter": true,                                                        "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] } },
+                {"id": "person",             "widthClass": "width05",   "textSearchFilter": true,                                                    "filter": { "sortOrder": "",  "orderIndex": null, "text": "" } },
+                {"id": "delivery_state",     "widthClass": "width10",   "picklistType": "V_MS_DELIVERY_STATE_VL_T",     "picklistKeyType": "Text",   "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []} },
+                {"id": "request_state",      "widthClass": "width10",   "picklistType": "V_MS_REQUEST_STATE_VL_T",      "picklistKeyType": "Text",   "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []} },
+                {"id": "activity_type",      "widthClass": "width10",   "picklistType":"V_MS_ACTIVITY_TYPE_VL_T",       "picklistKeyType": "Text",   "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []} },
+                {"id": "reason_type",        "widthClass": "width10",   "picklistType": "V_MS_ACTIVITY_TYPE_VL_T",      "picklistKeyType": "Text",   "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []} },
+                {"id": "begin_activity_dt",  "widthClass": "width10",   "dateFilter": true,"dateFormat": "dd.MM.yyyy",                               "filter": { "sortOrder": "",  "orderIndex": null, "dateMin": [null, null, null],"dateMax": [null, null, null],"dateValue": [null, null, null] } },
+                {"id": "request_dt",         "widthClass": "width10",   "dateFilter": true,"dateFormat": "dd.MM.yyyy",                               "filter": { "sortOrder": "",  "orderIndex": null, "dateMin": [null, null, null],"dateMax": [null, null, null],"dateValue": [null, null, null] } },
+                {"id": "location_desc",      "widthClass": "width05",   "textSearchFilter": true,                                                    "filter": { "sortOrder": "",  "orderIndex": null, "text": "" } }
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "childRequests",
+
+            "columns": [
+                {"id": "g3e_fid",        "widthClass": "width01",  "textSearchFilter": true, "function": "toChildRequest",   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "tenant",         "widthClass": "width01",  "textSearchFilter": true, "function": "toChildRequest",   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "request_state",  "widthClass": "width01",  "textSearchFilter": true, "function": "toChildRequest",   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": false,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "maspSheet",
+
+            "columns": [
+                {"id": "tenant",       "widthClass": "width01",  "textSearchFilter": true,  "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "service",      "widthClass": "width01",  "textSearchFilter": true,  "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "mapsh1_stat",  "widthClass": "width01",  "textSearchFilter": true,  "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": false,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "requestPerClient",
+
+            "columns": [
+                {"id": "company", "widthClass": "width25",  "textSearchFilter": true,  "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "req_cnt", "widthClass": "width01",  "fromToFilter": true,      "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "requestPerClientStatus",
+
+            "columns": [
+                {"id": "request_state",  "widthClass": "width25",   "picklistType": "V_MS_REQUEST_STATE_VL_T",  "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "company",        "widthClass": "width25",   "textSearchFilter": true,                                               "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "req_cnt",        "widthClass": "width01",   "fromToFilter": true,                                                   "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null]}}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "requestPerClientActivity",
+
+            "columns": [
+                {"id": "activity_type",  "widthClass": "width25",   "picklistType": "V_MS_ACTIVITY_TYPE_VL_T",   "picklistKeyType": "Text",     "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "company",        "widthClass": "width25",   "textSearchFilter": true,                                                   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "req_cnt",        "widthClass": "width01",   "fromToFilter": true,                                                       "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null]}}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "requestPerStatus",
+
+            "columns": [
+                {"id": "request_state",  "widthClass": "width25",  "picklistType": "V_MS_REQUEST_STATE_VL_T",   "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "req_cnt",        "widthClass": "width01",  "fromToFilter": true,                                                    "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null]}}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "requestPerActivity",
+
+            "columns": [
+                {"id": "activity_type",  "widthClass": "width25",  "picklistType": "V_MS_ACTIVITY_TYPE_VL_T",   "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "req_cnt",        "widthClass": "width01",  "fromToFilter": true,                                                    "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null]}}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "assets",
+
+            "columns": [
+                {"id": "g3e_cid",   "widthClass": "width01",  "fromToFilter": true,                                                     "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "status",    "widthClass": "width01",  "picklistType": "MS_REQSERVICE_STATUS_VL_T",  "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "service",   "widthClass": "width01",  "picklistType": "V_MS_SERVICE_VL_T",          "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "remark",    "widthClass": "width01",  "textSearchFilter": true,                                                 "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": false,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "crititalAssets",
+
+            "columns": [
+                {"id": "g3e_cid",          "widthClass": "width01",   "textSearchFilter": true,                                         "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "ref_service",      "widthClass": "width01",   "picklistType": "V_MS_SERVICE_VL_T",  "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "ref_g3e_fno",      "widthClass": "width25",   "picklistType": "V_MS_FEATURE_VL_T",  "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "ref_g3e_fid",      "widthClass": "width15",   "fromToFilter": true,                                             "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "external_call",    "widthClass": "width01",   "icon": "search",         "function": "search"}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": false,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "plotOverview",
+
+            "columns": [
+                {"id": "mapsheet_num",  "widthClass": "width01",  "textSearchFilter": true,                                             "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "username",      "widthClass": "width01",  "textSearchFilter": true,                                             "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "download_dt",   "widthClass": "width01",  "textSearchFilter": true,                                             "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "valid",         "widthClass": "width01",  "picklistType": "V_GIP_VALIDITY_VL_T",   "picklistKeyType": "Text",   "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": false,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "processingHistory",
+
+            "columns": [
+                {"id": "machineName",   "widthClass": "width01",  "textSearchFilter": true,  "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "logDate",       "widthClass": "width01",  "dateFilter": true,        "filter": { "sortOrder": "",  "orderIndex": null, "dateMin": [null, null, null], "dateMax": [null, null, null],  "dateValue": [null, null, null] }},
+                {"id": "step",          "widthClass": "width01",  "textSearchFilter": true,  "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": false,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "statistic",
+            "gridId": "plotRequest",
+
+            "columns": [
+                {"id": "sheetnum",                  "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "service",                   "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "processing_state",          "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "submit_dt",                 "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "last_reprint_dt",           "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "export",                    "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "last_plot_id",              "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "last_plot_request_id",      "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "req_err",                   "widthClass": "width01",  "textSearchFilter": true,   "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": false,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        }
+    ]
+}

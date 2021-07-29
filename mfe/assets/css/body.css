@@ -1,0 +1,12 @@
+
+.mainContainer {
+  display: flex;
+  flex-flow: row;
+  margin-left: 65px;
+  margin-top: 53px;
+}
+
+.contentDiv {
+  width: 100vw;
+  margin: 20px;
+}

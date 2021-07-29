@@ -1,0 +1,17 @@
+{
+  "@odata.context": "http://localhost:56001/odata/$metadata#EXT_STAT_MD",
+  "value": [
+    {
+      "INT_STAID": 1,
+      "G3E_ID": 12345,
+      "G3E_FID": 54321,
+      "GIS_UID": 999,
+      "MX_ID1": 777,
+      "MX_ID2": 888,
+      "SUCCESS": 1,
+      "INT_NUMBER": 222,
+      "INT_MESSAGE": "message1",
+      "INT_TRACE": "Trace me yeah"
+    }
+  ]
+}

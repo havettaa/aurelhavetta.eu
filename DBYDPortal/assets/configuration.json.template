@@ -1,0 +1,7 @@
+globalConfig = {
+    "GipServicesUrl": "ServiceUrl",
+    "AuthentificationConfig": "ServiceUrl",
+    "Authorization": "Authorization",	// Authorization in header
+    "Login": "name",
+    "Role": "role"
+}

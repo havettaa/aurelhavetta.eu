@@ -1,0 +1,346 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: var(--bodyColor);
+}
+
+h4>b {
+    display: flex;
+    margin-top: 1rem;
+}
+
+button.mat-raised-button {
+    margin: 5px;
+}
+
+
+/* //////////////////////////////////////
+//                 GENERAL
+// ////////////////////////////////////*/
+
+.flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerHorizontally {
+    margin: auto;
+    width: 100%;
+}
+
+.centerVertically {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.boxShadow {
+    background-color: #eceff5;
+    margin: 10px;
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/* //////////////////////////////////////
+//            MAIN  LAYOUT
+// ////////////////////////////////////*/
+
+main {
+    display: flex;
+    flex-flow: column;
+}
+
+main>section {
+    display: grid;
+}
+
+main>section>article {
+    overflow-x: overlay;
+    padding: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    main>section {
+        grid-template-columns: minmax(300px, 1fr);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    main>section {
+        grid-template-columns: minmax(300px, 1fr) minmax(500px, 3fr);
+    }
+}
+
+
+/* //////////////////////////////////////
+//                HEADER
+// ////////////////////////////////////*/
+
+header>.mat-toolbar {
+    height: 95px;
+    background-color: white;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+header:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: var(--headerBorderBottonColor);
+    margin-bottom: 10px;
+}
+
+header>.mat-toolbar>button {
+    color: black;
+}
+
+header>.mat-toolbar>.logo {
+    max-width: 100%;
+    height: 59px;
+    content: var(--logourl);
+    padding: 0px;
+    cursor: pointer;
+}
+
+header>.mat-toolbar>.toolbarMiddleSpace {
+    flex: 1 1 auto;
+}
+
+
+/* //////////////////////////////////////
+//                SIDE BAR
+// ////////////////////////////////////*/
+
+aside ul {
+    padding: 20px;
+    list-style-type: none;
+}
+
+aside li {
+    margin-bottom: 20px;
+}
+
+aside li>a {
+    font-size: 1.3em;
+}
+
+.toggle {
+    color: var(--sidebarSectionFontColor);
+}
+
+
+/* //////////////////////////////////////
+//                FOOTER
+// ////////////////////////////////////*/
+
+footer>.links {
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+footer>summary {
+    padding: 0 10px;
+    font-size: smaller;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+
+/* //////////////////////////////////////
+//       LOGIN AND REGISTER SCREEN
+// ////////////////////////////////////*/
+
+.loginTab {
+    padding: 30px;
+    padding-left: 60px;
+    width: 490px;
+}
+
+.loginTab button {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginTab .mat-form-field {
+    padding-left: 60px;
+    width: 70%;
+}
+
+.loginTab h1 {
+    margin-top: 20px;
+}
+
+.loginRegisterTab {
+    margin: 30px;
+}
+
+.loginRegisterTab h4 {
+    margin-top: 20px;
+}
+
+.loginRegisterTab .mat-tab-group {
+    padding: 30px;
+    width: 520px;
+}
+
+.loginRegisterTab .mat-tab-body-wrapper {
+    padding: 0 30px;
+}
+
+.loginRegisterTab .mat-tab-body-content {
+    overflow: hidden;
+}
+
+.loginRegisterTab .mat-form-field {
+    padding-left: 60px;
+    width: 70%;
+}
+
+.loginRegisterTab button {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linka {
+    color: blue;
+    cursor: pointer;
+}
+
+.linkr {
+    color: blue;
+    cursor: pointer;
+}
+
+
+/* //////////////////////////////////////
+//            Statistic
+// ////////////////////////////////////*/
+
+.statisticErrorRequestTab .mat-tab-body-content {
+    overflow: hidden;
+}
+
+/* //////////////////////////////////////
+//            FORMULAR
+// ////////////////////////////////////*/
+
+
+input[type=number].no-spinner::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+-webkit-appearance: none; 
+ margin: 0; 
+}
+
+/* //////////////////////////////////////
+//            TESTING   TEMP
+// ////////////////////////////////////*/
+
+.gridTemplate>div {}
+
+.formCheckbox span {
+    white-space: normal;
+}
+
+.Sidebar {
+    width: 15%;
+    vertical-align: top;
+}
+
+.Content {
+    vertical-align: top;
+}
+
+.Grid {
+    width: 100%;
+}
+
+.GridHeader {
+    width: 1px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.GridRow {
+    width: 1px;
+}
+
+.gridFilterMenu {
+    max-width: 360px !important;
+}
+
+.GridFilter {
+    padding: 20px;
+}
+
+.GridFilterIcon {
+    background-image: url(assets/filter.png);
+    width: 20px;
+    height: 20px;
+    background-size: 20px;
+}
+
+.GridOrderArrowIcon {
+    width: 20px;
+    height: 20px;
+    background-size: 20px;
+}
+
+.GridFunctionIcon {
+    width: 20px;
+    height: 20px;
+    background-size: 20px;
+}
+
+.mat-menu-panel.notifications-dropdown {
+    max-width: none;
+    width: 100vw;
+    margin-left: -8px;
+    margin-top: 24px;
+    overflow: visible;
+}
+
+.notification-row {
+    width: 424px;
+}
+
+.gridTable th {
+    color: var(--fontColor);
+    text-shadow: 0 0 silver;
+    background-color: var(--accentColor2);
+    border-top: 1px solid var(--tableheaderBorderTopColor);
+    border-bottom-width: 3px !important;
+    border-bottom-color: var(--tableheaderBorderBottonColor);
+}
+
+.gridTable th:hover {
+    border-bottom-color: var(--tableheaderBorderBottonHoverColor)
+}
+
+.gip-modal {
+    min-width: 50vw;
+}

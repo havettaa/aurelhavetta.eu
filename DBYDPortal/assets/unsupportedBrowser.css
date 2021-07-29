@@ -1,0 +1,45 @@
+.unsup-logo {
+    max-width: 100%;
+    height: 59px;
+    padding: 16px;
+}
+
+.unsup-header {
+    background-color: white;
+    height: 95px;
+    /* border-bottom-color: #0097ba;
+    border-bottom: solid; */
+}
+
+.unsup-body {
+    display: inline-block;
+}
+
+.unsup-body-text {
+    background-color: white;
+    padding: 30px;
+    width: 520px;
+    margin: 30px;
+    border-radius: 10px;
+    /* text-align: center; */
+}
+
+.unsup-caption {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.unsup-text {
+    font-size: 22px;
+    padding-top: 20px;
+    display: inline-block;
+}
+
+.header-border {
+    background-color: #0097ba;
+    height: 3px
+}
+
+body{
+    /* background-color: whitesmoke; */
+}

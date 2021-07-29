@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<title>B4UDig</title>
+<link rel="stylesheet" href="unsupportedBrowser.css" type="text/css" />
+<script src="configuration.json" type="text/javascript"></script>
+
+<script>  
+    var Http = new XMLHttpRequest();
+    
+    function InitializeText() {
+        var lang = navigator.language;
+
+        const url = globalConfig['GipServicesUrl'] + "portal/unsuportedbrowser/" + lang;
+        Http.open("GET", url);
+        Http.send();
+    }
+
+    Http.onreadystatechange = function(e) {
+        var element = document.getElementById("textcontent");
+        if(Http.responseText){
+            element.innerHTML = Http.responseText;
+        }
+    }            
+
+    InitializeText();
+    
+</script>
+</head>
+
+<body>
+    <div class='unsup-header'>
+        <img src='logo.jpg' class='unsup-logo'/>
+        <div class='header-border'></div>
+    </div>
+    <div class='unsup-body'>
+        <div class='unsup-body-text' id="textcontent"></div>
+    </div>
+</body>
+
+</html>

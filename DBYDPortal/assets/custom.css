@@ -1,0 +1,33 @@
+/* Custom */
+/* 
+:root {	
+	--primaryColor: #0097ba;
+    --accentColor1: #ff4081;
+    --accentColor2: rgba(0, 0, 0, .04);
+    --accentColor3: #b0b0b0;
+    --accentColor4: rgba(0, 0, 0, 0.87);
+	
+	--bodyColor: whitesmoke;
+    --warnColor: #f44336;
+	
+    --headerBorderBottonColor: linear-gradient(90deg, #a5d867 0, #0097ba 100%);
+	
+    --tableheaderBorderBottonColor: var(--primaryColor);
+    --tableheaderBorderTopColor: #d3d3d3;
+    --tableheaderBorderBottonHoverColor: #ed8b00;
+	
+    --fontColor: #000000;
+	
+    --sidebarSectionFontColor: #000000;
+    --sibdearSectionItemFontColor: rgba(0, 0, 0, 0.87);
+    
+    --disableCheckboxColor: var(--accentColor3);
+    --stepInactiveIconColor: rgba(0, 0, 0, 0.54);
+    --stepActiveIconColor: var(--primaryColor);
+	
+    --gridBodyFontColor: rgba(0, 0, 0, 0.87);
+    --buttonFontColor: rgba(0, 0, 0, 0.87);
+	
+    --captionColor: #000000;
+    --logourl: url(logo.jpg);
+} */

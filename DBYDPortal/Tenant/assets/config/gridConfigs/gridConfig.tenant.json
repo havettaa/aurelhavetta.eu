@@ -1,0 +1,43 @@
+{
+    "collection":[
+        {    
+            "module": "tenant",
+            "gridId": "emailDefinitionList",
+
+            "columns": [
+                {"id": "emailId",   "widthClass": "width01",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "userName",  "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "lang",      "widthClass": "width01",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": false,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+        {    
+            "module": "tenant",
+            "gridId": "requestPerTenant",
+
+            "columns": [
+                {"id": "tenant",   "widthClass": "width25",  "picklistType": "V_MS_TENANT", "picklistKeyType": "Text",  "filter": { "sortOrder": "",  "orderIndex": null, "picklistValues": []}},
+                {"id": "req_cnt",  "widthClass": "width01",  "fromToFilter": true,                                      "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }}
+            ],
+
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+
+            "showClearFilters": true,
+            "showExportToExcel": true,
+
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        }
+    ]
+}

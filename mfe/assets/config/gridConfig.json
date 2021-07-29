@@ -1,0 +1,115 @@
+
+{
+    "collection":[
+        {    
+            "module": "browseLog",
+            "gridId": "browseLogList",
+ 
+            "columns": [
+                {"id": "LOGID", "name":"Log Id", "widthClass": "width25",  "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "EXTLOGID", "name":"Event Id",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "EVENTTYPE", "name":"Event Type",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "PRIORITY", "name":"Priority",    "widthClass": "width25",   "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "SEVERITY", "name":"Serverity",    "widthClass": "width30",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "SOURCE", "name":"Source",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "LOGDATE", "name":"Log Date",    "widthClass": "width25",   "dateFilter": true,"dateFormat": "dd.MM.yyyy", "filter": { "sortOrder": "",  "orderIndex": null, "dateMin": [null, null, null],"dateMax": [null, null, null],"dateValue": [null, null, null] }},
+                {"id": "CORRELATIONID", "name":"Correlation Id",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "MESSAGE", "name":"Message",    "widthClass": "width50",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "OBJECTID", "name":"Object Id",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+              
+             
+            ],
+ 
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+ 
+            "showClearFilters": true,
+            "showExportToExcel": false,
+ 
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+
+        {    
+            "module": "browseLog",
+            "gridId": "browseLogDetail",
+ 
+            "columns": [
+                {"id": "NAME", "name":"Name", "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "VALUE", "name":"Value",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+              
+            ],
+ 
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+ 
+            "showClearFilters": true,
+            "showExportToExcel": false,
+ 
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+       
+        {    
+            "module": "outBoundQueue",
+            "gridId": "outboundQueueList",
+ 
+            "columns": [
+                {"id": "INT_OUTMSGID", "name":"Outmsid", "widthClass": "width25",   "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null]}},
+                {"id": "INT_ACTION", "name":"Action",    "widthClass": "width25",   "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "INT_PRIORITY", "name":"Pririty",    "widthClass": "width25",   "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "INT_SOURCE", "name":"Source",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "RUN_ID", "name":"Run id",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+              
+            ],
+ 
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+ 
+            "showClearFilters": true,
+            "showExportToExcel": false,
+ 
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        },
+
+        {    
+            "module": "inBoundQueue",
+            "gridId": "inboundQueueList",
+ 
+            "columns": [
+                {"id": "INT_INMSGID", "name":"Inmsgid", "widthClass": "width25",   "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null]}},
+                {"id": "INT_FMNR", "name":"FmNr",    "widthClass": "width25",   "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "INT_ACTION", "name":"Action",    "widthClass": "width25",   "fromToFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "fromTo": [null, null] }},
+                {"id": "INT_PRIORITY", "name":"Priority",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }},
+                {"id": "INT_FLAG", "name":"Flag",    "widthClass": "width25",   "textSearchFilter": true, "filter": { "sortOrder": "",  "orderIndex": null, "text": "" }}
+              
+            ],
+ 
+            "paginator": { "pageSize": 5, "pageSizeOptions": [5, 10, 20], "pageIndex": 0 },
+            "select": null,
+            "language": null,
+ 
+            "showClearFilters": true,
+            "showExportToExcel": false,
+ 
+            "defaultOrderBy": null,
+            "defaultFilter": null
+        }
+      
+       
+        
+    ]
+
+
+       
+        
+
+    
+    
+}
+
+

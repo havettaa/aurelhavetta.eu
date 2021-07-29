@@ -1,0 +1,7 @@
+{
+    "apiUrl":"http://localhost:56001/odata/",
+    "gridConfigPath": "/assets/config/gridConfig.json",
+    
+    
+    "cacheItemCount": 100
+}
