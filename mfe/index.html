@@ -6,7 +6,7 @@
     <title>Intergraph G!NIUS Engineering Plotting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
-    <base href="/mfe">
+    <base href="/mfe/">
     
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="/DBYDPortal/assets/styles.css" media="print" onload="this.media='all'" />
@@ -37,23 +37,25 @@
   <body>
     
     <p>
-      <button class="ui teal button" onclick="loadModule()">WebComponent</button>
-      <button class="ui teal button" onclick="loadDBYDPortal()">DBYDPortal</button>
-      <button class="ui teal button" onclick="loadlogviewer()">Logviewer</button>
-      <button class="ui teal button" onclick="loadNG()">Ang</button>
+      <div class="ui teal button" onclick="loadModule()">WebComponent</div>
+      <div class="ui teal button" onclick="loadDBYDPortal()">DBYDPortal</div>
+      <div class="ui teal button" onclick="loadlogviewer()">Logviewer</div>
+      <div class="ui teal button" onclick="loadNG()">Ang</div>
     </p>
 
     <custom-componentik></custom-componentik>
 
+    <dbydportal-root></dbydportal-root>
+    <logviewerapp-root></logviewerapp-root>
     <app-root></app-root>
 
 
     <script>
       async function loadModule() {
-        const remote = await import("remote.js");
+        const remote = await import("/mfe/remote.js");
         console.warn(remote.x);
 
-        await import("componentik.js");
+        await import("/mfe/componentik.js");
       }
 
       async function loadDBYDPortal() {
@@ -68,6 +70,7 @@
         await import("/mfe/main.js");
       }
       async function loadNG() {
+        console.log("Loading angular js files.");
         await import("/mfe/ang/polyfills.js");
         await import("/mfe/ang/runtime.js");
         await import("/mfe/ang/main.js");
