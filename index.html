@@ -48,16 +48,48 @@
     <div class="container">
       <div class="row">
         <div class="one-half column">
-          <h4 class="hero-heading">Aurel Havetta neviem dalej...</h4>
+          <h1 class="hero-heading"><a href="tailwind.html"><h2>Aurel Havetta</h2>  <h6>....click for Tailwind css desing</h6></a></h1>
           
- 
 
-          <sl-tooltip content="This is a tooltip for dialog button, just click to open new window.">
-            <a class="button button-primary open-drawer">Open Drawer</a>
-          </sl-tooltip>
 
+          <custom-componentik></custom-componentik>
+
+
+
+        </div>
+        <div class="column">
+
+          <hr />
+          
+          <div class="row">
+            <div class="one-half column">
+              <my-component id="prvy" name="prvy custom lit-element:"></my-component>
+            </div>
+            <div class="one-half column">
+              <my-component id="druhy" name="druhy custom lit-element:"></my-component>
+            </div>
+          </div>
+
+          <hr />
+
+          <script>
+            const prvy = document.querySelector('#prvy');
+            this.interval = window.setInterval(() => {
+              prvy.vonkajsia = new Date().toLocaleTimeString();
+            }, 1000);
+          </script>
+
+
+        </div>
+        <div class="column">
 
           <div class="alert-toast">
+              
+            <sl-tooltip content="This is a tooltip for dialog button, just click to open new window.">
+              <a class="button button-primary open-drawer">Open Drawer</a>
+            </sl-tooltip>
+
+
             <sl-button type="primary">Primary</sl-button>
             <sl-button type="success">Success</sl-button>
             <sl-button type="info">Info</sl-button>
@@ -187,34 +219,9 @@
             })();
           </script>
 
-
-          <hr />
-          <custom-componentik></custom-componentik>
-
-
-          <hr />
-          <my-component id="prvy" name="prvy custom lit-element:"></my-component>
-          <hr />
-          <my-component id="druhy" name="druhy custom lit-element:"></my-component>
-          <script>
-            const prvy = document.querySelector('#prvy');
-            this.interval = window.setInterval(() => {
-              prvy.vonkajsia = new Date().toLocaleTimeString();
-            }, 1000);
-          </script>
-
-
-
-          <hr />
-          <custom-componentik></custom-componentik>
-
-
-
-
           
         </div>
-        <div class="one-half column phones">
-        </div>
+
       </div>
     </div>
   </div>
@@ -226,12 +233,14 @@
     <div class="container">
       <div class="row">
         <div class="one-third column value">
-          <h2 class="value-multiplier">Vue</h2>
+          <h2 class="value-multiplier">Single SPA</h2>
           <h5 class="value-heading">
-            <a class="button button-primary" href="samples/vue/">Simple cut</a>
+            <a class="button button-primary" href="https://pwctax.invisionapp.com/console/share/KF3174983H/768153659">Simple cut</a>
           </h5>
           <p class="value-description">
-            Vue components IE11 compatible
+            <a href="https://pwctax.invisionapp.com/console/share/KF3174983H/768153659">Invision design 1</a>
+            <br />
+            <a href="https://pwctax.invisionapp.com/console/share/7H2W7190NX/744514207">Invision design 2</a>
           </p>
         </div>
         <div class="one-third column value">

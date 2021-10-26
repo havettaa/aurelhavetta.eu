@@ -11,8 +11,11 @@ export class MyComponent extends LitElement {
     };
   }
   
-  connectedCallback() {
+  async connectedCallback() {
     super.connectedCallback();
+
+    await fetch('benji.html').then((res) => this.someHTML = res.text());
+    console.warn(this.someHTML);
 
     this.now = Date.now();
     this.interval = window.setInterval(() => {

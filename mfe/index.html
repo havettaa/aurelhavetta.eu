@@ -13,13 +13,12 @@
     <link rel="stylesheet" href="/DBYDPortal/assets/standard.css" type="text/css" />
     <link rel="stylesheet" href="/DBYDPortal/assets/component.css" type="text/css" />
     <link rel="stylesheet" href="/DBYDPortal/assets/custom.css" type="text/css" />
-
     <link rel="stylesheet" href="/DBYDPortal/assets/materialFonts.css" type="text/css"></link>
     <link rel="stylesheet" href="/DBYDPortal/assets/materialIcons.css" type="text/css"></link>
-
     <link rel="stylesheet" href="/DBYDPortal/assets/ol.css" type="text/css">
     <link rel="stylesheet" href="/DBYDPortal/assets/gip-buttons.css" type="text/css" />
     <link rel="stylesheet" href="/DBYDPortal/assets/gip-loader.css" type="text/css" />
+    <script src="/DBYDPortal/assets/configuration.json" type="text/javascript"></script>
   
     <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/semantic.fonts.css">
     <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/semantic.min.css">
@@ -31,19 +30,18 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
-
-    <script src="/DBYDPortal/assets/configuration.json" type="text/javascript"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.58/dist/components/qr-code/qr-code.js"></script>
   </head>
   <body>
     
     <p>
-      <div class="ui teal button" onclick="loadModule()">WebComponent</div>
+      <div class="ui teal button" onclick="loadModule()">My-Component</div>
       <div class="ui teal button" onclick="loadlogviewer()">Logviewer</div>
       <div class="ui teal button" onclick="loadNG()">Ang</div>
       <div class="ui teal button" onclick="loadDBYDPortal()">DBYDPortal</div>
     </p>
 
-    <custom-componentik></custom-componentik>
+    <my-component data="String data passed into my-component as attribute value"></my-component>
 
     <logviewerapp-root></logviewerapp-root>
     <app-root></app-root>
@@ -52,10 +50,7 @@
 
     <script>
       async function loadModule() {
-        const remote = await import("/mfe/remote.js");
-        console.warn(remote.x);
-
-        await import("/mfe/componentik.js");
+        await import("/mfe/my-component.js");
       }
 
       async function loadDBYDPortal() {
@@ -65,9 +60,7 @@
         await import("/DBYDPortal/main-es2015.js");
       }
       async function loadlogviewer() {
-        await import("/mfe/runtime.js");
-        await import("/mfe/polyfills.js");
-        await import("/mfe/main.js");
+        await import("/mfe/logviewer.js");
       }
       async function loadNG() {
         console.log("Loading angular js files.");
