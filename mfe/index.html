@@ -20,53 +20,124 @@
     <link rel="stylesheet" href="/DBYDPortal/assets/gip-loader.css" type="text/css" />
     <script src="/DBYDPortal/assets/configuration.json" type="text/javascript"></script>
   
-    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/semantic.fonts.css">
-    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/semantic.min.css">
+    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/semantic.fonts.css">
+    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/semantic.min.css">
 
-    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/js/jstable/colors.css">
-    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/js/jstable/jstable.css">
+    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/js/jstable/colors.css">
+    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/js/jstable/jstable.css">
     
-    <link rel="stylesheet" href="https://aurelhavetta.eu/mfe/assets/css/_imports.css">
+    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/_imports.css">
 
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.58/dist/components/qr-code/qr-code.js"></script>
+  
+  
   </head>
   <body>
-    
-    <p>
-      <div class="ui teal button" onclick="loadModule()">My-Component</div>
+
+    <div>
+      <div class="ui teal button" onclick="loadwebcomponent()">Web-Component</div>
+      <div class="ui teal button" onclick="loadmyapp()">MyApp</div>
+      <div class="ui teal button" onclick="loadmysettings()">MySettings</div>
+
+
       <div class="ui teal button" onclick="loadlogviewer()">Logviewer</div>
-      <div class="ui teal button" onclick="loadNG()">Ang</div>
       <div class="ui teal button" onclick="loadDBYDPortal()">DBYDPortal</div>
-    </p>
+      <!-- <div class="ui teal button" onclick="loadNG()">NG 11</div> -->
 
-    <my-component data="String data passed into my-component as attribute value"></my-component>
+    </div>
 
-    <logviewerapp-root></logviewerapp-root>
-    <app-root></app-root>
-    <dbydportal-root></dbydportal-root>
+    <div style="overflow: scroll; height: 20vh;">
+      <web-component data="String data passed into my-component as attribute value"></web-component>
+    </div>
+    <div style="overflow: scroll; height: 75vh;">
+      <myapp></myapp>
+      <mysettings></mysettings>
+      <logviewerapp-root></logviewerapp-root>
+      <dbydportal-root></dbydportal-root>
+      <app-root></app-root>
+    </div>
+
 
 
     <script>
-      async function loadModule() {
-        await import("/mfe/my-component.js");
+      function onLoad() {
+        hideAll();
+
+        import("/mfe/myapp.js");
+        import("/mfe/mysettings.js");
+        import("/mfe/logviewer.js");
+
+        // import("/DBYDPortal/polyfills-es2015.js");
+        // import("/DBYDPortal/runtime-es2015.js");
+        // import("/DBYDPortal/main-es2015.js");
       }
 
+      window.onload = onLoad();
+      
+
+      async function loadwebcomponent() {
+        await import("/mfe/web-component.js");
+      }
+
+
+      async function loadmyapp() {
+        hideAll();
+        document.querySelector("myapp").style.display = 'inherit';
+
+        await import("/mfe/myapp.js");
+      }
+
+      async function loadmysettings() {
+        hideAll();
+        document.querySelector("mysettings").style.display = 'inherit';
+
+        await import("/mfe/mysettings.js");
+      }
+
+      
+      async function loadlogviewer() {
+        hideAll();
+        document.querySelector("logviewerapp-root").style.display = 'inherit';
+        await import("/mfe/logviewer.js");
+      }
+
+
       async function loadDBYDPortal() {
- 
+        hideAll();
+        document.querySelector("dbydportal-root").style.display = 'inherit';
         await import("/DBYDPortal/polyfills-es2015.js");
         await import("/DBYDPortal/runtime-es2015.js");
         await import("/DBYDPortal/main-es2015.js");
       }
-      async function loadlogviewer() {
-        await import("/mfe/logviewer.js");
-      }
+
+
       async function loadNG() {
-        console.log("Loading angular js files.");
-        await import("/mfe/ang/polyfills.js");
-        await import("/mfe/ang/runtime.js");
-        await import("/mfe/ang/main.js");
+        hideAll();
+        document.querySelector("app-root").style.display = 'inherit';
+        await import("/mfe/ang.js");
+        // await import("/mfe/ang/polyfills.js");
+        // await import("/mfe/ang/runtime.js");
+        // await import("/mfe/ang/main.js");
+      }
+
+      
+      function hideAll() {
+        document.querySelector("myapp").style.display = 'none';
+        document.querySelector("mysettings").style.display = 'none';
+        document.querySelector("logviewerapp-root").style.display = 'none';
+        document.querySelector("dbydportal-root").style.display = 'none';
+        document.querySelector("app-root").style.display = 'none';
+      }
+
+      function clearContent() {
+        document.querySelector("myapp").innerHTML = "";
+        document.querySelector("mysettings").innerHTML = "";
+        document.querySelector("logviewerapp-root").innerHTML = "";
+        document.querySelector("dbydportal-root").innerHTML = "";
+        document.querySelector("app-root").innerHTML = "";
       }
     </script>
   </body>

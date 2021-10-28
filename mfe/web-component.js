@@ -1,7 +1,7 @@
-export class myComponent extends HTMLElement
+export class webComponent extends HTMLElement
 {
   constructor() {
-    console.log(`myComponent: constructor`);
+    console.log(`webComponent: constructor`);
     
     super();
     
@@ -12,7 +12,7 @@ export class myComponent extends HTMLElement
 
     const script = document.createElement('script');
     script.textContent = `(async function(){
-        const remote = await import("/mfe/remote.js");
+        const remote = await import("//aurelhavetta.eu/mfe/remote.js");
         console.warn(remote.x);
       })();`;
     shadowRoot.appendChild(script);
@@ -28,7 +28,7 @@ export class myComponent extends HTMLElement
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
-    console.log(`myComponent: attributeChangedCallback oldVal=${oldVal} | newVal=${newVal}`);
+    console.log(`webComponent: attributeChangedCallback oldVal=${oldVal} | newVal=${newVal}`);
 
     if (oldVal !== newVal) {
       if (name == `data`)
@@ -48,18 +48,15 @@ export class myComponent extends HTMLElement
 
   render() {
     return `
-    <script type="text/javascript">
-      console.log("ddd");
-    </script>
 <sl-tab-group placement="right">
 
-  <sl-tab slot="nav" panel="general">General</sl-tab>
-  <sl-tab slot="nav" panel="custom">Custom</sl-tab>
+  <sl-tab slot="nav" panel="form">Form</sl-tab>
+  <sl-tab slot="nav" panel="buttons">Buttons</sl-tab>
   <sl-tab slot="nav" panel="tooltip">Dropdown</sl-tab>
-  <sl-tab slot="nav" panel="card">Card</sl-tab>
+  <sl-tab slot="nav" panel="qrcode">QR code</sl-tab>
 
 
-  <sl-tab-panel name="general">
+  <sl-tab-panel name="form">
     <sl-form class="formly">
       <sl-input name="name" label="Name" required></sl-input>
       <sl-input id="dataInput" name="data" label="Data" value="${this._data}"></sl-input>
@@ -69,7 +66,7 @@ export class myComponent extends HTMLElement
   </sl-tab-panel>
 
 
-  <sl-tab-panel name="custom">
+  <sl-tab-panel name="buttons">
     <sl-tag type="primary">Primary</sl-tag>
     <sl-tag type="success">Success</sl-tag>
     <sl-tag type="info">Info</sl-tag>
@@ -111,7 +108,7 @@ export class myComponent extends HTMLElement
   </sl-tab-panel>
 
 
-  <sl-tab-panel name="card">
+  <sl-tab-panel name="qrcode">
     <sl-qr-code value="${this._data}" label="Scan this code to visit Shoelace on the web!"></sl-qr-code>
   </sl-tab-panel>
 
@@ -121,4 +118,4 @@ export class myComponent extends HTMLElement
 }
 
 
-window.customElements.define("my-component", myComponent);
+window.customElements.define("web-component", webComponent);

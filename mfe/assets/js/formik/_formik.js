@@ -48,5 +48,7 @@ export class formik extends HTMLElement
   }
 }
 
-
-window.customElements.define("formik-js", formik);
+if (!customElements.get('formik-js'))
+  window.customElements.define("formik-js", formik);
+else
+  console.warn('formik-js customElement already defined')
