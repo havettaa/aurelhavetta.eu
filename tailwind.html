@@ -147,8 +147,10 @@
 
     (async function onload() {
 
-      const remote = await import("//aurelhavetta.eu/mfe/remote.js");
-      console.warn(remote.x);
+      const { getState, setState } = await import("./mfe/store.js");
+      console.warn(getState());
+      setState(2);
+      console.warn(getState());
 
     })();
 

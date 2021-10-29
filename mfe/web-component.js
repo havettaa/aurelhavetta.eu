@@ -1,3 +1,5 @@
+const { getState, setState } = await import("//aurelhavetta.eu/mfe/store.js");
+
 export class webComponent extends HTMLElement
 {
   constructor() {
@@ -12,14 +14,25 @@ export class webComponent extends HTMLElement
 
     const script = document.createElement('script');
     script.textContent = `(async function(){
-        const remote = await import("//aurelhavetta.eu/mfe/remote.js");
-        console.warn(remote.x);
+      const { getState, setState } = await import("//aurelhavetta.eu/mfe/store.js");
+      console.warn(getState());
+      setState("web-component state createElement(script)");
+      console.warn(getState());
       })();`;
     shadowRoot.appendChild(script);
 
 
     this.container = document.createElement("div");
     this.container.innerHTML = this.render();
+    this.container.addEventListener("click", function() {
+      setTimeout(function() {
+        document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
+      }, 1000);
+    });
+    console.warn(getState());
+    setState("web-component state constructor");
+    console.warn(getState());
+
     shadowRoot.appendChild(this.container);
   }
 

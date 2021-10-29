@@ -44,13 +44,14 @@
 
 
       <div class="ui teal button" onclick="loadlogviewer()">Logviewer</div>
-      <div class="ui teal button" onclick="loadDBYDPortal()">DBYDPortal</div>
+      <div class="ui teal button" onclick="loadDBYDPortal()">Angular9</div>
       <!-- <div class="ui teal button" onclick="loadNG()">NG 11</div> -->
-
+      
+      <div class="ui teal button" onclick="loadIframe()">LazyLoad</div>
     </div>
 
     <div style="overflow: scroll; height: 20vh;">
-      <web-component data="String data passed into my-component as attribute value"></web-component>
+      <web-component id="webcom" data="String data passed into my-component as attribute value"></web-component>
     </div>
     <div style="overflow: scroll; height: 75vh;">
       <myapp></myapp>
@@ -58,27 +59,34 @@
       <logviewerapp-root></logviewerapp-root>
       <dbydportal-root></dbydportal-root>
       <app-root></app-root>
+      <iframe id="ifr" src="xhttps://cloud.uibakery.io/share/SaDxD9SjcJ" style="border: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
 
 
     <script>
-      function onLoad() {
+      async function onLoad() {
         hideAll();
 
-        import("/mfe/myapp.js");
-        import("/mfe/mysettings.js");
-        import("/mfe/logviewer.js");
+        const { getState, setState } = await import("//aurelhavetta.eu/mfe/store.js");
+        console.warn(getState());
+        setState("index.html onLoad state");
+        console.warn(getState());
 
-        import("/DBYDPortal/polyfills-es2015.js");
-        import("/DBYDPortal/runtime-es2015.js");
-        import("/DBYDPortal/main-es2015.js");
+        // import("/mfe/myapp.js");
+        // import("/mfe/mysettings.js");
+        // import("/mfe/logviewer.js");
+
+        // import("/DBYDPortal/polyfills-es2015.js");
+        // import("/DBYDPortal/runtime-es2015.js");
+        // import("/DBYDPortal/main-es2015.js");
       }
 
       window.onload = onLoad();
       
 
       async function loadwebcomponent() {
+        document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
         await import("/mfe/web-component.js");
       }
 
@@ -123,6 +131,12 @@
         // await import("/mfe/ang/main.js");
       }
 
+            
+      function loadIframe() {
+        hideAll();
+        document.querySelector("#ifr").style.display = 'inherit';
+      }
+
       
       function hideAll() {
         document.querySelector("myapp").style.display = 'none';
@@ -130,15 +144,9 @@
         document.querySelector("logviewerapp-root").style.display = 'none';
         document.querySelector("dbydportal-root").style.display = 'none';
         document.querySelector("app-root").style.display = 'none';
+        document.querySelector("#ifr").style.display = 'none';
       }
 
-      function clearContent() {
-        document.querySelector("myapp").innerHTML = "";
-        document.querySelector("mysettings").innerHTML = "";
-        document.querySelector("logviewerapp-root").innerHTML = "";
-        document.querySelector("dbydportal-root").innerHTML = "";
-        document.querySelector("app-root").innerHTML = "";
-      }
     </script>
   </body>
 </html>
