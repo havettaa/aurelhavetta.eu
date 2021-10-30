@@ -59,8 +59,8 @@
       <logviewerapp-root></logviewerapp-root>
       <dbydportal-root></dbydportal-root>
       <app-root></app-root>
-      <!-- <iframe id="ifr" src="https://cloud.uibakery.io/share/SaDxD9SjcJ" style="border: 0; width: 100%; height: 100%;"></iframe> -->
-      <iframe id="ifr" src="http://home.aurelhavetta.eu/mfe/" style="border: 0; width: 100%; height: 100%;"></iframe>
+      <iframe id="ifr" src="https://cloud.uibakery.io/share/SaDxD9SjcJ" style="border: 0; width: 100%; height: 100%;"></iframe>
+      <!-- <iframe id="ifr" src="http://home.aurelhavetta.eu/mfe/" style="border: 0; width: 100%; height: 100%;"></iframe> -->
     </div>
 
 
@@ -71,7 +71,7 @@
       async function onLoad() {
         hideAll();
 
-        store = await import("./store.js");
+        store = await import("//aurelhavetta.eu/mfe/store.js");
 
         console.warn(store.getState());
         store.setState("index.html onLoad state");
