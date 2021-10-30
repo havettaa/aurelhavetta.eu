@@ -1,4 +1,4 @@
-const { getState, setState } = await import("//aurelhavetta.eu/mfe/store.js");
+import { getState, setState } from "//aurelhavetta.eu/mfe/store.js";
 
 export class webComponent extends HTMLElement
 {
@@ -13,27 +13,25 @@ export class webComponent extends HTMLElement
 
 
     const script = document.createElement('script');
-    script.textContent = `(async function(){
-      const { getState, setState } = await import("//aurelhavetta.eu/mfe/store.js");
-      console.warn(getState());
-      setState("web-component state createElement(script)");
-      console.warn(getState());
-      })();`;
+    script.textContent = `function btnClick(){
+      console.log("web-component setting state");
+      import("//aurelhavetta.eu/mfe/store.js").then(store => store.setState("web-component state btnClick") );
+      }`;
     shadowRoot.appendChild(script);
 
 
     this.container = document.createElement("div");
     this.container.innerHTML = this.render();
-    this.container.addEventListener("click", function() {
-      setTimeout(function() {
-        document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
-      }, 1000);
-    });
+    // this.container.addEventListener("click", function() {
+    //   setTimeout(function() {
+    //     document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
+    //   }, 1000);
+    // });
+    shadowRoot.appendChild(this.container);
+
     console.warn(getState());
     setState("web-component state constructor");
     console.warn(getState());
-
-    shadowRoot.appendChild(this.container);
   }
 
   static get observedAttributes() {
@@ -80,15 +78,17 @@ export class webComponent extends HTMLElement
 
 
   <sl-tab-panel name="buttons">
-    <sl-tag type="primary">Primary</sl-tag>
-    <sl-tag type="success">Success</sl-tag>
-    <sl-tag type="info">Info</sl-tag>
-    <sl-tag type="warning">Warning</sl-tag>
-    <sl-tag type="danger">Danger</sl-tag>
-    <hr />
-    <sl-button type="primary" size="small" circle><sl-icon name="gear"></sl-icon></sl-button>
-    <sl-button type="success" size="medium" circle><sl-icon name="gear"></sl-icon></sl-button>
-    <sl-button type="danger" size="large" circle><sl-icon name="gear"></sl-icon></sl-button>
+    <div onclick="btnClick()">
+      <sl-tag type="primary">Primary</sl-tag>
+      <sl-tag type="success">Success</sl-tag>
+      <sl-tag type="info">Info</sl-tag>
+      <sl-tag type="warning">Warning</sl-tag>
+      <sl-tag type="danger">Danger</sl-tag>
+      <hr />
+      <sl-button type="primary" size="small" circle><sl-icon name="gear"></sl-icon></sl-button>
+      <sl-button type="success" size="medium" circle><sl-icon name="gear"></sl-icon></sl-button>
+      <sl-button type="danger" size="large" circle><sl-icon name="gear"></sl-icon></sl-button>
+    </div>
   </sl-tab-panel>
 
 
