@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
-    <title>Intergraph G!NIUS Engineering Plotting</title>
+    <title>MFE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <base href="/mfe/">
@@ -66,12 +66,10 @@
 
 
     <script>
-      let store;
-
       async function onLoad() {
         hideAll();
 
-        store = await import("//aurelhavetta.eu/mfe/store.js");
+        const store = await import("//aurelhavetta.eu/mfe/store.js");
 
         console.warn(store.getState());
         store.setState("index.html onLoad state");
@@ -90,9 +88,9 @@
       
 
       async function loadwebcomponent() {
-        document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
+        //document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
         
-        console.warn(store.getState());
+        import("//aurelhavetta.eu/mfe/store.js").then(store => console.log(store.getState()) );
 
         await import("/mfe/web-component.js");
       }
