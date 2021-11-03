@@ -1,7 +1,6 @@
-globalConfig = {
+const globalConfig = {
     "AuthentificationConfig": "/DBYDPortal/assets/gipmock/token",
     "GipServicesUrl": "/DBYDPortal/assets/gipmock/",
     "Authorization": "GIP_AUSKUNFT:",
-    "Login" : "name",
-    "Role" : "role",
+    "Login" : "name"
 }

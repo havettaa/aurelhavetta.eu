@@ -1,157 +1,209 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="IE=edge" />
-    <title>MFE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <title>MFE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <base href="/mfe/">
     
-    <base href="/mfe/">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="/DBYDPortal/assets/styles.css" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="/DBYDPortal/assets/standard.css" type="text/css" />
+  <link rel="stylesheet" href="/DBYDPortal/assets/component.css" type="text/css" />
+  <link rel="stylesheet" href="/DBYDPortal/assets/custom.css" type="text/css" />
+  <link rel="stylesheet" href="/DBYDPortal/assets/materialFonts.css" type="text/css"></link>
+  <link rel="stylesheet" href="/DBYDPortal/assets/materialIcons.css" type="text/css"></link>
+  <link rel="stylesheet" href="/DBYDPortal/assets/ol.css" type="text/css">
+  <link rel="stylesheet" href="/DBYDPortal/assets/gip-buttons.css" type="text/css" />
+  <link rel="stylesheet" href="/DBYDPortal/assets/gip-loader.css" type="text/css" />
+  <script src="/DBYDPortal/assets/configuration.json" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/semantic.fonts.css">
+  <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/semantic.min.css">
+
+  <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/js/jstable/colors.css">
+  <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/js/jstable/jstable.css">
+  
+  <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/_imports.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.58/dist/components/qr-code/qr-code.js"></script>
+
+  <style>
+    body {
+      background-color: #eee;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="buttons">
+    <div class="ui teal button" onclick="loadwebcomponent()">Web-Component</div>
+    <div class="ui teal button" onclick="loadmyapp()">MyApp</div>
+    <div class="ui teal button" onclick="loadmysettings()">MySettings</div>
+
+
+    <div class="ui teal button" onclick="loadlogviewer()">Logviewer</div>
+    <div class="ui teal button" onclick="loadDBYDPortal()">Angular9</div>
+    <!-- <div class="ui teal button" onclick="loadNG()">NG 11</div> -->
+
+    <div class="ui teal button" onclick="loadIframe()">loadIframe</div>
+  </div>
+
+  <div style="overflow: scroll; height: 20vh;">
+    <web-component id="webcom" data="String data passed into my-component as attribute value"></web-component>
+  </div>
+  <div id="mfe-outlet" style="overflow: scroll; height: 75vh;">
+    <!-- <preact-app></preact-app>
+    <myapp></myapp>
+    <mysettings></mysettings>
+    <logviewerapp-root></logviewerapp-root>
+    <dbydportal-root></dbydportal-root>
+    <app-root></app-root> -->
+    <!-- <iframe id="ifr" src="https://cloud.uibakery.io/share/SaDxD9SjcJ" style="border: 0; width: 100%; height: 100%;"></iframe> -->
+    <iframe id="ifr" src="https://staltz.com/unidirectional-user-interface-architectures.html" style="border: 0; width: 100%; height: 100%; display: none;"></iframe>
+  </div>
+
+
+
+  <script>
+
+
+
+    window.onload = onLoad();
     
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="/DBYDPortal/assets/styles.css" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="/DBYDPortal/assets/standard.css" type="text/css" />
-    <link rel="stylesheet" href="/DBYDPortal/assets/component.css" type="text/css" />
-    <link rel="stylesheet" href="/DBYDPortal/assets/custom.css" type="text/css" />
-    <link rel="stylesheet" href="/DBYDPortal/assets/materialFonts.css" type="text/css"></link>
-    <link rel="stylesheet" href="/DBYDPortal/assets/materialIcons.css" type="text/css"></link>
-    <link rel="stylesheet" href="/DBYDPortal/assets/ol.css" type="text/css">
-    <link rel="stylesheet" href="/DBYDPortal/assets/gip-buttons.css" type="text/css" />
-    <link rel="stylesheet" href="/DBYDPortal/assets/gip-loader.css" type="text/css" />
-    <script src="/DBYDPortal/assets/configuration.json" type="text/javascript"></script>
-  
-    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/semantic.fonts.css">
-    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/semantic.min.css">
 
-    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/js/jstable/colors.css">
-    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/js/jstable/jstable.css">
+
+    async function onLoad() {
+      mfeconfig = await loadMfeConfig();
+
+      hideAll();
+
+      const store = await import("//aurelhavetta.eu/mfe/store.js");
+
+      console.warn(store.getState());
+      store.setState("index.html onLoad state");
+      console.warn(store.getState());
+
+      const res = await fetch('https://api.github.com/gists/eb4104ed6407a9bee20280c03690c25e');
+      const json = await res.json();
+      console.log(json?.files?.['preact-app.js']?.content)
+
+      const s = document.createElement('script');
+      s.setAttribute('type','module');
+      s.textContent = json?.files?.['preact-app.js']?.content;
+      document.body.appendChild(s);
+    }
+
+
+
+    async function loadMfeConfig() {
+      const res = await fetch('https://api.github.com/gists/93a66f4e019f178997eeaaa7b6d1e24e');
+      const json = await res.json();
+      const mfeconfig = JSON.parse(json?.files?.['mfeconfig.json']?.content);
+
+      createMfeTags(mfeconfig);
+      importMfeJsFiles(mfeconfig);
+    }
+
+
+
+    function createMfeTags(mfeconfig) {
+      for (const e of mfeconfig?.files) {
+        const script = document.createElement("script");
+        script.setAttribute('type','module');
+        script.textContent = `import("${e?.url}")`;
+        console.log(script.textContent)
+        document.body.appendChild(script);
+      }
+    }
     
-    <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/_imports.css">
-
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.58/dist/components/qr-code/qr-code.js"></script>
-  
-  
-  </head>
-  <body>
-
-    <div>
-      <div class="ui teal button" onclick="loadwebcomponent()">Web-Component</div>
-      <div class="ui teal button" onclick="loadmyapp()">MyApp</div>
-      <div class="ui teal button" onclick="loadmysettings()">MySettings</div>
-
-
-      <div class="ui teal button" onclick="loadlogviewer()">Logviewer</div>
-      <div class="ui teal button" onclick="loadDBYDPortal()">Angular9</div>
-      <!-- <div class="ui teal button" onclick="loadNG()">NG 11</div> -->
-      
-      <div class="ui teal button" onclick="loadIframe()">LazyLoad</div>
-    </div>
-
-    <div style="overflow: scroll; height: 20vh;">
-      <web-component id="webcom" data="String data passed into my-component as attribute value"></web-component>
-    </div>
-    <div style="overflow: scroll; height: 75vh;">
-      <myapp></myapp>
-      <mysettings></mysettings>
-      <logviewerapp-root></logviewerapp-root>
-      <dbydportal-root></dbydportal-root>
-      <app-root></app-root>
-      <iframe id="ifr" src="https://cloud.uibakery.io/share/SaDxD9SjcJ" style="border: 0; width: 100%; height: 100%;"></iframe>
-      <!-- <iframe id="ifr" src="http://home.aurelhavetta.eu/mfe/" style="border: 0; width: 100%; height: 100%;"></iframe> -->
-    </div>
 
 
 
-    <script>
-      async function onLoad() {
-        hideAll();
+    function importMfeJsFiles(mfeconfig) {
+      const mfeParentTag = document.getElementById('mfe-outlet');
 
-        const store = await import("//aurelhavetta.eu/mfe/store.js");
-
-        console.warn(store.getState());
-        store.setState("index.html onLoad state");
-        console.warn(store.getState());
-
-        import("/mfe/myapp.js");
-        import("/mfe/mysettings.js");
-        import("/mfe/logviewer.js");
-
-        import("/DBYDPortal/polyfills-es2015.js");
-        import("/DBYDPortal/runtime-es2015.js");
-        import("/DBYDPortal/main-es2015.js");
+      for (const e of mfeconfig?.htmltags) {
+        const tag = document.createElement(e?.tagname);
+        tag.style.display = 'none';
+        mfeParentTag.appendChild(tag);
       }
+    }
+    
 
-      window.onload = onLoad();
-      
 
-      async function loadwebcomponent() {
-        //document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
-        
-        import("//aurelhavetta.eu/mfe/store.js").then(store => console.log(store.getState()) );
+    async function loadwebcomponent() {
+      document.querySelector("preact-app").style.display = 'inherit';
 
-        await import("/mfe/web-component.js");
+      //document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
+
+      import("//aurelhavetta.eu/mfe/store.js").then(store => console.log(store.getState()));
+
+      await import("/mfe/web-component.js");
+    }
+
+
+    async function loadmyapp() {
+      hideAll();
+      document.querySelector("myapp").style.display = 'inherit';
+
+      await import("/mfe/myapp.js");
+    }
+
+    async function loadmysettings() {
+      hideAll();
+      document.querySelector("mysettings").style.display = 'inherit';
+
+      await import("/mfe/mysettings.js");
+    }
+
+
+    async function loadlogviewer() {
+      hideAll();
+      document.querySelector("logviewerapp-root").style.display = 'inherit';
+      await import("/mfe/logviewer.js");
+    }
+
+
+    async function loadDBYDPortal() {
+      hideAll();
+      document.querySelector("dbydportal-root").style.display = 'inherit';
+      await import("/DBYDPortal/polyfills-es2015.js");
+      await import("/DBYDPortal/runtime-es2015.js");
+      await import("/DBYDPortal/main-es2015.js");
+    }
+
+
+    async function loadNG() {
+      hideAll();
+      document.querySelector("app-root").style.display = 'inherit';
+      await import("/mfe/ang.js");
+      // await import("/mfe/ang/polyfills.js");
+      // await import("/mfe/ang/runtime.js");
+      // await import("/mfe/ang/main.js");
+    }
+
+
+    function loadIframe() {
+      hideAll();
+      document.querySelector("#ifr").style.display = 'inherit';
+    }
+
+
+    function hideAll() {
+      for (const e of document.getElementById('mfe-outlet').children) {
+        e.style.display = 'none';
       }
+    }
 
+  </script>
+</body>
 
-      async function loadmyapp() {
-        hideAll();
-        document.querySelector("myapp").style.display = 'inherit';
-
-        await import("/mfe/myapp.js");
-      }
-
-      async function loadmysettings() {
-        hideAll();
-        document.querySelector("mysettings").style.display = 'inherit';
-
-        await import("/mfe/mysettings.js");
-      }
-
-      
-      async function loadlogviewer() {
-        hideAll();
-        document.querySelector("logviewerapp-root").style.display = 'inherit';
-        await import("/mfe/logviewer.js");
-      }
-
-
-      async function loadDBYDPortal() {
-        hideAll();
-        document.querySelector("dbydportal-root").style.display = 'inherit';
-        await import("/DBYDPortal/polyfills-es2015.js");
-        await import("/DBYDPortal/runtime-es2015.js");
-        await import("/DBYDPortal/main-es2015.js");
-      }
-
-
-      async function loadNG() {
-        hideAll();
-        document.querySelector("app-root").style.display = 'inherit';
-        await import("/mfe/ang.js");
-        // await import("/mfe/ang/polyfills.js");
-        // await import("/mfe/ang/runtime.js");
-        // await import("/mfe/ang/main.js");
-      }
-
-            
-      function loadIframe() {
-        hideAll();
-        document.querySelector("#ifr").style.display = 'inherit';
-      }
-
-      
-      function hideAll() {
-        document.querySelector("myapp").style.display = 'none';
-        document.querySelector("mysettings").style.display = 'none';
-        document.querySelector("logviewerapp-root").style.display = 'none';
-        document.querySelector("dbydportal-root").style.display = 'none';
-        document.querySelector("app-root").style.display = 'none';
-        document.querySelector("#ifr").style.display = 'none';
-      }
-
-    </script>
-  </body>
 </html>
