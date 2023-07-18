@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lit.js Web Component with Reactivity and Attributes</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet" type="text/css" /> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
+  <!-- <script src="../js/htmx.min.js"></script> -->
+  <!-- <script type="module" src="litNotUsedComponent.js" crossorigin="anonymous"></script> -->
+
+</head>
+
+<body>
+  <header hx-get="header.html" hx-trigger="load delay:0s"></header>
+  <section hx-get="accordion.html" hx-trigger="load delay:0s"></section>
+  <section hx-get="/benji.html" hx-trigger="load delay:0s"></section>
+
+  <!-- Solid App -->
+  <div id="solidContainer"></div>
+  <script type="module">
+    import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
+    import { render } from "https://cdn.skypack.dev/solid-js/web";
+    import solidjsHtml from "https://cdn.skypack.dev/solid-js/html";
+
+    const solidjs = () => {
+      const [count, setCount] = createSignal(1), timer = setInterval(() => setCount(count() + 1), 5000);
+      onCleanup(() => clearInterval(timer));
+
+      return solidjsHtml`
+        <article class="prose">
+          <h3 class="text-4xl">${count}</h3>
+          <ui-header myitems="${count}" mydata="${count}"></ui-header>
+        </article>
+      `;
+    };
+    render(solidjs, document.querySelector('#solidContainer'));
+  </script>
+
+  <ui-litnotusedcomponent id="notlit" data="DATA PASSED ${this.mydata} - ${this.btnType} DATA END"></ui-litnotusedcomponent>
+
+
+  <!-- dropdown -->
+  <div class="dropdown m-4">
+    <div tabindex="0" class="m-1 btn">Dropdown</div>
+    <ul tabindex="0" class="p-2 menu dropdown-content bg-neutral text-neutral-content rounded-box w-52">
+      <li><a>Item 1</a></li>
+      <li><a>Item 2</a></li>
+    </ul>
+  </div>
+
+  <!-- modal button -->
+  <label for="my-modal" class="btn modal-button">Modal</label>
+  <!-- modal content -->
+  <input type="checkbox" id="my-modal" class="modal-toggle">
+  <div class="modal">
+    <div class="modal-box">
+      <p>Enim dolorem dolorum omnis atque necessitatibus. Consequatur aut adipisci qui iusto illo eaque. Consequatur
+        repudiandae et. Nulla ea quasi eligendi. Saepe velit autem minima.</p>
+      <div class="modal-action">
+        <label for="my-modal" class="btn">Close</label>
+      </div>
+    </div>
+  </div>
+
+
+  <ui-header myitems='[{"id":"2", "avl": "1", "name": "Hugo"}, {"id":"3", "avl": "0", "name": "Mary"}]'' mydata="xx" btnType="primary" backgroundColor="green"></ui-header>
+
+  <ui-header myitems='[{"id":"3", "avl": "0", "name": "Mary"}, {"id":"5", "avl": "1", "name": "Jane"}]'' mydata="yy" btnType="secondary" backgroundColor="blue"></ui-header>
+
+  <footer hx-get="footer.html" hx-trigger="load delay:0s"></footer>
+</body>
+
+<script type="module">
+
+  import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@latest/+esm';
+
+  import { litNotUsedComponent } from "./litNotUsedComponent.js";
+
+  class UIHeader extends LitElement {
+    static properties = {
+      myitems: { type: String },
+      mydata: { type: String },
+      btnType: { type: String },
+      backgroundColor: { type: String },
+    };
+
+    constructor() {
+      super();
+
+      this.root = this.attachShadow({ mode: 'open' });
+
+      this.btnType = 'accent';
+      this.btnText = 'Hide';
+      this.displayState = 'block';
+      this.backgroundColor = 'brown';
+
+      this.myitemsObj = [ { id: 2, avl: 1, name: "Hugo" }, { id: 3, avl: 0, name: "Mary" }, { id: 5, avl: 1, name: "Jane" } ];
+    }
+
+    //static get observedAttributes() {
+    //   return ["backgroundColor", "mydata"];
+    //}
+
+    attributeChangedCallback(name, oldVal, newVal) {
+      console.log(`${name} changed to ${newVal}`);
+      if (oldVal !== newVal) {
+        if (name == `myitems`) {
+          this.myitemsObj = JSON.parse(newVal);
+        }
+        else
+          console.log(`${name} changed to ${newVal}`);
+      }
+      super.attributeChangedCallback(name, oldVal, newVal);
+    }
+
+    toggleShowAndHideText(event) {
+      console.log(`### button command ${this.btnText} , ${this.displayState}, ${this.backgroundColor}`);
+      if (this.btnText === 'Show') {
+        console.log(`Show ${this.getAttribute("backgroundColor")}`);
+        this.displayState = 'block';
+        this.btnText = 'Hide';
+        this.backgroundColor = 'red';
+      } else {
+        console.log(`Hide ${this.getAttribute("backgroundColor")}`);
+        this.displayState = 'none';
+        this.btnText = 'Show';
+        this.backgroundColor = this.getAttribute('backgroundColor');
+      }
+      console.log(`### next time ${this.btnText} , ${this.displayState}, ${this.backgroundColor} \n------------------------`);
+    }
+
+    render() {
+      return html`
+        <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+        <style>
+          button {
+            background: ${this.backgroundColor};
+          }
+          #info-box {
+            display: ${this.displayState};
+          }  
+        </style>
+
+        <ui-litNotUsedComponent id="webcom" data="---DATA BEGIN ${this.mydata} - ${this.btnType} DATA END---"></ui-litNotUsedComponent>
+
+        <button class="btn btn-${this.btnType}" @click=${this.toggleShowAndHideText}>${this.btnText} - ${this.mydata} - ${this.btnType}</button>
+        <section id="info-box">
+          <section>
+            ${this.myitemsObj.map(itm => html`
+              <div class="avatar ${itm.avl == "1" ? 'online' : 'offline'} m-10" title="${itm.name}">
+                <div class="rounded-full w-24 h-24">
+                  <img src="http://daisyui.com/tailwind-css-component-profile-${itm.id}@94w.png">
+                </div>
+              </div>
+            `)}
+          </section>
+
+          <!-- tab -->
+          <div class="p-4 tabs">
+            <button class="tab tab-lifted">Tab 1</button>
+            <button class="tab tab-lifted tab-active">Tab 2</button>
+            <button class="tab tab-lifted">Tab 3</button>
+          </div>
+
+        </section>
+        `;
+    }
+  }
+
+  customElements.define('ui-header', UIHeader);
+
+</script>
+
+</html>

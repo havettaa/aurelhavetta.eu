@@ -1,6 +1,12 @@
 <html>
 
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script type="module" src="custom-dropdown.js"></script>
+  <script type="module" src="my-component.js"></script>
+
   <style type="text/css">
     .redFont {
       color: red;
@@ -13,79 +19,120 @@
 </head>
 
 <body>
+  <main data-theme="coffee" class="p-10">
 
-  <h1>
-    Test for benji
-  </h1>
+    <header class="flex flex-row justify-between">
+      <h1 class="text-4xl">
+        Test for Benji
+      </h1>
 
-  <article id="myArticle1" class="redFont">
-    Article 1
-  </article>
+      <div class="navbar-end">
+        <label for="my-modal-4" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </label>
+      </div>
+      <area>
+      <input type="checkbox" id="my-modal-4" class="modal-toggle">
+      <div class="modal">
+        <div class="modal-box relative">
+          <label for="my-modal-4"
+            class="btn btn-sm btn-circle border-none bg-base-100 text-black font-bold absolute right-2 top-2">✕</label>
+          <div class="form-control pr-6">
+            <input type="text" placeholder="Search" class="input input-bordered bg-base-100 ">
+          </div>
+        </div>
+      </div>
+      </area>
+    </header>
 
-  <hr />
+    <hr class="m-10" />
+    
+    <section class="flex flex-col justify-between">
+      <custom-dropdown class="m-16"></custom-dropdown>
 
-  <article id="myArticle2" class="redFont">
-    Article 2
-  </article>
+      <div class="flex flex-row justify-around">
+        <div class="one-half column">
+          <my-component id="prvy" name="First custom lit-element:"></my-component>
+        </div>
+        <div class="one-half column">
+          <my-component id="druhy" name="Second custom lit-element:"></my-component>
+        </div>
+      </div>
 
-  <hr />
 
-  <article id="myArticle3" class="blueFont">
-    Article 3
-  </article>
+      <script>
+        const prvy = document.querySelector('#prvy');
+        this.interval = window.setInterval(() => {
+          prvy.vonkajsia = new Date().toLocaleTimeString();
+        }, 1000);
+      </script>
+    </section>
 
-  <hr />
+    <section>
+      <ul class="menu bg-base-100 w-56 rounded-box">
+        <li id="myArticle1">
+          <a class="redFont">Article 1</a>
+        </li>
+        <li id="myArticle2">
+          <a class="redFont">Article 2</a>
+        </li>
+        <li id="myArticle3" class="bordered">
+          <a class="blueFont ">Article 3</a>
+        </li>
+        <li id="myArticle4">
+          <a class="redFont">Article 4</a>
+        </li>
+      </ul>
 
-  <article id="myArticle4" class="redFont">
-    Article 4
-  </article>
+      <button class="btn btn-primary" onclick="myOnclick()">Click to Set Date</button>
+    </section>
+  </main>
 
-  <hr />
-
-  <button onclick="myOnclick()">click me</button>
-  
 </body>
 
 
 <script>
-function myOnclick() {
-  // toto je moja poznamka k tomut teraz
-  console.warn("event dispatched now.")
+  function myOnclick() {
+    // toto je moja poznamka k tomut teraz
+    console.warn("event dispatched now.")
 
-  // Get all elements that have cssClass .redFont
-  const myArray = document.querySelectorAll(".redFont");
-
-
-  // Create new instance of class DateManager
-  const instance = new DateManager();
-
-  // Set property dateArray on this new instance
-  instance.dateArray = myArray;
-  
-  // Call method setdates
-  instance.setDates(myArray);
-}
+    // Get all elements that have cssClass .redFont
+    const myArray = document.querySelectorAll(".redFont");
 
 
-// Define class DateManager
-class DateManager {
-  dateArray;
+    // Create new instance of class DateManager
+    const instance = new DateManager();
 
-  setDates() {
-    let index = 0;
+    // Set property dateArray on this new instance
+    instance.dateArray = myArray;
 
-    // Iterate over all elements in dateArray 
-    this.dateArray.forEach(e => {
-      console.info(index)
-
-      const datum = new Date();
-
-      e.innerHTML = datum.toLocaleTimeString();
-      
-      index++;
-    });
+    // Call method setdates
+    instance.setDates(myArray);
   }
-}
+
+
+  // Define class DateManager
+  class DateManager {
+    dateArray;
+
+    setDates() {
+      let index = 0;
+
+      // Iterate over all elements in dateArray 
+      this.dateArray.forEach(e => {
+        console.info(index)
+
+        const datum = new Date();
+
+        e.innerHTML = datum.toLocaleTimeString();
+
+        index++;
+      });
+    }
+  }
 
 
 </script>

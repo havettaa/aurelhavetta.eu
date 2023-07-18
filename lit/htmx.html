@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>htmx test</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet" type="text/css" /> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
+  <!-- <script src="../js/htmx.min.js"></script> -->
+  <!-- <script type="module" src="litNotUsedComponent.js" crossorigin="anonymous"></script> -->
+
+</head>
+
+<body>
+  <header hx-get="header.html" hx-trigger="load delay:0s"></header>
+  <section hx-get="/benji.html" hx-trigger="load delay:0s"></section>
+
+  <!-- Solid App -->
+  <div id="solidContainer"></div>
+  <script type="module">
+    import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
+    import { render } from "https://cdn.skypack.dev/solid-js/web";
+    import solidjsHtml from "https://cdn.skypack.dev/solid-js/html";
+
+    import { litNotUsedComponent } from "./litNotUsedComponent.js";
+
+    const solidjs = () => {
+      const [count, setCount] = createSignal(1), timer = setInterval(() => setCount(count() + 1), 2000);
+      onCleanup(() => clearInterval(timer));
+
+      return solidjsHtml`
+        <article class="prose">
+          <h3 class="text-4xl">SolidJS = ${count}</h3>
+          <ui-litnotusedcomponent data="${count}"></ui-litnotusedcomponent>
+        </article>
+      `;
+    };
+    render(solidjs, document.querySelector('#solidContainer'));
+  </script>
+
+  <footer hx-get="footer.html" hx-trigger="load delay:0s"></footer>
+  
+</body>
+</html>

@@ -25,8 +25,8 @@ export class MyComponent extends LitElement {
     
   render() {
     return html`<sl-spinner></sl-spinner> <b>${this.name}</b> <br>
-     <i>vonkajsia hodnota:</i> <code>${this.vonkajsia}</code> <br>
-     <i>z vnutra nastavene:</i> <code>${this.now}</code> <br>`;
+      <i>outer value:</i> <code>${this.vonkajsia}</code> <br>
+      <i>inner value:</i> <code>${this.now}</code> <br>`;
   }
 }
 

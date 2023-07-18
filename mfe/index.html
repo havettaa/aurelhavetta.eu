@@ -29,10 +29,11 @@
   
   <link rel="stylesheet" href="//aurelhavetta.eu/mfe/assets/css/_imports.css">
 
-  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.58/dist/components/qr-code/qr-code.js"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
@@ -56,10 +57,10 @@
     <div class="ui teal button" onclick="loadIframe()">loadIframe</div>
   </div>
 
-  <div style="overflow: scroll; height: 20vh;">
+  <div style="overflow: scroll; height: 10vh;">
     <web-component id="webcom" data="String data passed into my-component as attribute value"></web-component>
   </div>
-  <div id="mfe-outlet" style="overflow: scroll; height: 75vh;">
+  <div id="mfe-outlet" style="overflow: scroll; height: 90vh;">
     <!-- <preact-app></preact-app>
     <myapp></myapp>
     <mysettings></mysettings>
@@ -67,7 +68,7 @@
     <dbydportal-root></dbydportal-root>
     <app-root></app-root> -->
     <!-- <iframe id="ifr" src="https://cloud.uibakery.io/share/SaDxD9SjcJ" style="border: 0; width: 100%; height: 100%;"></iframe> -->
-    <iframe id="ifr" src="https://staltz.com/unidirectional-user-interface-architectures.html" style="border: 0; width: 100%; height: 100%; display: none;"></iframe>
+    <iframe id="ifr" src="/lit" style="border: 0; width: 100%; height: 100%; display: none;"></iframe>
   </div>
 
 
@@ -84,6 +85,7 @@
       mfeconfig = await loadMfeConfig();
 
       hideAll();
+      loadwebcomponent();
 
       const store = await import("//aurelhavetta.eu/mfe/store.js");
 

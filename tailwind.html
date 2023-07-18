@@ -11,7 +11,10 @@
 
   <link rel="icon" type="image/png" href="images/favicon.ico" />
 
-  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" /> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
 
 </head>
 
@@ -50,18 +53,18 @@
         </div>
 
         <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
-          <a href="/" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">
-            Home</a>
-          <a href="/"
+          <a href="mfe" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">
+            MFE</a>
+          <a href="samples/5"
             class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">
-            About</a>
-          <a href="/"
+            Ria CMS</a>
+          <a href="samples/2/#g=1&p=mo_detail"
             class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">
-            Features</a>
-          <a href="/mfe"
+            PMIS</a>
+          <a href="admin"
             class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">
             Login</a>
-          <a href="/mfe"
+          <a href="samples/1"
             class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">
             Signup</a>
         </div>
@@ -108,37 +111,7 @@
 
   </div>
 
-
-  <footer class="footer bg-white relative pt-1">
-    <div class="container mx-auto px-6">
-
-      <div class="sm:flex sm:mt-8">
-        <div class="mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-between text-center">
-          <div class="flex flex-col">
-            <span class="font-bold text-gray-700 uppercase mb-2">Footer header 1</span>
-            <span class="my-2"><a href="#" class="text-blue-700  text-md hover:text-blue-500">Link me too</a></span>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-bold text-gray-700 uppercase mt-4 md:mt-0 mb-2">Footer header 2</span>
-            <span class="my-2"><a href="#" class="text-blue-700 text-md hover:text-blue-500">Link me too</a></span>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-bold text-gray-700 uppercase mt-4 md:mt-0 mb-2">Footer header 3</span>
-            <span class="my-2"><a href="#" class="text-blue-700  text-md hover:text-blue-500">Link me too</a></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container mx-auto px-6">
-      <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
-        <div class="sm:w-2/3 text-center py-6">
-          <p class="text-sm text-blue-700 font-bold mb-2">
-            © 2021
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer hx-get="tailwind-footer.html" hx-trigger="load delay:0s"></footer>
 
 
 
@@ -155,7 +128,7 @@
     })();
 
     function getStartedClick() {
-      console.log(w)
+      window.location = "admin"
     }
   </script>
 </body>

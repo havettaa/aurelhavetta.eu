@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -21,23 +22,16 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.css">
-
+  
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.25/dist/shoelace/shoelace.esm.js"></script>
-  <script type="module" src="componentik.js"></script>
-  <script type="module" src="custom-input.js"></script>
-  <script type="module" src="custom-dropdown.js"></script>
-  <script type="module" src="main.js"></script>
 
-  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.ico">
 
 </head>
+
 <body>
 
   <!-- Primary Page Layout
@@ -47,180 +41,11 @@
     <div class="container">
       <div class="row">
         <div class="one-half column">
-          <h1 class="hero-heading"><a href="tailwind.html"><h2>Aurel Havetta</h2>  <h6>....click for Tailwind css desing</h6></a></h1>
-          
-
-
-          <custom-componentik></custom-componentik>
-
-
-
+          <h1 class="hero-heading"><a href="tailwind.html">
+              <h2>Aurel Havetta</h2>
+              <h6>....click for Tailwind css desing</h6>
+            </a></h1>
         </div>
-        <div class="column">
-
-          <hr />
-          
-          <div class="row">
-            <div class="one-half column">
-              <my-component id="prvy" name="First custom lit-element:"></my-component>
-            </div>
-            <div class="one-half column">
-              <my-component id="druhy" name="Second custom lit-element:"></my-component>
-            </div>
-          </div>
-
-          <hr />
-
-          <script>
-            const prvy = document.querySelector('#prvy');
-            this.interval = window.setInterval(() => {
-              prvy.vonkajsia = new Date().toLocaleTimeString();
-            }, 1000);
-          </script>
-
-
-        </div>
-        <div class="column">
-
-          <div class="alert-toast">
-              
-            <sl-tooltip content="This is a tooltip for dialog button, just click to open new window.">
-              <a class="button button-primary open-drawer">Open Drawer</a>
-            </sl-tooltip>
-
-
-            <sl-button type="primary">Primary</sl-button>
-            <sl-button type="success">Success</sl-button>
-            <sl-button type="info">Info</sl-button>
-            <sl-button type="warning">Warning</sl-button>
-            <sl-button type="danger">Danger</sl-button>
-          
-            <sl-alert type="primary" duration="3000" closable>
-              <sl-icon slot="icon" name="info-circle"></sl-icon>
-              <strong>This is super informative</strong><br>
-              You can tell by how pretty the alert is.
-            </sl-alert>
-          
-            <sl-alert type="success" duration="3000" closable>
-              <sl-icon slot="icon" name="check2-circle"></sl-icon>
-              <strong>Your changes have been saved</strong><br>
-              You can safely exit the app now.
-            </sl-alert>
-          
-            <sl-alert type="info" duration="3000" closable>
-              <sl-icon slot="icon" name="gear"></sl-icon>
-              <strong>Your settings have been updated</strong><br>
-              Settings will take affect on next login.
-            </sl-alert>
-          
-            <sl-alert type="warning" duration="3000" closable>
-              <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
-              <strong>Your session has ended</strong><br>
-              Please login again to continue.
-            </sl-alert>
-          
-            <sl-alert type="danger" duration="3000" closable>
-              <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
-              <strong>Your account has been deleted</strong><br>
-              We're very sorry to see you go!
-            </sl-alert>
-          </div>
-          
-          <script>
-            const container = document.querySelector('.alert-toast');
-          
-            ['primary', 'success', 'info', 'warning', 'danger'].map(type => {
-              const button = container.querySelector(`sl-button[type="${type}"]`);
-              const alert = container.querySelector(`sl-alert[type="${type}"]`);
-          
-              button.addEventListener('click', () => alert.toast());
-            });
-          </script>
-          
-
-          <sl-dialog label="Dialog" class="dialog-out">
-            <div class="details-group-example">
-              <sl-details summary="First" open>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </sl-details>
-        
-              <sl-details summary="Second">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </sl-details>
-        
-              <sl-details summary="Third">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </sl-details>
-            </div>
-            <sl-button slot="footer" type="primary">Close</sl-button>
-          </sl-dialog>
-
-
-
-
-          <sl-drawer label="Drawer" class="drawer-ov">
-            <sl-dialog label="Dialog" class="dialog-in">
-              <sl-card class="card-overview">
-                <img 
-                  slot="image" 
-                  src="https://images.unsplash.com/photo-1559209172-0ff8f6d49ff7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" 
-                  alt="A kitten sits patiently between a terracotta pot and decorative grasses."
-                >
-          
-                <strong>Mittens</strong><br>
-                This kitten is as cute as he is playful. Bring him home today!<br>
-                <small>6 weeks old</small>
-          
-                <div slot="footer">
-                  <sl-button type="primary" pill>More Info</sl-button>
-                  <sl-rating></sl-rating>
-                </div>
-              </sl-card>
-              <sl-button slot="footer" type="primary">Close</sl-button>
-            </sl-dialog>
-            
-            <sl-button class="dialog-in-open">Open Dialog inside</sl-button>
-            <sl-button class="dialog-out-open">Open Dialog outside</sl-button>
-            
-            <sl-button slot="footer" type="success">Close</sl-button>
-          </sl-drawer>
-          
-
-          <script>
-            (() => {
-              const dialogOut = document.querySelector('.dialog-out');
-              document.querySelector('.dialog-out-open').addEventListener('click', () => {
-                dialogOut.show();
-                const container = document.querySelector('.details-group-example');
-                container.addEventListener('sl-show', event => {
-                  [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
-                });
-              });
-              const closeButtonOut = dialogOut.querySelector('sl-button[slot="footer"]');
-              closeButtonOut.addEventListener('click', () => dialogOut.hide());
-
-              const dialog = document.querySelector('.dialog-in');
-              document.querySelector('.dialog-in-open').addEventListener('click', () => dialog.show());
-              const closeButton = dialog.querySelector('sl-button[slot="footer"]');
-              closeButton.addEventListener('click', () => dialog.hide());
-            
-              const drawer = document.querySelector('.drawer-ov');
-              const opendrawer = document.querySelector('.open-drawer');
-              opendrawer.addEventListener('click', () => {
-                drawer.show();
-                document.querySelector('.formly').addEventListener('sl-submit', event => alert(event.detail.formData));
-              });
-              const closedrawer = drawer.querySelector('sl-button[type="success"]');
-              closedrawer.addEventListener('click', () => drawer.hide());
-            })();
-          </script>
-
-          
-        </div>
-
       </div>
     </div>
   </div>
@@ -232,53 +57,57 @@
     <div class="container">
       <div class="row">
         <div class="one-third column value">
-          <h2 class="value-multiplier">Single SPA</h2>
+          <h2 class="value-multiplier">NG Plugins</h2>
           <h5 class="value-heading">
-            <a class="button button-primary" href="https://aurelhavetta.eu/mfe/">Simple MFE</a>
+            <a class="button button-primary" href="grid">Simple MFE</a>
           </h5>
           <p class="value-description">
-            <a href="https://aurel.cyou/grid/">Combine vue + angular on one page</a>
+            Combine vue + angular on one page
           </p>
         </div>
         <div class="one-third column value">
           <h2 class="value-multiplier">Generics</h2>
           <h5 class="value-heading">
-              <a class="button button-primary" href="samples/4/#DataApproval">Demo app</a>
+            <a class="button button-primary" href="samples/4/#DataApproval">Demo app</a>
           </h5>
           <p class="value-description">
-              SPA tree grid component
+            SPA web app
           </p>
         </div>
         <div class="one-third column value">
           <h2 class="value-multiplier">MO Repo</h2>
           <h5 class="value-heading">
-              <a class="button button-primary" href="samples/3/usag/morepository/MOREPOSITORY/WebContent/#/?tab=tabAll">Open UI5</a>
+            <a class="button button-primary"
+              href="samples/3/usag/morepository/MOREPOSITORY/WebContent/#/?tab=tabAll">Open UI5</a>
           </h5>
           <p class="value-description">
-              No css only plain JAM Stack
+            No css only plain JAM Stack
           </p>
-          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="section get-help">
     <div class="container">
-      <h3 class="section-heading">Samples</h3>
-      <p class="section-description">Older code samples</p>
-      <a class="button button-primary" href="samples">See All</a>
+      <div class="row">
+        <div class="column">
+          <h3 class="section-heading">Samples</h3>
+          <p class="section-description">Older code samples</p>
+          <a class="button button-primary" href="samples">See All</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="section categories">
     <div class="container">
-      <h3 class="section-heading">Angular project sample</h3>
+      <h3 class="section-heading">Micro frontend architecture</h3>
       <p class="value-description">
-        <h5>user: <a class="get-help">test@016</a></h5>
-        <h5>password: <a class="get-help">test</a></h5>
+      <h5>Lazy loading: <a class="get-help">federated modules</a></h5>
       </p>
       <p class="section-description">
-          <a class="button button-primary" href="https://github.com/havetta/holy-kocoin">BTC Trading Bot</a>
+        <a class="button button-primary" href="mfe">MFE</a>
       </p>
       <div class="row">
         <div class="one-half column category">
@@ -292,7 +121,8 @@
 
 
 
-<!-- End Document
+  <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
+
 </html>
