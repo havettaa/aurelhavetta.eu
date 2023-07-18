@@ -1,21 +1,20 @@
-import { getState, setState } from "https://aurelhavetta.eu/mfe/store.js";
+import { store, getState, setState } from "./store.js";
 
 export class litNotUsedComponent extends HTMLElement
 {
   constructor() {
-    console.log(`litNotUsedComponent: constructor`);
     super();
-    this._statedata = `Constructor initial data`;
+    this._statedata = `Constructor set _statedata`;
 
     const shadowRoot = this.attachShadow({ mode: "open" });
 
     const script = document.createElement('script');
     script.textContent = `
       function btnGetState(){
-        import("https://aurelhavetta.eu/mfe/store.js").then(store => console.log(store.getState()) );
+        import("./store.js").then(lib => console.log(lib.getState()) );
       }
       function btnSetState(){
-        import("https://aurelhavetta.eu/mfe/store.js").then(store => store.setState("setState " + store.state) );
+        import("./store.js").then(lib => lib.setState("setState " + lib.store.objState) );
       }
       `;
     shadowRoot.appendChild(script);
@@ -23,10 +22,6 @@ export class litNotUsedComponent extends HTMLElement
     this.container = document.createElement("div");
     this.container.innerHTML = this.render();
     shadowRoot.appendChild(this.container);
-
-    console.warn(getState());
-    setState("litNotUsedComponent state constructor");
-    console.warn(getState());
   }
 
   static get observedAttributes() {
@@ -48,11 +43,15 @@ export class litNotUsedComponent extends HTMLElement
     this.container.innerHTML = this.render();
   }
 
+
   render() {
     return `
-      <input name="statedata" label="statedata" value="${this._statedata}"></input>
-      <button onclick="btnGetState()">Get statedata</button>
-      <button onclick="btnSetState()">Set statedata</button>
+    <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <div>Statedata = ${this._statedata}</div>
+    <input name="statedata" label="statedata" value="${this._statedata}"></input>
+    <button class='btn btn-accent' onclick="btnGetState()">Get</button>
+    <button class='btn btn-accent' onclick="btnSetState()">Set</button>
     `;
   }
 }
