@@ -24,27 +24,33 @@
 
   <!-- Solid App -->
   <script type="module">
+    import { store, getStateText, setStateText } from "/store.js";
+
     import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
     import { render } from "https://cdn.skypack.dev/solid-js/web";
     import solidjsHtml from "https://cdn.skypack.dev/solid-js/html";
 
     const solidjs = () => {
-      const [count, setCount] = createSignal(1), timer = setInterval(() => setCount(count() + 1), 5000);
+      const [count, setCount] = createSignal(1), timer = setInterval(() => {
+        const cnt = (count() + 1) % 11
+        setCount(cnt);
+        setStateText(cnt);
+      }, 3000);
       onCleanup(() => clearInterval(timer));
 
       return solidjsHtml`
         <article class="bg-slate-800">
           <ui-header mytitle="SolidJS container" myitems="${count}" mydata="${count}"></ui-header>
-          <h2 class="text-2xl">SolidJS count state: ${count}</h2>
+          <h2 class="text-2xl p-10">SolidJS count state: ${count}</h2>
         </article>
       `;
     };
     render(solidjs, document.querySelector('#solidContainer'));
   </script>
-  <section class="flex flex-row">
+  <section class="flex flex-col sm:flex-wrap lg:flex-row">
     <div id="solidContainer"></div>
-    <ui-header mytitle="Second Card" mydata="xyz" btnType="primary" backgroundColor="lightblue" myitems='[{"id":"4", "avl": "1", "name": "Hugo"}, {"id":"3", "avl": "0", "name": "Mary"}, {"id":"2", "avl": "0", "name": "Jane"}]'></ui-header>
-    <ui-header mytitle="Third Card" mydata="qw" btnType="secondary" backgroundColor="lightgray" myitems='[{"id":"3", "avl": "0", "name": "Mary"}, {"id":"5", "avl": "1", "name": "Jane"}, {"id":"1", "avl": "1", "name": "Jane"}]'></ui-header>
+    <ui-header mytitle="Second Card" mydata="xyz" btnType="primary" backgroundColor="lightblue" myitems='[{"id":"4", "avl": "1", "name": "Hugo"}, {"id":"1", "avl": "0", "name": "Mary"}]'></ui-header>
+    <ui-header mytitle="Third Card" mydata="qw" btnType="secondary" backgroundColor="lightgray" myitems='[{"id":"3", "avl": "0", "name": "Mary"}, {"id":"5", "avl": "1", "name": "Jane"}]'></ui-header>
   </section>
 
   <footer hx-get="footer.html" hx-trigger="load delay:0s"></footer>
@@ -74,7 +80,7 @@
       this.btnText = 'Hide';
       this.displayState = 'inline';
       this.backgroundColor = 'linen';
-      this.myitemsObj = [ { id: 2, avl: 1, name: "Hugo" }, { id: 3, avl: 0, name: "Mary" }, { id: 5, avl: 1, name: "Jane" } ];
+      this.myitemsObj = [ { id: 2, avl: 1, name: "Hugo" }, { id: 5, avl: 1, name: "Jina" } ];
     }
 
     //static get observedAttributes() {
@@ -132,9 +138,9 @@
 
             <button class="btn btn-${this.btnType} w-80" @click=${this.toggleShowAndHideText}>${this.btnText}</button>
             <article id="ArticleID">
-              <section>
+              <section class="flex content-evenly items-center self-center justify-center justify-self-center justify-items-center">
                 ${this.myitemsObj.map(itm => html`
-                  <div class="avatar ${itm.avl == "1" ? 'online' : 'offline'} m-10" title="${itm.name}">
+                  <div class="avatar ${itm.avl == "1" ? 'online' : 'offline'} m-6" title="${itm.name}">
                     <div class="rounded-full w-24 h-24">
                       <img src="http://daisyui.com/tailwind-css-component-profile-${itm.id}@94w.png">
                     </div>
@@ -179,5 +185,4 @@
   customElements.define('ui-header', UIHeader);
 
 </script>
-
 </html>

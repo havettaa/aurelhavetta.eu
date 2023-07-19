@@ -24,7 +24,7 @@
     <header class="flex flex-row justify-between">
       <nav>
         <h1 class="text-4xl">Preact App</h1>
-        <h2 class="text-2xl">with shared State with classic javascript</h2>
+        <h2 class="text-2xl">loaded using HTMX with shared "store" state </h2>
       </nav>
       <div class="navbar-end">
         <label for="my-modal-4" class="btn btn-ghost btn-circle">
@@ -47,12 +47,10 @@
       </area>
     </header>
 
-    <div id="preact" class="m-10"></div>
-
-    <hr class="m-10" />
+    <div id="preact" class="m-4"></div>
 
     <section class="flex flex-col justify-between">
-      <custom-dropdown class="m-16"></custom-dropdown>
+      <custom-dropdown></custom-dropdown>
 
       <div class="flex flex-row justify-around">
         <div class="one-half column">
@@ -96,9 +94,13 @@
 
 <script type="module">
   import { html, Component, render } from 'https://unpkg.com/htm/preact/standalone.module.js';
-  import { store, getStateText, setStateText } from "/store.js";
+  import { store, getStateText, setStateText, storeAddNotificationFunc } from "/store.js";
   class MyApp extends Component {
     state = store;
+    constructor() {
+      super();
+      storeAddNotificationFunc(this.notificationCallbackFunc);
+    }
     onKeyUp = e => {
       console.log(e.target.value);
       setStateText(e.target.value)
@@ -122,6 +124,9 @@
       mylist.push(`todo ${mylist.length} state ${mytext}.`);
       console.log(mylist);
       this.setState({ mylist: mylist, mytext: mytext });
+    }
+    notificationCallbackFunc = e => {
+      this.setState(store);
     }
     render({ page }) {
       return html`
