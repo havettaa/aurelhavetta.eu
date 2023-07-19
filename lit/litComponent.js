@@ -47,7 +47,7 @@ export class LitComponent extends LitElement
       <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet" />
       <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
       <div>Store: ${store.objState.myString} ref: ${store.obj.refState.myString}</div>
-      <input name="data" label="data" value="${this.data}"></input>
+      <input name="data" label="data" value="${this.data}" class="input w-full max-w-xs"></input>
       <button class='btn btn-primary' @click='${this.toggle}'>toggle</button>
       <div>Value: ${this.value} <label>${this.closed ? 'checked' : ''}</label></div>
       <input id="ck1" type="checkbox" class="toggle toggle-primary" ${this.closed ? 'checked' : ''}>

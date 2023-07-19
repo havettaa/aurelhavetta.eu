@@ -49,7 +49,7 @@ export class litNotUsedComponent extends HTMLElement
     <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
     <div>Statedata = ${this._statedata}</div>
-    <input name="statedata" label="statedata" value="${this._statedata}"></input>
+    <input name="statedata" label="statedata" value="${this._statedata}" class="input w-full max-w-xs"></input>
     <button class='btn btn-accent' onclick="btnGetState()">Get</button>
     <button class='btn btn-accent' onclick="btnSetState()">Set</button>
     `;

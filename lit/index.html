@@ -34,8 +34,9 @@
       onCleanup(() => clearInterval(timer));
 
       return solidjsHtml`
-        <article class="prose">
-          <h3 class="text-4xl">${count}</h3>
+        <article class="bg-slate-800">
+          <h1 class="text-4xl">SolidJS container</h1>
+          <h2 class="text-2xl">${count}</h2>
           <ui-header myitems="${count}" mydata="${count}"></ui-header>
         </article>
       `;
@@ -70,11 +71,11 @@
   </div>
 
 
-  <ui-header myitems='[{"id":"2", "avl": "1", "name": "Hugo"}, {"id":"3", "avl": "0", "name": "Mary"}]'' mydata="xx" btnType="primary" backgroundColor="green"></ui-header>
+  <ui-header myitems='[{"id":"2", "avl": "1", "name": "Hugo"}, {"id":"3", "avl": "0", "name": "Mary"}]'' mydata="xx" btnType="primary" backgroundColor="lightblue"></ui-header>
 
-  <ui-header myitems='[{"id":"3", "avl": "0", "name": "Mary"}, {"id":"5", "avl": "1", "name": "Jane"}]'' mydata="yy" btnType="secondary" backgroundColor="blue"></ui-header>
+  <ui-header myitems='[{"id":"3", "avl": "0", "name": "Mary"}, {"id":"5", "avl": "1", "name": "Jane"}]'' mydata="yy" btnType="secondary" backgroundColor="lemonchiffon"></ui-header>
 
-  <footer hx-get="footer.html" hx-trigger="load delay:0s"></footer>
+  <footer hx-get="footer.html" hx-trigger="load delay:0s" style="background-color: lightpink;"></footer>
 </body>
 
 <script type="module">
@@ -99,7 +100,7 @@
       this.btnType = 'accent';
       this.btnText = 'Hide';
       this.displayState = 'block';
-      this.backgroundColor = 'brown';
+      this.backgroundColor = 'linen';
 
       this.myitemsObj = [ { id: 2, avl: 1, name: "Hugo" }, { id: 3, avl: 0, name: "Mary" }, { id: 5, avl: 1, name: "Jane" } ];
     }
@@ -126,7 +127,7 @@
         console.log(`Show ${this.getAttribute("backgroundColor")}`);
         this.displayState = 'block';
         this.btnText = 'Hide';
-        this.backgroundColor = 'red';
+        this.backgroundColor = 'lightpink';
       } else {
         console.log(`Hide ${this.getAttribute("backgroundColor")}`);
         this.displayState = 'none';
@@ -141,18 +142,18 @@
         <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
         <style>
-          button {
+          article>section {
             background: ${this.backgroundColor};
           }
-          #info-box {
+          #ArticleID {
             display: ${this.displayState};
           }  
         </style>
 
         <ui-litNotUsedComponent id="webcom" data="---DATA BEGIN ${this.mydata} - ${this.btnType} DATA END---"></ui-litNotUsedComponent>
 
-        <button class="btn btn-${this.btnType}" @click=${this.toggleShowAndHideText}>${this.btnText} - ${this.mydata} - ${this.btnType}</button>
-        <section id="info-box">
+        <button class="btn btn-${this.btnType}" @click=${this.toggleShowAndHideText}>${this.btnText}</button>
+        <article id="ArticleID">
           <section>
             ${this.myitemsObj.map(itm => html`
               <div class="avatar ${itm.avl == "1" ? 'online' : 'offline'} m-10" title="${itm.name}">
@@ -164,13 +165,32 @@
           </section>
 
           <!-- tab -->
-          <div class="p-4 tabs">
-            <button class="tab tab-lifted">Tab 1</button>
-            <button class="tab tab-lifted tab-active">Tab 2</button>
-            <button class="tab tab-lifted">Tab 3</button>
+          <div class="p-4">
+            <div class="tabs tabs-boxed">
+              <a class="tab tab-lifted tab-active"">Attributes</a>
+              <a class="tab tab-lifted>Objects</a>
+              <a class="tab tab-lifted">Properties</a>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="border border-slate-600">mydata</th>
+                  <th class="border border-slate-600">backgroundColor</th>
+                  <th class="border border-slate-600">btnType</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover">
+                  <td class="border border-slate-700">${this.mydata}</td>
+                  <td class="border border-slate-700">${this.backgroundColor}</td>
+                  <td class="border border-slate-700">${this.btnType}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-        </section>
+          <hr class="m-18" />
+        </article>
         `;
     }
   }
