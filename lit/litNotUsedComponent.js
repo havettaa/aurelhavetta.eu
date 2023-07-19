@@ -1,4 +1,4 @@
-import { store, getState, setState } from "./store.js";
+import { store, getStateText, setStateText } from "/store.js";
 
 export class litNotUsedComponent extends HTMLElement
 {
@@ -11,10 +11,10 @@ export class litNotUsedComponent extends HTMLElement
     const script = document.createElement('script');
     script.textContent = `
       function btnGetState(){
-        import("./store.js").then(lib => console.log(lib.getState()) );
+        import("/store.js").then(lib => console.log(lib.getStateText()) );
       }
       function btnSetState(){
-        import("./store.js").then(lib => lib.setState("setState " + lib.store.objState) );
+        import("/store.js").then(lib => lib.setStateText("setState " + lib.store.objState.myString) );
       }
       `;
     shadowRoot.appendChild(script);

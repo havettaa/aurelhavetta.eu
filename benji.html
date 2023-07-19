@@ -4,8 +4,8 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <script type="module" src="custom-dropdown.js"></script>
-  <script type="module" src="my-component.js"></script>
+  <script type="module" src="/custom-dropdown.js"></script>
+  <script type="module" src="/my-component.js"></script>
 
   <style type="text/css">
     .redFont {
@@ -38,18 +38,19 @@
       <input type="checkbox" id="my-modal-4" class="modal-toggle">
       <div class="modal">
         <div class="modal-box relative">
-          <label for="my-modal-4"
-            class="btn btn-sm btn-circle border-none bg-base-100 text-black font-bold absolute right-2 top-2">✕</label>
+          <label for="my-modal-4" class="btn btn-sm btn-circle border-none bg-base-100 text-black font-bold absolute right-2 top-2">✕</label>
           <div class="form-control pr-6">
-            <input type="text" placeholder="Search" class="input input-bordered bg-base-100 ">
+            <input type="text" placeholder="Search" class="input input-bordered bg-base-100 "/>
           </div>
         </div>
       </div>
       </area>
     </header>
 
+    <div id="preact" class="m-10"></div>
+
     <hr class="m-10" />
-    
+
     <section class="flex flex-col justify-between">
       <custom-dropdown class="m-16"></custom-dropdown>
 
@@ -93,6 +94,61 @@
 
 </body>
 
+<script type="module">
+  import { html, Component, render } from 'https://unpkg.com/htm/preact/standalone.module.js';
+  import { store, getStateText, setStateText } from "/store.js";
+  class MyApp extends Component {
+    state = store;
+    onKeyUp = e => {
+      console.log(e.target.value);
+      setStateText(e.target.value)
+      const { mytext } = store;
+      this.setState({ mytext: mytext });
+    }
+    clearSearch = e => {
+      this.setState({ mytext: ""});
+    }
+    deleteAll = e => {
+      const { mylist, mytext } = store;
+      mylist.length = 0;
+      this.setState({ mylist: mylist, mytext: mytext });
+    }
+    onSubmit = e => {
+      alert("Submitted");
+      e.preventDefault();
+    }
+    addTodo = e => {
+      const { mylist, mytext } = store;
+      mylist.push(`todo ${mylist.length} state ${mytext}.`);
+      console.log(mylist);
+      this.setState({ mylist: mylist, mytext: mytext });
+    }
+    render({ page }) {
+      return html`
+        <form class="grid justify-items-start" onSubmit=${this.onSubmit}>
+          <${TopPart} name="ToDo's (${page})" />
+          <div>
+            <a class="btn btn-accent" onClick=${this.addTodo}>Add Todo</a>
+            <input value=${this.state.mytext} onKeyUp=${this.onKeyUp} type="text" placeholder="Search" class="input input-bordered" />
+            <a class="btn btn-secondary" onClick=${this.clearSearch}>Clear Search</a>
+            <a class="btn btn-primary" onClick=${this.deleteAll}>Delete All</a>
+          </div>
+          <ul class="menu rounded-box">
+            ${this.state.mylist.filter(i => i.includes(this.state.mytext)).map(todo => html`
+              <li key=${todo}><a>${todo}</a></li>
+            `)}
+          </ul>
+          <${Footer}><pre>footer content here</pre><//>
+          <button class="btn btn-accent" type="submit">Submit</button>
+        </form>
+      `;
+    }
+  }
+
+  const TopPart = ({ name }) => html`<h1 class="text-2xl p-5">${name} List</h1>`
+  const Footer = props => html`<footer ...${props} />`
+  render(html`<${MyApp} page="All" />`, document.querySelector('#preact'));
+</script>
 
 <script>
   function myOnclick() {
