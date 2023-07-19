@@ -15,7 +15,7 @@
   <!-- Navbar -->
   <header class="header-area mb-20">
     <div class="z-50 navbar p-4 fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-none">
-      <nav class="navbar-start" hx-get="/lit/header/navMenu.html" hx-trigger="load delay:0s"></nav>
+      <div class="navbar-start" hx-get="/lit/header/navMenu.html" hx-trigger="load delay:0s"></div>
       <div class="navbar-center">
         <a class="btn btn-ghost normal-case text-xl" href="https://htmx.org/docs/#ajax">HTMX</a>
       </div>
@@ -24,7 +24,7 @@
   </header>
   <!-- End-Navbar -->
 
-  <section hx-get="/benji.html" hx-trigger="load delay:0s"></section>
+  <div hx-get="/benji.html" hx-trigger="load delay:0s"></div>
 
   <hr class="m-10" />
 
@@ -39,7 +39,7 @@
   <!-- Solid App -->
   <div id="solidContainer"></div>
 
-  <footer hx-get="footer.html" hx-trigger="load delay:0s"></footer>
+  <div hx-get="footer.html" hx-trigger="load delay:0s"></div>
 
   <script type="module">
     import { store, getStateText, setStateText } from "/store.js";

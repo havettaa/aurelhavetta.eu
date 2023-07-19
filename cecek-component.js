@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 //import { LitElement, html, property, customElement } from 'lit-element';
 
-export class MyComponent extends LitElement {
+export class CecekComponent extends LitElement {
 
   static get properties() {
     return { 
@@ -36,4 +36,4 @@ export class MyComponent extends LitElement {
   }
 }
 
-customElements.define('my-component', MyComponent);
+customElements.define('cecek-component', CecekComponent);
