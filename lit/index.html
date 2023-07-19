@@ -23,7 +23,6 @@
   <section hx-get="/benji.html" hx-trigger="load delay:0s"></section>
 
   <!-- Solid App -->
-  <div id="solidContainer"></div>
   <script type="module">
     import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
     import { render } from "https://cdn.skypack.dev/solid-js/web";
@@ -35,47 +34,20 @@
 
       return solidjsHtml`
         <article class="bg-slate-800">
-          <h1 class="text-4xl">SolidJS container</h1>
-          <h2 class="text-2xl">${count}</h2>
-          <ui-header myitems="${count}" mydata="${count}"></ui-header>
+          <ui-header mytitle="SolidJS container" myitems="${count}" mydata="${count}"></ui-header>
+          <h2 class="text-2xl">SolidJS count state: ${count}</h2>
         </article>
       `;
     };
     render(solidjs, document.querySelector('#solidContainer'));
   </script>
+  <section class="flex flex-row">
+    <div id="solidContainer"></div>
+    <ui-header mytitle="Second Card" mydata="xyz" btnType="primary" backgroundColor="lightblue" myitems='[{"id":"4", "avl": "1", "name": "Hugo"}, {"id":"3", "avl": "0", "name": "Mary"}, {"id":"2", "avl": "0", "name": "Jane"}]'></ui-header>
+    <ui-header mytitle="Third Card" mydata="qw" btnType="secondary" backgroundColor="lightgray" myitems='[{"id":"3", "avl": "0", "name": "Mary"}, {"id":"5", "avl": "1", "name": "Jane"}, {"id":"1", "avl": "1", "name": "Jane"}]'></ui-header>
+  </section>
 
-  <ui-litnotusedcomponent id="notlit" data="DATA PASSED ${this.mydata} - ${this.btnType} DATA END"></ui-litnotusedcomponent>
-
-
-  <!-- dropdown -->
-  <div class="dropdown m-4">
-    <div tabindex="0" class="m-1 btn">Dropdown</div>
-    <ul tabindex="0" class="p-2 menu dropdown-content bg-neutral text-neutral-content rounded-box w-52">
-      <li><a>Item 1</a></li>
-      <li><a>Item 2</a></li>
-    </ul>
-  </div>
-
-  <!-- modal button -->
-  <label for="my-modal" class="btn modal-button">Modal</label>
-  <!-- modal content -->
-  <input type="checkbox" id="my-modal" class="modal-toggle">
-  <div class="modal">
-    <div class="modal-box">
-      <p>Enim dolorem dolorum omnis atque necessitatibus. Consequatur aut adipisci qui iusto illo eaque. Consequatur
-        repudiandae et. Nulla ea quasi eligendi. Saepe velit autem minima.</p>
-      <div class="modal-action">
-        <label for="my-modal" class="btn">Close</label>
-      </div>
-    </div>
-  </div>
-
-
-  <ui-header myitems='[{"id":"2", "avl": "1", "name": "Hugo"}, {"id":"3", "avl": "0", "name": "Mary"}]'' mydata="xx" btnType="primary" backgroundColor="lightblue"></ui-header>
-
-  <ui-header myitems='[{"id":"3", "avl": "0", "name": "Mary"}, {"id":"5", "avl": "1", "name": "Jane"}]'' mydata="yy" btnType="secondary" backgroundColor="lemonchiffon"></ui-header>
-
-  <footer hx-get="footer.html" hx-trigger="load delay:0s" style="background-color: lightpink;"></footer>
+  <footer hx-get="footer.html" hx-trigger="load delay:0s"></footer>
 </body>
 
 <script type="module">
@@ -86,6 +58,7 @@
 
   class UIHeader extends LitElement {
     static properties = {
+      mytitle: { type: String },
       myitems: { type: String },
       mydata: { type: String },
       btnType: { type: String },
@@ -99,9 +72,8 @@
 
       this.btnType = 'accent';
       this.btnText = 'Hide';
-      this.displayState = 'block';
+      this.displayState = 'inline';
       this.backgroundColor = 'linen';
-
       this.myitemsObj = [ { id: 2, avl: 1, name: "Hugo" }, { id: 3, avl: 0, name: "Mary" }, { id: 5, avl: 1, name: "Jane" } ];
     }
 
@@ -115,17 +87,21 @@
         if (name == `myitems`) {
           this.myitemsObj = JSON.parse(newVal);
         }
-        else
+        else if (name == `mytitle`) {
+          this.mytitle = newVal;
+        }
+        else {
           console.log(`${name} changed to ${newVal}`);
+        }
       }
       super.attributeChangedCallback(name, oldVal, newVal);
     }
 
     toggleShowAndHideText(event) {
-      console.log(`### button command ${this.btnText} , ${this.displayState}, ${this.backgroundColor}`);
+      console.log(`### button command ${this.btnText} , mydata:  ${this.mydata}, ${this.displayState}, ${this.backgroundColor}`);
       if (this.btnText === 'Show') {
         console.log(`Show ${this.getAttribute("backgroundColor")}`);
-        this.displayState = 'block';
+        this.displayState = 'inline';
         this.btnText = 'Hide';
         this.backgroundColor = 'lightpink';
       } else {
@@ -134,7 +110,7 @@
         this.btnText = 'Show';
         this.backgroundColor = this.getAttribute('backgroundColor');
       }
-      console.log(`### next time ${this.btnText} , ${this.displayState}, ${this.backgroundColor} \n------------------------`);
+      console.log(`### next time ${this.btnText} , mydata:  ${this.mydata} , ${this.displayState}, ${this.backgroundColor} \n------------------------`);
     }
 
     render() {
@@ -150,46 +126,51 @@
           }  
         </style>
 
-        <ui-litNotUsedComponent id="webcom" data="---DATA BEGIN ${this.mydata} - ${this.btnType} DATA END---"></ui-litNotUsedComponent>
+        <div class="card shadow-2xl m-4">
+          <div class="card-body">
+            <h2 class="card-title">${this.mytitle}</h2>
 
-        <button class="btn btn-${this.btnType}" @click=${this.toggleShowAndHideText}>${this.btnText}</button>
-        <article id="ArticleID">
-          <section>
-            ${this.myitemsObj.map(itm => html`
-              <div class="avatar ${itm.avl == "1" ? 'online' : 'offline'} m-10" title="${itm.name}">
-                <div class="rounded-full w-24 h-24">
-                  <img src="http://daisyui.com/tailwind-css-component-profile-${itm.id}@94w.png">
+            <button class="btn btn-${this.btnType} w-80" @click=${this.toggleShowAndHideText}>${this.btnText}</button>
+            <article id="ArticleID">
+              <section>
+                ${this.myitemsObj.map(itm => html`
+                  <div class="avatar ${itm.avl == "1" ? 'online' : 'offline'} m-10" title="${itm.name}">
+                    <div class="rounded-full w-24 h-24">
+                      <img src="http://daisyui.com/tailwind-css-component-profile-${itm.id}@94w.png">
+                    </div>
+                  </div>
+                `)}
+              </section>
+
+              <ui-litNotUsedComponent data="---DATA BEGIN ${this.mydata} - ${this.btnType} DATA END---"></ui-litNotUsedComponent>
+
+              <!-- tab -->
+              <div class="p-4">
+                <div class="tabs ">
+                  <a class="tab tab-bordered tab-active">Attributes</a>
+                  <a class="tab tab-bordered">Objects</a>
+                  <a class="tab tab-bordered">Properties</a>
                 </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="border border-slate-600">mydata</th>
+                      <th class="border border-slate-600">backgroundColor</th>
+                      <th class="border border-slate-600">btnType</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="hover">
+                      <td class="border border-slate-700">${this.mydata}</td>
+                      <td class="border border-slate-700">${this.backgroundColor}</td>
+                      <td class="border border-slate-700">${this.btnType}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-            `)}
-          </section>
 
-          <!-- tab -->
-          <div class="p-4">
-            <div class="tabs tabs-boxed">
-              <a class="tab tab-lifted tab-active"">Attributes</a>
-              <a class="tab tab-lifted>Objects</a>
-              <a class="tab tab-lifted">Properties</a>
             </div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="border border-slate-600">mydata</th>
-                  <th class="border border-slate-600">backgroundColor</th>
-                  <th class="border border-slate-600">btnType</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="hover">
-                  <td class="border border-slate-700">${this.mydata}</td>
-                  <td class="border border-slate-700">${this.backgroundColor}</td>
-                  <td class="border border-slate-700">${this.btnType}</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
-
-          <hr class="m-18" />
         </article>
         `;
     }

@@ -4,7 +4,7 @@ export class litNotUsedComponent extends HTMLElement
 {
   constructor() {
     super();
-    this._statedata = `Constructor set _statedata`;
+    this._statedata = `InitialData`;
 
     const shadowRoot = this.attachShadow({ mode: "open" });
 
@@ -14,7 +14,7 @@ export class litNotUsedComponent extends HTMLElement
         import("/store.js").then(lib => console.log(lib.getStateText()) );
       }
       function btnSetState(){
-        import("/store.js").then(lib => lib.setStateText("setState " + lib.store.objState.myString) );
+        import("/store.js").then(lib => lib.setStateText("|" + lib.store.objState.myString) );
       }
       `;
     shadowRoot.appendChild(script);
@@ -31,14 +31,14 @@ export class litNotUsedComponent extends HTMLElement
   attributeChangedCallback(name, oldVal, newVal) {
     if (oldVal !== newVal) {
       if (name == `statedata`)
-        this.setData(newVal);
+        this.localSetData(newVal);
       else
         console.log(`Unknown attribute ${name} changed to ${newVal}`);
     }
   }
 
-  setData(newData) {
-    console.log(`setData ${this._statedata} setting to ${newData}`);
+  localSetData(newData) {
+    console.log(`localSetData ${this._statedata} setting to ${newData}`);
     this._statedata = newData;
     this.container.innerHTML = this.render();
   }
@@ -48,10 +48,11 @@ export class litNotUsedComponent extends HTMLElement
     return `
     <link href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-    <div>Statedata = ${this._statedata}</div>
-    <input name="statedata" label="statedata" value="${this._statedata}" class="input w-full max-w-xs"></input>
-    <button class='btn btn-accent' onclick="btnGetState()">Get</button>
-    <button class='btn btn-accent' onclick="btnSetState()">Set</button>
+    <section class="flex flex-row">
+      <input name="statedata" label="statedata" value="${this._statedata}" class="input w-full max-w-xs"></input>
+      <button class='btn btn-accent' onclick="btnGetState()">Get</button>
+      <button class='btn btn-accent' onclick="btnSetState()">Set</button>
+    </section>
     `;
   }
 }
