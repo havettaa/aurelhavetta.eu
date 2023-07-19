@@ -1,12 +1,6 @@
 <html>
-
 <head>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script type="module" src="/custom-dropdown.js"></script>
-  <script type="module" src="/my-component.js"></script>
-
   <style type="text/css">
     .redFont {
       color: red;
@@ -20,12 +14,23 @@
 
 <body>
   <main data-theme="coffee" class="p-10">
+    <!-- Navbar -->
+    <header class="header-area mb-20">
+      <div class="z-0 navbar p-4 fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-none">
+        <div class="navbar-start" hx-get="/lit/header/navMenu.html" hx-trigger="load delay:0s"></div>
+        <div class="navbar-center">
+          <a class="btn btn-ghost normal-case text-xl">PREACT</a>
+        </div>
+        <div class="navbar-end" hx-get="/lit/header/iconSearch.html" hx-trigger="load delay:0s"></div>
+      </div>
+    </header>
+    <!-- End-Navbar -->
 
-    <header class="flex flex-row justify-between">
-      <nav>
+    <article class="flex flex-row justify-between">
+      <section>
         <h1 class="text-4xl">Preact App</h1>
-        <h2 class="text-2xl">loaded using HTMX with shared "store" state </h2>
-      </nav>
+        <h2 class="text-2xl">loaded using HTMX with shared "store"</h2>
+      </section>
       <div class="navbar-end">
         <label for="my-modal-4" class="btn btn-ghost btn-circle">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,19 +50,20 @@
         </div>
       </div>
       </area>
-    </header>
+    </article>
 
     <div id="preact" class="m-4"></div>
 
     <section class="flex flex-col justify-between">
+      
       <custom-dropdown></custom-dropdown>
-
+      
       <div class="flex flex-row justify-around">
         <div class="one-half column">
-          <my-component id="prvy" name="First custom lit-element:"></my-component>
+          <cecek-component id="prvy" name="First custom lit-element:"></cecek-component>
         </div>
         <div class="one-half column">
-          <my-component id="druhy" name="Second custom lit-element:"></my-component>
+          <cecek-component id="druhy" name="Second custom lit-element:"></cecek-component>
         </div>
       </div>
 
@@ -89,8 +95,6 @@
       <button class="btn btn-primary" onclick="myOnclick()">Click to Set Date</button>
     </section>
   </main>
-
-</body>
 
 <script type="module">
   import { html, Component, render } from 'https://unpkg.com/htm/preact/standalone.module.js';
@@ -196,6 +200,13 @@
   }
 
 
-</script>
+  </script>
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
+
+  <script type="module" src="/cecek-component.js"></script>
+  <script type="module" src="/custom-dropdown.js"></script>
+
+</body>
 </html>

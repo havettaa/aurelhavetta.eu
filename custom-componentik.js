@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 
-class componentik extends LitElement {
+class CustomComponentik extends LitElement {
   static get properties() {
     return {
       now: { type: String }
@@ -106,4 +106,4 @@ class componentik extends LitElement {
   }
 }
 
-customElements.define('custom-componentik', componentik);
+customElements.define('custom-componentik', CustomComponentik);
