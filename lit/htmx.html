@@ -28,6 +28,9 @@
 
   <hr class="m-10" />
 
+
+
+
   <script>
     function parentGetState() {
       console.log("parentGetState");
@@ -38,9 +41,6 @@
 
   <!-- Solid App -->
   <div id="solidContainer"></div>
-
-  <div hx-get="footer.html" hx-trigger="load delay:0s"></div>
-
   <script type="module">
     import { store, getStateText, setStateText } from "/store.js";
 
@@ -69,9 +69,96 @@
     render(solidjs, document.querySelector('#solidContainer'));
   </script>
 
+
+
+
+  <section hx-ext='client-side-templates' class="h-full bg-gray-200 text-gray-800 p-4 lg:p-8">
+    <button hx-get="https://dummyjson.com/todos"
+            hx-swap="innerHTML"
+            hx-target="#content"
+            mustache-template="sometemplate"
+            class="btn btn-primary">
+      Load Json with HTMX
+    </button>
+
+    <p id="content" class="m-8"></p>
+
+    <template id="sometemplate">
+      <p> {% raw %}{{total}}{% endraw %} and {% raw %}{{limit}}{% endraw %}</p>
+    </template>
+
+    <aside class="flex items-center mb-1">
+      <h1 class="flex-grow text-xl">Latest News</h1>
+      <!-- hx-trigger="load, click" makes sure that api gets called on pageload AND on click  !-->
+      <button class="py-2 px-4 rounded bg-blue-500 text-white flex-grow-0"
+              type="button"
+              hx-trigger="load, click"
+              hx-get="https://node-hnapi.herokuapp.com/news?page=0" 
+              nunjucks-template="gistlist"
+              hx-target="#list"
+              hx-swap="innerHTML">
+        Reload
+      </button>   
+    </aside>
+
+    <p id="list" class="m-8"></p>
+
+    <script id="gistlist" type="nunjucks">
+      {% for gist in gists %}
+        <li class="relative -mb-px block border p-1 border-grey">
+          <a href="{{gist.url}}" class="font-bold">{{gist.title}}</a> ({{gist.time_ago}})<br>
+        </li>
+      {% endfor %}
+    </script>
+
+    <script type="module">
+    htmx.logger = function(elt, event, data) {
+      if(console) {
+          console.debug(event, elt, data);
+      }
+    }
+
+    document.body.addEventListener('configRequest.htmx', function(evt) {
+        // try to remove x-hx-* headers because gist api complains about CORS
+        Object.keys(evt.detail.headers).forEach(function(key) { 
+          delete evt.detail.headers[key]; 
+        });
+    });
+
+    htmx.defineExtension('client-side-templates', {
+        transformResponse : function(text, xhr, elt) {
+          var nunjucksTemplate = htmx.closest(elt, "[nunjucks-template]");
+            if (nunjucksTemplate) {
+                var data = {
+                  gists: JSON.parse(text).map((item) => {
+                    // parser : https://codepen.io/localhorst/pen/ZEbqVZd
+                    //item.parsed = new leptonParser().parse(item.description);
+                    return item; 
+                  })
+                };
+
+                var templateName = nunjucksTemplate.getAttribute('nunjucks-template');
+                var template = htmx.find('#' + templateName);
+                console.warn(templateName,data);
+                return nunjucks.renderString(template.innerHTML, data);
+            }
+            return text;
+        }
+    });
+    </script>
+  </section>
+
+
+
+  <div hx-get="footer.html" hx-trigger="load delay:0s"></div>
+
+
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
-  <!-- <script src="../js/htmx.min.js"></script> -->
+  <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
+  <script src="https://unpkg.com/mustache@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.4/browser/nunjucks.min.js"></script>  <!-- <script src="../js/htmx.min.js"></script> -->
 
   <script type="module" src="litNotUsedComponent.js" crossorigin="anonymous"></script>
   <script type="module" src="litComponent.js" crossorigin="anonymous"></script>
