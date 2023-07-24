@@ -84,6 +84,7 @@ topbar {
     <topbar>
       <nav style="display: flex; flex-direction: row;">
         <div class="ui teal button" onclick="loadwebcomponent()">Web-Component</div>
+        <div class="ui teal button" onclick="loadSvelte()">Svelte</div>
         <div class="ui teal button" onclick="loadmyapp()">MyApp</div>
         <div class="ui teal button" onclick="loadmysettings()">MySettings</div>
         <div class="ui teal button" onclick="loadlogviewer()">Logviewer</div>
@@ -97,6 +98,7 @@ topbar {
     </topbar>
 
     <article id="mfe-outlet">
+      <div id="svelteApp"></div>
       <!-- <preact-app></preact-app>
       <myapp></myapp>
       <mysettings></mysettings>
@@ -118,17 +120,21 @@ topbar {
 
 
     async function onLoad() {
-      mfeconfig = await loadMfeConfig();
-
       hideAll();
+      
       loadwebcomponent();
 
-      const store = await import("//aurelhavetta.eu/mfe/store.js");
+      loadMfeConfig(); // do not await
+      scriptForPreactApp(); // do not await
 
+      const store = await import("//aurelhavetta.eu/mfe/store.js");
       console.warn(store.getState());
       store.setState("index.html onLoad state");
       console.warn(store.getState());
+    }
 
+
+    async function scriptForPreactApp() {
       const res = await fetch('https://api.github.com/gists/eb4104ed6407a9bee20280c03690c25e');
       const json = await res.json();
       console.log(json?.files?.['preact-app.js']?.content)
@@ -140,41 +146,39 @@ topbar {
     }
 
 
-
     async function loadMfeConfig() {
       const res = await fetch('https://api.github.com/gists/93a66f4e019f178997eeaaa7b6d1e24e');
       const json = await res.json();
       const mfeconfig = JSON.parse(json?.files?.['mfeconfig.json']?.content);
-
+      
+      console.warn('###################################################');
+      console.warn(mfeconfig);
       createMfeTags(mfeconfig);
       importMfeJsFiles(mfeconfig);
     }
 
 
-
     function createMfeTags(mfeconfig) {
       for (const e of mfeconfig?.files) {
+        console.warn(`CREATE-SCRIPT: ${e?.url}`)
         const script = document.createElement("script");
         script.setAttribute('type','module');
         script.textContent = `import("${e?.url}")`;
-        console.log(script.textContent)
         document.body.appendChild(script);
       }
     }
-    
-
 
 
     function importMfeJsFiles(mfeconfig) {
       const mfeParentTag = document.getElementById('mfe-outlet');
 
       for (const e of mfeconfig?.htmltags) {
+        console.warn(`CREATE-TAG: ${e?.tagname}`)
         const tag = document.createElement(e?.tagname);
         tag.style.display = 'none';
         mfeParentTag.appendChild(tag);
       }
     }
-    
 
 
     async function loadwebcomponent() {
@@ -182,9 +186,14 @@ topbar {
 
       //document.dispatchEvent(new CustomEvent("publishNewState", { detail: { storeName: "city", value: {x:1,y:2} } }));
 
-      import("//aurelhavetta.eu/mfe/store.js").then(store => console.log(store.getState()));
-
       await import("/mfe/web-component.js");
+    }
+
+
+    async function loadSvelte() {
+      hideAll();
+      document.querySelector("#svelteApp").style.display = 'inherit';
+      await import("/mfe/svelteApp.js");
     }
 
 
@@ -194,6 +203,7 @@ topbar {
 
       await import("/mfe/myapp.js");
     }
+
 
     async function loadmysettings() {
       hideAll();
