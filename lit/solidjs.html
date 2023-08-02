@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>htmx test</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet" type="text/css" /> -->
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="header-area mb-20">
+    <div class="z-50 navbar p-4 fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-none">
+      <div class="navbar-start" hx-get="/lit/header/navMenu.html" hx-trigger="load delay:0s"></div>
+      <div class="navbar-center">
+        <a class="btn btn-ghost normal-case text-xl" href="https://htmx.org/docs/#ajax">HTMX</a>
+      </div>
+      <div class="navbar-end" hx-get="/lit/header/iconSearch.html" hx-trigger="load delay:0s"></div>
+    </div>
+  </header>
+  <!-- End-Navbar -->
+
+
+
+
+  
+  <script>
+    function parentGetState() {
+      console.log("parentGetState");
+      import("/store.js").then(lib => document.querySelector("#e1").innerHTML = `click to getState = ${lib.getStateText()}` );
+    }
+  </script>
+  <button id="e1" onclick="parentGetState()" class="btn btn-accent">click to getState</button>
+
+
+
+
+
+  <!-- Solid App -->
+  <div id="solidContainer"></div>
+  <script type="module">
+    import { store, getStateText, setStateText } from "/store.js";
+
+    import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
+    import { render } from "https://cdn.skypack.dev/solid-js/web";
+    import solidjsHtml from "https://cdn.skypack.dev/solid-js/html";
+    
+    const solidjs = () => {
+      const [count, setCount] = createSignal(1), timer = setInterval(() => {
+        const cnt = (count() + 1) % 11
+        setCount(cnt);
+        setStateText(cnt);
+        store.mytext = cnt;
+      }, 3000);
+      onCleanup(() => clearInterval(timer));
+
+      return solidjsHtml`
+        <article class="prose">
+          <p class="text-4xl">SolidJS = ${count}</p>
+          <p class="text-3xl">GetState = ${getStateText()} , store.obj.refState = ${store.obj.refState.myString}</p>
+          <ui-litcomponent data="${count}" closed="true"></ui-litcomponent>
+          <ui-litnotusedcomponent data="${count}"></ui-litnotusedcomponent>
+        </article>
+      `;
+    };
+    render(solidjs, document.querySelector('#solidContainer'));
+  </script>
+
+
+
+
+
+  <div hx-get="/benji.html" hx-trigger="load delay:0s"></div>
+
+  <div hx-get="footer.html" hx-trigger="load delay:0s"></div>
+
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
+  <script src="https://unpkg.com/mustache@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.4/browser/nunjucks.min.js"></script>  <!-- <script src="../js/htmx.min.js"></script> -->
+
+  <script type="module" src="litNotUsedComponent.js" crossorigin="anonymous"></script>
+  <script type="module" src="litComponent.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -24,51 +24,6 @@
   </header>
   <!-- End-Navbar -->
 
-  <div hx-get="/benji.html" hx-trigger="load delay:0s"></div>
-
-  <hr class="m-10" />
-
-
-
-
-  <script>
-    function parentGetState() {
-      console.log("parentGetState");
-      import("/store.js").then(lib => document.querySelector("#e1").innerHTML = `click to getState = ${lib.getStateText()}` );
-    }
-  </script>
-  <button id="e1" onclick="parentGetState()" class="btn btn-accent">click to getState</button>
-
-  <!-- Solid App -->
-  <div id="solidContainer"></div>
-  <script type="module">
-    import { store, getStateText, setStateText } from "/store.js";
-
-    import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
-    import { render } from "https://cdn.skypack.dev/solid-js/web";
-    import solidjsHtml from "https://cdn.skypack.dev/solid-js/html";
-    
-    const solidjs = () => {
-      const [count, setCount] = createSignal(1), timer = setInterval(() => {
-        const cnt = (count() + 1) % 11
-        setCount(cnt);
-        setStateText(cnt);
-        store.mytext = cnt;
-      }, 3000);
-      onCleanup(() => clearInterval(timer));
-
-      return solidjsHtml`
-        <article class="prose">
-          <p class="text-4xl">SolidJS = ${count}</p>
-          <p class="text-3xl">GetState = ${getStateText()} , store.obj.refState = ${store.obj.refState.myString}</p>
-          <ui-litcomponent data="${count}" closed="true"></ui-litcomponent>
-          <ui-litnotusedcomponent data="${count}"></ui-litnotusedcomponent>
-        </article>
-      `;
-    };
-    render(solidjs, document.querySelector('#solidContainer'));
-  </script>
-
 
 
 
@@ -149,6 +104,7 @@
   </section>
 
 
+  <div hx-get="/benji.html" hx-trigger="load delay:0s"></div>
 
   <div hx-get="footer.html" hx-trigger="load delay:0s"></div>
 

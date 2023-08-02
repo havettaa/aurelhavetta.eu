@@ -120,8 +120,9 @@
       this.setState({ mylist: mylist, mytext: mytext });
     }
     onSubmit = e => {
-      alert("Submitted");
       e.preventDefault();
+      console.log(e);
+      alert("Submitted\n" + e.target.value);
     }
     addTodo = e => {
       const { mylist, mytext } = store;
