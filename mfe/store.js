@@ -1,8 +1,8 @@
-let state = "initial state";
+window.state = "initial state";
 
 export function getState() {
-  return state;
+  return window.state;
 }
 export function setState(newState) {
-  state = newState;
+  window.state = newState;
 }
