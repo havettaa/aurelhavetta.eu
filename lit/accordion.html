@@ -16,7 +16,7 @@
 </div>
 
 <div class="collapse bg-base-200">
-  <input type="radio" name="my-accordion-1" />
+  <input type="radio" name="my-accordion-2" />
   <div class="collapse-title text-xl font-medium">
     Accordion for Card
   </div>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="collapse bg-base-200">
-  <input type="radio" name="my-accordion-1" />
+  <input type="radio" name="my-accordion-3" />
   <div class="collapse-title text-xl font-medium">
     Accordion for Toggle
   </div>
@@ -50,7 +50,7 @@
 </div>
 
 <div class="collapse bg-base-200">
-  <input type="radio" name="my-accordion-1" />
+  <input type="radio" name="my-accordion-4" />
   <div class="collapse-title text-xl font-medium">
     Accordion for Modal
   </div>
@@ -72,7 +72,7 @@
 </div>
 
 <div class="collapse bg-base-200">
-  <input type="radio" name="my-accordion-1" />
+  <input type="radio" name="my-accordion-5" />
   <div class="collapse-title text-xl font-medium">
     Accordion for Dropdown
   </div>
@@ -85,5 +85,66 @@
         <li><a>Item 2</a></li>
       </ul>
     </div>
+  </div>
+</div>
+
+<div class="collapse bg-base-200">
+  <input type="radio" name="my-accordion-6" />
+  <div class="collapse-title text-xl font-medium">
+    Accordion for Form
+  </div>
+  <div class="collapse-content">
+    <!-- form -->
+    <form action="">
+      <fieldset class="flex flex-col p-2">
+        <legend>PopulateJS</legend>
+        <label for="last_name">Last name</label>
+        <input type="text" name="last_name">
+
+        <legend>Feature</legend>
+        <section>
+          <label for="horns">Horns</label>
+          <input type="checkbox" name="feature" value="horns" />
+
+          <label for="claws">Claws</label>
+          <input type="checkbox" name="feature" value="claws" />
+
+          <label for="scales">Scales</label>
+          <input type="checkbox"name="feature" value="scales" />
+        </section>
+
+        <legend>Sex</legend>
+        <section>
+          <label for="male">Male</label>
+          <input type="radio" name="sex" value="male" />
+          <label for="female">Female</label>
+          <input type="radio" name="sex" value="female" />
+        </section>
+
+        <legend>Choose a pet:</legend>
+        <select name="pet-select">
+          <option value="">--Please choose an option--</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="parrot">Parrot</option>
+          <option value="spider">Spider</option>
+          <option value="goldfish">Goldfish</option>
+        </select>
+
+        <legend>Choose multiple pets:</legend>
+        <select name="pet-select-multiple" multiple size="10">
+          <option value="none">-- Please choose one or more --</option>
+          <optgroup label="4-legged pets">
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+          </optgroup>
+          <optgroup label="Flying pets">
+            <option value="parrot">Parrot</option>
+            <option value="macaw">Macaw</option>
+            <option value="albatross">Albatross</option>
+          </optgroup>
+        </select>
+      </fieldset>
+    </form>
   </div>
 </div>
