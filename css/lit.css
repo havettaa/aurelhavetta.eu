@@ -1,0 +1,22 @@
+:root {
+  --spacing: 0;
+}
+header {
+  margin-bottom: 5rem;
+}
+header>ins {
+  z-index: 999;
+  padding: 1rem;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-style: none;
+  font-size: x-large;
+  padding-left: 2rem;
+}
+.footer>div {
+  display: flex;
+}

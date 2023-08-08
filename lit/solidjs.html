@@ -7,15 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>htmx test</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet" type="text/css" /> -->
+  <link href="/css/daisyui.css" rel="stylesheet" type="text/css" />
+  <link href="/css/pico.css" rel="stylesheet" type="text/css" />
+  <link href="/css/lit.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
   <!-- Navbar -->
-  <header class="header-area mb-20" hx-get="/lit/header.html" hx-trigger="load delay:0s">
-    <div class="z-50 navbar p-4 fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-none">
-    </div>
+  <header hx-get="/lit/reuse/header.html" hx-trigger="load">
+    <ins>=</ins>
   </header>
   <!-- End-Navbar -->
 
@@ -70,14 +70,14 @@
 
 
 
-  <div hx-get="/benji.html" hx-trigger="load delay:0s"></div>
+  <div hx-get="/lit/preact.html" hx-trigger="load"></div>
 
-  <div hx-get="footer.html" hx-trigger="load delay:0s"></div>
+  <div hx-get="/lit/reuse/footer.html" hx-trigger="load"></div>
 
 
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
+  <script src="/js/htmx.js" crossorigin="anonymous"></script>
+  <script src="/js/tailwind.js"></script>
   <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
   <script src="https://unpkg.com/mustache@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.4/browser/nunjucks.min.js"></script>  <!-- <script src="../js/htmx.min.js"></script> -->

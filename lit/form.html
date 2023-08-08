@@ -1,14 +1,14 @@
 <html lang="en">
 <head>
-  <title>form builder</title>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+  <title>Form Builder</title>
+  <link href="/css/pico.css" rel="stylesheet" type="text/css" />
+  <link href="/css/lit.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
   <!-- Navbar -->
-  <header class="header-area mb-20" hx-get="/lit/header.html" hx-trigger="load delay:0s">
-    <div class="z-50 navbar p-4 fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-none">
-    </div>
+  <header hx-get="/lit/reuse/header.html" hx-trigger="load delay:0s">
+    <ins>=</ins>
   </header>
   <!-- End-Navbar -->
 
@@ -363,12 +363,12 @@ var formBuilder = (function () {
   </section>
 
 
-  <div hx-get="footer.html" hx-trigger="load delay:0s"></div>
+  <div hx-get="/lit/reuse/footer.html" hx-trigger="load delay:0s"></div>
 
 
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/htmx.org@latest" crossorigin="anonymous"></script>
+  <link href="/css/daisyui.css" rel="stylesheet" type="text/css" />
+  <script src="/js/htmx.js" crossorigin="anonymous"></script>
+  <script src="/js/tailwind.js"></script>
 
 </body>
 </html>
