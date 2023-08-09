@@ -69,7 +69,7 @@
     <article class="flex flex-row justify-between">
       <section>
         <h1 class="text-4xl mt-5">Preact App</h1>
-        <h2 class="text-2xl">loaded using HTMX with shared "store"</h2>
+        <h2 class="text-2xl">loaded using HTMX</h2>
       </section>
       <div class="navbar-end">
         <label for="my-modal-4" class="btn btn-ghost btn-circle">
@@ -92,10 +92,77 @@
       </area>
     </article>
 
+
+
+
     <div id="preact" class="m-4"></div>
+    <script type="module">
+      import { html, Component, render } from 'https://unpkg.com/htm/preact/standalone.module.js';
+      import { store, getStateText, setStateText, storeAddNotificationFunc } from "/store.js";
+      class MyApp extends Component {
+        state = store;
+        constructor() {
+          super();
+          storeAddNotificationFunc(this.notificationCallbackFunc);
+        }
+        onKeyUp = e => {
+          console.log(e.target.value);
+          setStateText(e.target.value)
+          const { mytext } = store;
+          this.setState({ mytext: mytext });
+        }
+        clearSearch = e => {  
+          this.setState({ mytext: ""});
+        }
+        deleteAll = e => {
+          const { mylist, mytext } = store;
+          mylist.length = 0;
+          this.setState({ mylist: mylist, mytext: mytext });
+        }
+        onSubmit = e => {
+          e.preventDefault();
+          console.log(this.state.mylist);
+          alert("Submitted\n" + this.state.mylist);
+        }
+        addTodo = e => {
+          const { mylist, mytext } = store;
+          mylist.push(`todo ${mylist.length} state ${mytext}.`);
+          console.log(mylist);
+          this.setState({ mylist: mylist, mytext: mytext });
+        }
+        notificationCallbackFunc = e => {
+          this.setState(store);
+        }
+        render({ page }) {
+          return html`
+            <form class="flex flex-col" onSubmit=${this.onSubmit}>
+              <${TopPart} name="ToDo's (${page})" />
+              <div>
+                <a class="btn btn-accent" onClick=${this.addTodo}>Add Todo</a>
+                <a class="btn btn-secondary" onClick=${this.clearSearch}>Clear Search</a>
+                <input value=${this.state.mytext} onKeyUp=${this.onKeyUp} type="text" placeholder="Search" class="input input-bordered" />
+                <a class="btn btn-primary" onClick=${this.deleteAll}>Delete All</a>
+                <as class="btn btn-accent" type="submit">Submit</as>
+              </div>
+              <ul class="menu rounded-box">
+                ${this.state.mylist.filter(i => i.includes(this.state.mytext)).map(todo => html`
+                  <li key=${todo}><a>${todo}</a ></li>
+                `)}
+              </ul>
+            </form>
+          `;
+        }
+      }
+    
+      const TopPart = ({ name }) => html`<h1 class="text-2xl p-5">${name} List</h1>`
+      const Footer = props => html`<footer ...${props} />`
+      render(html`<${MyApp} page="All" />`, document.querySelector('#preact'));
+    </script>
+    
+
+
 
     <section class="flex flex-col justify-between">
-      
       <custom-dropdown></custom-dropdown>
       
       <div class="flex flex-row justify-around">
@@ -106,8 +173,6 @@
           <cecek-component id="druhy" name="Second custom lit-element:"></cecek-component>
         </div>
       </div>
-
-
       <script>
         const prvy = document.querySelector('#prvy');
         this.interval = window.setInterval(() => {
@@ -115,132 +180,8 @@
         }, 1000);
       </script>
     </section>
-
-    <section>
-      <ul class="menu bg-base-100 w-56 rounded-box">
-        <li id="myArticle1">
-          <a class="redFont">Article 1</a>
-        </li>
-        <li id="myArticle2">
-          <a class="redFont">Article 2</a>
-        </li>
-        <li id="myArticle3" class="bordered">
-          <a class="blueFont ">Article 3</a>
-        </li>
-        <li id="myArticle4">
-          <a class="redFont">Article 4</a>
-        </li>
-      </ul>
-
-      <button class="btn btn-primary" onclick="myOnclick()">Click to Set Date</button>
-    </section>
   </main>
 
-<script type="module">
-  import { html, Component, render } from 'https://unpkg.com/htm/preact/standalone.module.js';
-  import { store, getStateText, setStateText, storeAddNotificationFunc } from "/store.js";
-  class MyApp extends Component {
-    state = store;
-    constructor() {
-      super();
-      storeAddNotificationFunc(this.notificationCallbackFunc);
-    }
-    onKeyUp = e => {
-      console.log(e.target.value);
-      setStateText(e.target.value)
-      const { mytext } = store;
-      this.setState({ mytext: mytext });
-    }
-    clearSearch = e => {
-      this.setState({ mytext: ""});
-    }
-    deleteAll = e => {
-      const { mylist, mytext } = store;
-      mylist.length = 0;
-      this.setState({ mylist: mylist, mytext: mytext });
-    }
-    onSubmit = e => {
-      e.preventDefault();
-      console.log(this.state.mylist);
-      alert("Submitted\n" + this.state.mylist);
-    }
-    addTodo = e => {
-      const { mylist, mytext } = store;
-      mylist.push(`todo ${mylist.length} state ${mytext}.`);
-      console.log(mylist);
-      this.setState({ mylist: mylist, mytext: mytext });
-    }
-    notificationCallbackFunc = e => {
-      this.setState(store);
-    }
-    render({ page }) {
-      return html`
-        <form class="grid justify-items-start" onSubmit=${this.onSubmit}>
-          <${TopPart} name="ToDo's (${page})" />
-          <div>
-            <a class="btn btn-accent" onClick=${this.addTodo}>Add Todo</a>
-            <input value=${this.state.mytext} onKeyUp=${this.onKeyUp} type="text" placeholder="Search" class="input input-bordered" />
-            <a class="btn btn-secondary" onClick=${this.clearSearch}>Clear Search</a>
-            <a class="btn btn-primary" onClick=${this.deleteAll}>Delete All</a>
-          </div>
-          <ul class="menu rounded-box">
-            ${this.state.mylist.filter(i => i.includes(this.state.mytext)).map(todo => html`
-              <li key=${todo}><a>${todo}</a></li>
-            `)}
-          </ul>
-          <button class="btn btn-accent" type="submit">Submit</button>
-        </form>
-      `;
-    }
-  }
-
-  const TopPart = ({ name }) => html`<h1 class="text-2xl p-5">${name} List</h1>`
-  const Footer = props => html`<footer ...${props} />`
-  render(html`<${MyApp} page="All" />`, document.querySelector('#preact'));
-</script>
-
-<script>
-  function myOnclick() {
-    // toto je moja poznamka k tomut teraz
-    console.warn("event dispatched now.")
-
-    // Get all elements that have cssClass .redFont
-    const myArray = document.querySelectorAll(".redFont");
-
-
-    // Create new instance of class DateManager
-    const instance = new DateManager();
-
-    // Set property dateArray on this new instance
-    instance.dateArray = myArray;
-
-    // Call method setdates
-    instance.setDates(myArray);
-  }
-
-
-  // Define class DateManager
-  class DateManager {
-    dateArray;
-
-    setDates() {
-      let index = 0;
-
-      // Iterate over all elements in dateArray 
-      this.dateArray.forEach(e => {
-        console.info(index)
-
-        const datum = new Date();
-
-        e.innerHTML = datum.toLocaleTimeString();
-
-        index++;
-      });
-    }
-  }
-
-
-  </script>
 
   <script src="/js/htmx.js" crossorigin="anonymous"></script>
   <script src="/js/tailwind.js"></script>
