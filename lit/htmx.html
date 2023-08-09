@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Htmx test</title>
 
-  <link href="/css/daisyui.css" rel="stylesheet" type="text/css" />
   <link href="/css/pico.css" rel="stylesheet" type="text/css" />
   <link href="/css/lit.css" rel="stylesheet" type="text/css" />
 </head>
@@ -100,7 +99,6 @@
   </section>
 
 
-  <div hx-get="/lit/preact.html" hx-trigger="load"></div>
 
   <div hx-get="/lit/reuse/footer.html" hx-trigger="load"></div>
 
@@ -111,6 +109,8 @@
   <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
   <script src="https://unpkg.com/mustache@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.4/browser/nunjucks.min.js"></script>  <!-- <script src="../js/htmx.min.js"></script> -->
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
 
   <script type="module" src="litNotUsedComponent.js" crossorigin="anonymous"></script>
   <script type="module" src="litComponent.js" crossorigin="anonymous"></script>

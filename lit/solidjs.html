@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SolidJS</title>
 
-  <link href="/css/daisyui.css" rel="stylesheet" type="text/css" />
   <link href="/css/pico.css" rel="stylesheet" type="text/css" />
   <link href="/css/lit.css" rel="stylesheet" type="text/css" />
 </head>
@@ -27,50 +26,61 @@
   <script>
     function parentGetState() {
       console.log("parentGetState");
-      import("/store.js").then(lib => document.querySelector("#e1").innerHTML = `click to getState = ${lib.getStateText()}` );
+      import("/store.js").then(lib => document.querySelector("#e1").innerHTML = `click to getState = ${JSON.stringify(lib.store)}` );
     }
   </script>
-  <button id="e1" onclick="parentGetState()" class="btn btn-accent">click to getState</button>
+  <button id="e1" onclick="parentGetState()" class="btn btn-accent">click to getState with plain javascript</button>
 
 
 
+  <main class="flex flex-row">
 
 
-  <!-- Solid App -->
-  <div id="solidContainer"></div>
-  <script type="module">
-    import { store, getStateText, setStateText } from "/store.js";
+    <!-- Solid App -->
+    <div id="solidContainer" data-theme="valentine" class="p-20"></div>
+    <script type="module">
+      import { store, getStateText, setStateText } from "/store.js";
 
-    import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
-    import { render } from "https://cdn.skypack.dev/solid-js/web";
-    import solidjsHtml from "https://cdn.skypack.dev/solid-js/html";
+      import { createSignal, onCleanup, } from "https://cdn.skypack.dev/solid-js";
+      import { render } from "https://cdn.skypack.dev/solid-js/web";
+      import solidjsHtml from "https://cdn.skypack.dev/solid-js/html";
+      
+      const solidjs = () => {
+        const [signalmylist, setmylist] = createSignal([]);
+
+        const [count, setCount] = createSignal(1);
+
+        const timer = setInterval(() => {
+          const cnt = (count() + 1) % 11
+          setCount(cnt);
+          setStateText(cnt);
+          store.mytext = cnt;
+          setmylist(store.mylist);
+        }, 3000);
+        onCleanup(() => clearInterval(timer));
+
+
+        return solidjsHtml`
+          <article class="prose">
+            <p class="text-4xl p-10">SolidJS App</p>
+            <p class="text-2xl">GetState = <mark>${count}</mark> ${getStateText()}</p>
+            <p>store.mylist = ${signalmylist}</p>
+            <ui-litcomponent data="${count}" closed="true"></ui-litcomponent>
+            <ui-litnotusedcomponent data="${count}"></ui-litnotusedcomponent>
+          </article>
+        `;
+      };
+      render(solidjs, document.querySelector('#solidContainer'));
+    </script>
+
+
+
+    <div hx-get="/lit/preact.html" hx-trigger="load"></div>
+  
+
     
-    const solidjs = () => {
-      const [count, setCount] = createSignal(1), timer = setInterval(() => {
-        const cnt = (count() + 1) % 11
-        setCount(cnt);
-        setStateText(cnt);
-        store.mytext = cnt;
-      }, 3000);
-      onCleanup(() => clearInterval(timer));
+  </main>
 
-      return solidjsHtml`
-        <article class="prose">
-          <p class="text-4xl">SolidJS = ${count}</p>
-          <p class="text-3xl">GetState = ${getStateText()} , store.obj.refState = ${store.obj.refState.myString}</p>
-          <ui-litcomponent data="${count}" closed="true"></ui-litcomponent>
-          <ui-litnotusedcomponent data="${count}"></ui-litnotusedcomponent>
-        </article>
-      `;
-    };
-    render(solidjs, document.querySelector('#solidContainer'));
-  </script>
-
-
-
-
-
-  <div hx-get="/lit/preact.html" hx-trigger="load"></div>
 
   <div hx-get="/lit/reuse/footer.html" hx-trigger="load"></div>
 
@@ -81,6 +91,8 @@
   <script src="https://unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
   <script src="https://unpkg.com/mustache@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/nunjucks@3.2.4/browser/nunjucks.min.js"></script>  <!-- <script src="../js/htmx.min.js"></script> -->
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
 
   <script type="module" src="litNotUsedComponent.js" crossorigin="anonymous"></script>
   <script type="module" src="litComponent.js" crossorigin="anonymous"></script>
