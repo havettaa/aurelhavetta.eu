@@ -22,10 +22,10 @@
     </div>
   </div>
   <div class="navbar-center">
-    <a id="pagetitle" class="btn btn-ghost normal-case text-xl" href="https://htmx.org/docs/#ajax"></a>
+    <a class="pagetitle btn btn-ghost normal-case text-xl" href="https://htmx.org/docs/#ajax"></a>
     <script type="text/javascript">
-      document.querySelector("#pagetitle").innerText = document.title;
-   </script>
+      document.querySelectorAll(".pagetitle")?.forEach((e) => e.innerText = document.title);
+    </script>
   </div>
   <div class="navbar-end">
     <label for="my-modal-3" class="btn btn-ghost btn-circle">
