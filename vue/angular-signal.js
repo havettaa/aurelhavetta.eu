@@ -1,7 +1,10 @@
-import { shallowRef, triggerRef, computed as _computed } from 'vue'
+import { shallowRef, triggerRef, computed } from 'vue'
 
-export function signal(initialValue) {
-  const r = shallowRef(initialValue)
+export const ngref = shallowRef()
+
+export function ngsignal(initialValue) {
+  ngref.value = initialValue;
+  const r = ngref;
   const s = () => r.value
   s.set = value => { r.value = value }
   s.update = updater => { r.value = updater(r.value) }
@@ -9,7 +12,7 @@ export function signal(initialValue) {
   return s
 }
 
-export function computed(getter) {
-  const c = _computed(getter)
+export function ngcomputed(getter) {
+  const c = computed(getter)
   return () => c.value
 }

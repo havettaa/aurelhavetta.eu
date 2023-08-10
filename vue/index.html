@@ -89,7 +89,9 @@
       <div class="p-5 border border-gray-200 dark:border-gray-700">
 
         <h1>Count is: {{ count() }}</h1>
-        <h1>Double is: {{ double() }}</h1>{{domele}}
+        <h1>Double is: {{ double() }}</h1>
+        <h2>refcomputed is: {{ refcomputed }}</h2>
+        <h3>domeleis: {{ domele() }}</h3>
         <button @click="count.update(v => v + 1)" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Increment</button>
         <button @click="count.set(0)" type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Reset</button>
 
@@ -120,20 +122,35 @@
   </section>
 
   <script setup type="module">
-    import { createApp, ref } from "vue"
-    import { signal, computed } from './angular-signal.js'
+    import { createApp, ref, watchEffect, computed } from "vue"
+    import { ngsignal, ngcomputed, ngref } from './angular-signal.js'
 
-    const count = signal(0)
-    const double = computed(() => count() * 2)
-    const domele = computed(() => document.querySelector("#domele").innerHTML = count())
+    const count = ngsignal(0);
+    const double = ngcomputed(() => count() * 2);
+    const domele = ngcomputed(() => {
+      console.warn(`ngcomputed called ${count()}`);
+      return count() / 2;
+    });
 
-    let localstate = { price: 0 };
+    const localstate = { price: 0 };
+    
     const refstate = ref({tile1: 'Here we have vue ref', tile2: 'Here no vue ref used',  price: 0})
+    const refcomputed = computed(() => {
+      console.error(`refcomputed called ${ngref.value}`);
+      return ngref.value / 4;
+    });
+  
+    watchEffect(() => {
+      console.log(`ngcomputed called count() = ${count()} \n refstate = `);
+      // Called every change for price
+      document.querySelector("#domele").innerHTML = refstate.value.price;
+      // console.table(refstate.value.price);
+    });
 
     createApp({
       setup() {
         return {
-          refstate, localstate, count, double, domele
+          refstate, localstate, count, double, domele, refcomputed
         }
       }
     }).mount('#app')
@@ -156,9 +173,9 @@
 
   <script src="/js/htmx.js" crossorigin="anonymous"></script>
   <script src="/js/tailwind.js"></script>
+  <!-- <script setup type="module" src="vueApp.js"></script> -->
 
   <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-  
-  <!-- <script setup type="module" src="vueApp.js"></script> -->
+
 </body>
 </html>
