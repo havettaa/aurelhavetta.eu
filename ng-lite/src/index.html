@@ -9,8 +9,17 @@
 </head>
 <body>
   <app-root></app-root>
+  <mark>outside-ng: <div id="outside-ng"></div></mark>
   <script>
-    setInterval(function() {window.document.title = new Date().toLocaleTimeString()}, 1000);
+    setInterval(function() {
+      window.document.title = `from javascript: ${new Date().toLocaleTimeString()}`;
+      window.titulka = `from javascript: ${Date.now()}`;
+      if (window.refstate?.value?.tile1)
+      {
+        window.refstate.value.tile1 = `from javascript: ${Math.random()}`;
+        document.getElementById("outside-ng").innerHTML = window.refstate.value.tile1;
+      }
+    }, 100);
   </script>
 </body>
 </html>
