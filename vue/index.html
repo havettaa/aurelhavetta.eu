@@ -30,6 +30,21 @@
 
 
 
+  <app-root></app-root>
+  <mark>outside-ng: <div id="outside-ng"></div></mark>
+  <script>
+    setInterval(function() {
+      window.document.title = `from javascript: ${new Date().toLocaleTimeString()}`;
+      window.titulka = `from javascript: ${Date.now()}`;
+      if (window.refstate?.value?.tile1)
+      {
+        window.refstate.value.tile1 = `from javascript: ${Math.random()}`;
+        document.getElementById("outside-ng").innerHTML = window.refstate.value.tile1;
+      }
+    }, 100);
+  </script>
+  <script src="runtime.9804ec40e7f91a64.js" type="module"></script><script src="polyfills.e0f04cd57717fcf2.js" type="module"></script><script src="main.40251658dfb934d3.js" type="module"></script></body>
+
 
 
   <main id="app" data-accordion="collapse">
