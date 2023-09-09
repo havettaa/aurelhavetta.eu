@@ -2,157 +2,187 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button {
 	border-radius: 100px;
-  }
-  
-  /* Sections
+}
+
+/* Sections
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .section {
+.section {
 	padding: 8rem 0 7rem;
 	text-align: center;
-  }
-  .section-heading,
-  .section-description {
+}
+
+.section-heading,
+.section-description {
 	margin-bottom: 1.2rem;
-  }
-  
-  /* Hero
+}
+
+/* Hero
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .phones {
+.phones {
 	position: relative;
-  }
-  .phone {
+}
+
+.phone {
 	position: relative;
 	max-width: 80%;
 	margin: 3rem auto -12rem;
-  }
-  .phone + .phone {
+}
+
+.phone+.phone {
 	display: none;
-  }
-  
-  /* Values
+}
+
+/* Values
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .values {
-	  
-	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(66,66,124,1) 20%, rgba(0,54,134,1) 65%, rgba(26,79,89,1) 100%);
+.values {
+
+	background: rgb(2, 0, 36);
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(66, 66, 124, 1) 20%, rgba(0, 54, 134, 1) 65%, rgba(26, 79, 89, 1) 100%);
 	background-size: cover;
 	color: #fff;
 	padding-bottom: 5rem;
-  }
-  .value-multiplier {
+}
+
+.value-multiplier {
 	margin-bottom: .5rem;
 	color: #11DFC7;
-  }
-  .value-heading {
+}
+
+.value-heading {
 	margin-bottom: .3rem;
-  }
-  .value-description {
+}
+
+.value-description {
 	opacity: .8;
 	font-weight: 300;
-  }
-  
-  /* Help
+}
+
+/* Help
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .get-help {
+.get-help {
 	border-bottom: 1px solid #ddd;
-  }
-  
-  /* Categories
+}
+
+/* Categories
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .categories {
-	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(66,66,124,1) 20%, rgba(0,54,134,1) 65%, rgba(26,79,89,1) 100%);
+.categories {
+	background: rgb(2, 0, 36);
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(66, 66, 124, 1) 20%, rgba(0, 54, 134, 1) 65%, rgba(26, 79, 89, 1) 100%);
 	background-size: cover;
 	color: #fff;
-  }
-  .categories .section-description { 
+}
+
+.categories .section-description {
 	margin-bottom: 4rem;
-  }
-  
-  /* Bigger than 550 */
-  @media (min-width: 550px) {
+}
+
+/* Bigger than 550 */
+@media (min-width: 550px) {
 	.section {
-	  padding: 12rem 0 11rem;
+		padding: 12rem 0 11rem;
 	}
+
 	.hero {
-	  padding-bottom: 12rem;
-	  text-align: left;
+		padding-bottom: 12rem;
+		text-align: left;
 	}
+
 	.phone {
-	  position: absolute;
-	  top: -7rem;
-	  right: 3rem;
-	  max-height: 362px;
-	  z-index: 3;
+		position: absolute;
+		top: -7rem;
+		right: 3rem;
+		max-height: 362px;
+		z-index: 3;
 	}
-	.phone + .phone {
-	  top: -6rem;
-	  display: block;
-	  max-width: 73.8%;
-	  right: 0;
-	  z-index: 2;
-	  max-height: 338px;
+
+	.phone+.phone {
+		top: -6rem;
+		display: block;
+		max-width: 73.8%;
+		right: 0;
+		z-index: 2;
+		max-height: 338px;
 	}
-	.hero-heading {
-		font-size: 2.4rem;
+
+	.myheading {
+		font-size: 4rem;
 	}
-	.hero-heading a {
-		text-decoration: overline;
+
+	.myheading a {
+		text-decoration: none;
+		cursor: copy;
 	}
-	.hero-heading h6 {
+
+	.myheading h6 {
 		text-decoration: underline;
+		color: #11DFC7;
+		cursor: help;
 	}
-  }
-  
-  /* Bigger than 750 */
-  @media (min-width: 750px) {
-	.hero {
+
+	.myheading h4 a {
+		color: darkgoldenrod;
 	}
+}
+
+/* Bigger than 750 */
+@media (min-width: 750px) {
+	.hero {}
+
 	.hero-heading {
-	  font-size: 2.6rem;
+		font-size: 2.6rem;
 	}
+
 	.section {
-	  padding: 14rem 0 15rem;
+		padding: 14rem 0 15rem;
 	}
+
 	.hero {
-	  padding: 16rem 0 14rem;
+		padding: 16rem 0 14rem;
 	}
+
 	.section-description {
-	  max-width: 60%;
-	  margin-left: auto;
-	  margin-right: auto;
+		max-width: 60%;
+		margin-left: auto;
+		margin-right: auto;
 	}
+
 	.phone {
-	  top: -14rem;
-	  right: 5rem;
-	  max-height: 510px;
+		top: -14rem;
+		right: 5rem;
+		max-height: 510px;
 	}
-	.phone + .phone {
-	  top: -12rem;
-	  max-height: 472px;
+
+	.phone+.phone {
+		top: -12rem;
+		max-height: 472px;
 	}
+
 	.categories {
-	  padding: 15rem 0 8rem;
+		padding: 15rem 0 8rem;
 	}
-  }
-  
-  /* Bigger than 1000 */
-  @media (min-width: 1000px) {
+}
+
+/* Bigger than 1000 */
+@media (min-width: 1000px) {
 	.section {
-	  padding: 20rem 0 19rem;
+		padding: 20rem 0 19rem;
 	}
+
 	.hero {
-	  padding: 22rem 0;
+		padding: 22rem 0;
 	}
+
 	.hero-heading {
-	  font-size: 3.0rem;
+		font-size: 3.0rem;
 	}
+
 	.phone {
-	  top: -16rem;
-	  max-height: 615px;
+		top: -16rem;
+		max-height: 615px;
 	}
-	.phone + .phone {
-	  top: -14rem;
-	  max-height: 570px;
+
+	.phone+.phone {
+		top: -14rem;
+		max-height: 570px;
 	}
-  }
+}
