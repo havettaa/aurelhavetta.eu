@@ -107,20 +107,26 @@ body {
 <button class="spin-button">Spin</button>
 
 <script>
-const wheel = document.querySelector('.wheel');
-const spinButton = document.querySelector('.spin-button');
 let isSpinning = false;
 
-spinButton.addEventListener('click', () => {
-  if (!isSpinning) {
-    isSpinning = true;
-    const randomAngle = Math.floor(Math.random() * 3600) + 360;
-    wheel.style.transform = `translate(-50%, -50%) rotate(${randomAngle}deg)`;
-    setTimeout(() => {
-      isSpinning = false;
-    }, 3000);
-  }
-});
+const startspin = () => {
+  if (isSpinning)
+    return;
+
+  isSpinning = true;
+  const randomAngle = Math.floor(Math.random() * 3600) + 360;
+  const wheel = document.querySelector('.wheel');
+  wheel.style.transform = `translate(-50%, -50%) rotate(${randomAngle}deg)`;
+  setTimeout(() => {
+    isSpinning = false;
+  }, 3000);
+};
+
+const buton = document.querySelector('.spin-button');
+const wheel = document.querySelector('.wheel');
+buton.addEventListener('click', startspin);
+wheel.addEventListener('click', startspin);
+
 </script>
 
 </body>
