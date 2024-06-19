@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinning Wheel</title>
+  <style>
+    body {
+      font-family: 'proxima-nova', sans-serif;
+      overflow: hidden;
+    }
+
+    #wheel {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="wheel">
+        <canvas id="wheelCanvas"></canvas>
+    </div>
+  </main>
+</body>
+
+<script>
+  const segments = ['Segment 1', 'Segment 2', 'Segment 3', 'Segment 4', 'Segment 5']; 
+  const segColors = ['#FF5733', '#3498DB', '#2ECC71', '#F1C40F', '#9B59B6'];
+  const winningSegment = 'Segment 3'; // Example winning segment
+  const onFinished = (segment) => {
+    // alert(`The wheel landed on ${segment}!`);
+  };
+
+    const canvas = document.getElementById('wheelCanvas');
+    const ctx = canvas.getContext('2d');
+    let dimension = (window.innerWidth -700) * 2; 
+    canvas.width = dimension;
+    canvas.height = dimension;
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const size = (canvas.width - 40) / 2; 
+    let currentSegment = '';
+    let isStarted = false;
+    let isFinished = false;
+    let timerHandle = 0;
+    const timerDelay = segments.length;
+    let angleCurrent = 0;
+    let angleDelta = 0;
+    let maxSpeed = Math.PI / segments.length;
+    const upDuration = 100; 
+    const downDuration = 1000; 
+    const upTime = segments.length * upDuration;
+    const downTime = segments.length * downDuration;
+    let spinStart = 0;
+    let frames = 0;
+    const primaryColor = 'black';
+    const contrastColor = 'white';
+    const buttonText = 'Spin';
+    const fontFamily = 'proxima-nova';
+    const fontSize = '1em';
+    const outlineWidth = 10;
+
+    const drawSegment = (key, lastAngle, angle) => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, size, lastAngle, angle, false);
+        ctx.lineTo(centerX, centerY);
+        ctx.closePath();
+        ctx.fillStyle = segColors[key % segColors.length];
+        ctx.fill();
+        ctx.stroke();
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate((lastAngle + angle) / 2);
+        ctx.fillStyle = contrastColor;
+        ctx.font = `bold ${fontSize} ${fontFamily}`;
+        ctx.fillText(segments[key].substring(0, 21), size / 2 + 20, 0);
+        ctx.restore();
+    }
+
+    const drawWheel = () => {
+        let lastAngle = angleCurrent;
+        const len = segments.length;
+        const PI2 = Math.PI * 2;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = primaryColor;
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.font = '1em ' + fontFamily;
+        for (let i = 1; i <= len; i++) {
+            const angle = PI2 * (i / len) + angleCurrent;
+            drawSegment(i - 1, lastAngle, angle);
+            lastAngle = angle;
+        }
+        // Center circle
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 50, 0, PI2, false);
+        ctx.closePath();
+        ctx.fillStyle = primaryColor;
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = contrastColor;
+        ctx.fill();
+        ctx.font = 'bold 1em ' + fontFamily;
+        ctx.fillStyle = contrastColor;
+        ctx.textAlign = 'center';
+        ctx.fillText(buttonText, centerX, centerY + 3);
+        ctx.stroke();
+        // Outer circle
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, size, 0, PI2, false);
+        ctx.closePath();
+        ctx.lineWidth = outlineWidth;
+        ctx.strokeStyle = primaryColor;
+        ctx.stroke();
+    }
+
+    const drawNeedle = () => {
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = contrastColor;
+        ctx.fillStyle = contrastColor;
+        ctx.beginPath();
+        ctx.moveTo(centerX + 20, centerY - 50);
+        ctx.lineTo(centerX - 20, centerY - 50);
+        ctx.lineTo(centerX, centerY - 70);
+        ctx.closePath();
+        ctx.fill();
+        const change = angleCurrent + Math.PI / 2;
+        let i = segments.length - Math.floor((change / (Math.PI * 2)) * segments.length) - 1;
+        if (i < 0) i = i + segments.length;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = primaryColor;
+        ctx.font = 'bold 1.5em ' + fontFamily;
+        currentSegment = segments[i];
+        isStarted && ctx.fillText(currentSegment, centerX + 10, centerY + size + 50);
+    }
+
+    const clear = () => {
+        ctx.clearRect(0, 0, dimension, dimension);
+    }
+
+    const spin = () => {
+        isStarted = true;
+        if (timerHandle === 0) {
+            spinStart = new Date().getTime();
+            maxSpeed = Math.PI / segments.length; 
+            frames = 0;
+            timerHandle = setInterval(onTimerTick, timerDelay);
+        }
+    }
+
+    const onTimerTick = () => {
+        frames++;
+        draw();
+        const duration = new Date().getTime() - spinStart;
+        let progress = 0;
+        let finished = false;
+        if (duration < upTime) {
+            progress = duration / upTime;
+            angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2);
+        } else {
+            if (winningSegment) { 
+                if (currentSegment === winningSegment && frames > segments.length) {
+                    progress = duration / upTime;
+                    angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2 + Math.PI / 2);
+                    progress = 1; 
+                } else {
+                    progress = duration / downTime;
+                    angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2 + Math.PI / 2);
+                }
+            } else {
+                progress = duration / downTime;
+                angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2 + Math.PI / 2);
+            }
+            if (progress >= 1) finished = true;
+        }
+
+        angleCurrent += angleDelta;
+        while (angleCurrent >= Math.PI * 2) angleCurrent -= Math.PI * 2;
+        if (finished) {
+            isFinished = true;
+            onFinished(currentSegment);
+            clearInterval(timerHandle);
+            timerHandle = 0;
+            angleDelta = 0;
+        }
+    }
+    const draw = () => {
+        clear();
+        drawWheel();
+        drawNeedle();
+    }
+    draw(); 
+
+    canvas.addEventListener('click', spin, false);
+</script>
+</html>
